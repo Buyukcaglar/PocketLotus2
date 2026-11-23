@@ -233,6 +233,12 @@ static uint16_t local_input(unsigned frame)
     return pad_bits(0);
 }
 
+static uint32_t joystick_bits(uint16_t in)
+{
+    return (in & IN_UP ? PAD_UP : 0) | (in & IN_DOWN ? PAD_DOWN : 0) | (in & IN_LEFT ? PAD_LEFT : 0) |
+           (in & IN_RIGHT ? PAD_RIGHT : 0) | (in & IN_FIRE ? PAD_FIRE : 0);
+}
+
 /* Player 1 and player 2 inputs to the game's keys. Both players' default key sets
    are used; gear changes are up and down. Skip and Escape come from either. */
 static void apply_input(uint16_t p1, uint16_t p2)
@@ -249,8 +255,8 @@ static void apply_input(uint16_t p1, uint16_t p2)
     M.keys[KEY2_FIRE] = (p2 & IN_FIRE) != 0;
     M.keys[KEY_ESCAPE] = ((p1 | p2) & IN_ESCAPE) != 0;
     M.keys[KEY_F1] = ((p1 | p2) & IN_SKIP) != 0;
-    M.pad = (p1 & IN_UP ? PAD_UP : 0) | (p1 & IN_DOWN ? PAD_DOWN : 0) | (p1 & IN_LEFT ? PAD_LEFT : 0) |
-            (p1 & IN_RIGHT ? PAD_RIGHT : 0) | (p1 & IN_FIRE ? PAD_FIRE : 0);
+    M.pad = joystick_bits(p1);
+    M.pad2 = joystick_bits(p2);
 }
 
 static void read_input(unsigned frame)
@@ -269,6 +275,45 @@ static void read_input(unsigned frame)
         p2 = bench_frames ? 0 : pad_bits(1);       /* a second pad on the dock plays as player 2 */
     }
     apply_input(p1, p2);
+}
+
+/* High scores, names, password and options are kept in save slot 0 (save.c).
+   The save is applied once the program has started and written whenever one of
+   them changes, which happens only in the menus and at the end of a game. Off in
+   bench runs and in linked play: two consoles must start from the same state. */
+#define SAVE_FILE "lotus2_0.sav"
+#define SAVE_CHECK_FRAMES 50
+static uint8_t save_stored[SAVE_SIZE];
+static int save_state;                 /* 0 waiting for the program, 1 running, -1 off */
+
+static void save_start(int enabled)
+{
+    save_state = enabled ? 0 : -1;
+}
+
+static void save_frame(unsigned frame)
+{
+    if (save_state < 0) return;
+    if (save_state == 0) {
+        if (!save_game_ready()) return;
+        FILE *f = fopen(SAVE_FILE, "rb");
+        int have = f && fread(save_stored, 1, SAVE_SIZE, f) == SAVE_SIZE;
+        if (f) fclose(f);
+        if (have && save_apply(save_stored)) printf("save restored\n");
+        save_capture(save_stored);
+        save_state = 1;
+        return;
+    }
+    if (frame % SAVE_CHECK_FRAMES) return;
+    uint8_t now[SAVE_SIZE];
+    save_capture(now);
+    if (!memcmp(now, save_stored, SAVE_SIZE)) return;
+    FILE *f = fopen(SAVE_FILE, "wb");
+    int ok = f && fwrite(now, 1, SAVE_SIZE, f) == SAVE_SIZE;
+    if (f && fclose(f) != 0) ok = 0;
+    if (!ok) { printf("cannot write " SAVE_FILE "\n"); save_state = -1; return; }
+    memcpy(save_stored, now, SAVE_SIZE);
+    printf("saved\n");
 }
 
 /* Hash of the game state that matters for lockstep: the program counter and the
@@ -306,6 +351,12 @@ int main(int argc, char **argv)
     if (!bench_frames) video_refresh_50hz();
     load_pack();
     machine_init();
+#ifndef OF_PC
+    /* The Pocket shows the framebuffer 2 pixels right of where the core puts it
+       (a screenshot of the race had 6 black columns on the left and 2 on the right
+       where the framebuffer has 4 and 4), so the race picture moves 2 more left. */
+    M.display_shift = 2;
+#endif
 #ifdef LOTUS_RECOMP
     hybrid_install();
 #endif
@@ -318,12 +369,14 @@ int main(int argc, char **argv)
     /* linked: each console draws its own player's view, full screen (core/view.c) */
     if (role != LINK_OFF && link_start(role, 30000)) M.view_player = (role == LINK_HOST) ? 1 : 2;
     else if (bench_frames && bench_view) M.view_player = bench_view;
+    save_start(!bench_frames && !link_active());
     if (!bench_frames) measure_display();
     uint32_t t0 = bench_frames ? 0 : of_time_ms();
     for (unsigned frame = 0; !M.fatal; frame++) {
         read_input(frame);
         machine_run_frame();
         if (link_active() && frame % LINK_CHECK_FRAMES == LINK_CHECK_FRAMES - 1) link_check(frame, state_hash());
+        save_frame(frame);
         present();
         if (!bench_frames) pace();
         if (!bench_frames && (frame % 250) == 249) {   /* the simulator measures bench runs itself */

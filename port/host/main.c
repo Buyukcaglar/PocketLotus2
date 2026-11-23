@@ -125,14 +125,17 @@ static void dump_frame(const char *dir, unsigned frame)
 
 int main(int argc, char **argv)
 {
-    unsigned frames = 100, every = 0;
+    unsigned frames = 100, every = 0, dump_from = 0;
     const char *outdir = "build/lotus/frames";
     const char *dump_app = NULL;
+    const char *dump_mus = NULL;
     int lockstep_hash = 0;
     const char *hash_path = NULL;
     const char *script = NULL;     /* "frame:pMASK frame:kKEY frame:uKEY ..." pad state, key down, key up */
     const char *engine = "interp";
     const char *wav_path = NULL;
+    const char *save_path = NULL;  /* saved scores, names and options (core/save.c) */
+    int save_state = 0;
     unsigned autodrive = 0;        /* frame from which the autopilot drives */
     FILE *wav = NULL;
     uint32_t wav_frames = 0, wav_rate = 48000;
@@ -152,18 +155,21 @@ int main(int argc, char **argv)
     for (int i = 1; i < argc; i++) {
         if (!strcmp(argv[i], "--frames") && i + 1 < argc) frames = (unsigned)atoi(argv[++i]);
         else if (!strcmp(argv[i], "--every") && i + 1 < argc) every = (unsigned)atoi(argv[++i]);
+        else if (!strcmp(argv[i], "--from") && i + 1 < argc) dump_from = (unsigned)atoi(argv[++i]);
         else if (!strcmp(argv[i], "--out") && i + 1 < argc) outdir = argv[++i];
         else if (!strcmp(argv[i], "--dump-app") && i + 1 < argc) dump_app = argv[++i];
+        else if (!strcmp(argv[i], "--dump-mus") && i + 1 < argc) dump_mus = argv[++i];
         else if (!strcmp(argv[i], "--hash") && i + 1 < argc) hash_path = argv[++i];
         else if (!strcmp(argv[i], "--lockstep-hash") && i + 1 < argc) { hash_path = argv[++i]; lockstep_hash = 1; }
         else if (!strcmp(argv[i], "--engine") && i + 1 < argc) engine = argv[++i];
         else if (!strcmp(argv[i], "--input") && i + 1 < argc) script = argv[++i];
         else if (!strcmp(argv[i], "--wav") && i + 1 < argc) wav_path = argv[++i];
+        else if (!strcmp(argv[i], "--save") && i + 1 < argc) save_path = argv[++i];
         else if (!strcmp(argv[i], "--autodrive") && i + 1 < argc) autodrive = (unsigned)atoi(argv[++i]);
         else if (!strcmp(argv[i], "--view") && i + 1 < argc) M.view_player = atoi(argv[++i]);
         else if (!strcmp(argv[i], "--trace")) M.trace = 1;
         else if (!strcmp(argv[i], "--lenient")) M.lenient = 1;
-        else { fprintf(stderr, "usage: lotus_host [--frames N] [--every N] [--out DIR] [--dump-app FILE] [--hash FILE] [--lockstep-hash FILE] [--input SCRIPT] [--wav FILE] [--autodrive FRAME] [--view 1|2] [--engine interp|reference|translated] [--trace] [--lenient]\n"); return 2; }
+        else { fprintf(stderr, "usage: lotus_host [--frames N] [--every N] [--from N] [--out DIR] [--dump-app FILE] [--dump-mus FILE] [--hash FILE] [--lockstep-hash FILE] [--input SCRIPT] [--wav FILE] [--save FILE] [--autodrive FRAME] [--view 1|2] [--engine interp|reference|translated] [--trace] [--lenient]\n"); return 2; }
     }
     if (!load_raw("build/lotus/stub_70000.bin", 0x70000) || !load_raw("build/lotus/packed_8000.bin", 0x8000))
         return 1;
@@ -211,6 +217,15 @@ int main(int argc, char **argv)
             M.keys[66] = racing && x < -40;
         }
         machine_run_frame();
+        if (save_path && !save_state && save_game_ready()) {
+            /* applied when the program has started, as on the Pocket; written at the end */
+            uint8_t blob[SAVE_SIZE];
+            FILE *sf = fopen(save_path, "rb");
+            if (sf && fread(blob, 1, SAVE_SIZE, sf) == SAVE_SIZE)
+                fprintf(stderr, "frame %u: save %s\n", f, save_apply(blob) ? "restored" : "not valid, ignored");
+            if (sf) fclose(sf);
+            save_state = 1;
+        }
         if (getenv("LOTUS_REGS") && f % 100 == 0) fprintf(stderr, "frame %u r12=%08x pc=%08x\n", f, M.cpu.r[12], M.cpu.pc);
         if (getenv("LOTUS_BANKSTAT")) {
             /* debugging aid: which screen bank changed during this frame, and which was shown */
@@ -237,7 +252,7 @@ int main(int argc, char **argv)
 #endif
         }
         if (hash_file) fprintf(hash_file, "%u %08x\n", f, lockstep_hash ? view_lockstep_hash() : state_hash());
-        if (every && (f % every) == 0) {
+        if (every && f >= dump_from && (f % every) == 0) {
             dump_frame(outdir, f);
             if (dump_app) {
                 char name[512];
@@ -251,6 +266,11 @@ int main(int argc, char **argv)
     if (dump_app) {
         FILE *d = fopen(dump_app, "wb");
         if (d) { fwrite(guest_ptr(0), 1, APP_LIMIT, d); fclose(d); }
+    }
+    /* the music module as loaded (relocated), input to the recompiler */
+    if (dump_mus && M.mus_state > 0) {
+        FILE *d = fopen(dump_mus, "wb");
+        if (d) { fwrite(guest_ptr(MUS_MODULE), 1, M.mus_size, d); fclose(d); }
     }
 #ifdef ARM26_COVERAGE
     {
@@ -286,6 +306,12 @@ int main(int argc, char **argv)
                 "%u executions of rewritten words\n", executed, cov_write_hits, cov_exec_hits);
     }
 #endif
+    if (save_path && save_state) {
+        uint8_t blob[SAVE_SIZE];
+        save_capture(blob);
+        FILE *sf = fopen(save_path, "wb");
+        if (sf) { fwrite(blob, 1, SAVE_SIZE, sf); fclose(sf); }
+    }
     if (hash_file) fclose(hash_file);
     if (wav) {
         rewind(wav);

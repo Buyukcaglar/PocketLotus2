@@ -1,0 +1,11 @@
+{
+  "disks": {
+    "F1023201": "95b676b004f39cf0c896fe5ae1be80babbda8251d7cfb451946532e62b75915f",
+    "F1023202": "76c0f90c0853b364877e82ae7205f6ca282c6922e4a1a7dfc597e3acca9a18ce"
+  },
+  "game_image": "dcded4131490c15da3832011040aee4b36f51c64e335a68639ed5ed75fdaa55c",
+  "lotus_gen_c": "d6afbb02332b1cc7003c2ce2dd3a719aff13cc6ccd89faf40ba58258eab71c79",
+  "lotus2_dat": "ad13f300e8ed0b1dd62ce28e484ab6e8db81bd93152b57cbdd78cd262f224f76",
+  "platform_image": "a53a104388522d25fdd35bab0d849ff702a959061b628abc377d61d655ebe835",
+  "sdk_commit": "91864a6c360793c27c5db0ae0b50fba5e9f016e7"
+}

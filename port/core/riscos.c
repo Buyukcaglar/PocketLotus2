@@ -22,8 +22,8 @@ static void set_palette(unsigned logical, unsigned mode, unsigned r, unsigned g,
     if (mode < 16) c = default_palette[mode];
     else if (mode == 24) { M.border = c; return; }
     else if (mode != 16 && mode != 17 && mode != 18) return;
+    machine_palette_write();
     M.palette[logical & 15] = c;
-    M.palette_dirty = 1;
 }
 
 static void vdu_execute(void)
@@ -38,6 +38,7 @@ static void vdu_execute(void)
     case 22:
         if (M.trace) host_log("VDU mode %u\n", vdu_queue[1]);
         M.bpp = (vdu_queue[1] == 13) ? 8 : 4;
+        machine_palette_write();
         if (M.bpp == 8) {
             /* MODE 13 default: palette supplies the low tint bits */
             for (int i = 0; i < 16; i++)
@@ -45,7 +46,6 @@ static void vdu_execute(void)
         } else {
             memcpy(M.palette, default_palette, sizeof M.palette);
         }
-        M.palette_dirty = 1;
         memset(guest_ptr(SCREEN_BASE), 0, SCREEN_BYTES);
         M.display_offset = M.driver_offset = 0;
         break;
@@ -67,6 +67,113 @@ static void vdu(uint8_t c)
     }
     vdu_queue[vdu_have++] = c;
     if (--vdu_need == 0) vdu_execute();
+}
+
+/* Name and password entry with the pad. The game's editor (&F60C) flushes the
+   keyboard buffer (OS_Byte 15), then reads one key at a time with a timed
+   OS_Byte 129 (&F688) and takes the letters a to z, space, Delete (8, removes
+   the last letter) and Return (13, done). When it reads, r7 is the cursor (0 to
+   12) and r8 the 12-letter buffer, so the pad works it by typing: up and down
+   change the letter at the cursor (Delete, then the next letter), right accepts
+   it (with no letter being chosen, it types a space), left deletes, fire is
+   Return. Either pad, so the second player can type too.
+
+   The pad is read once a frame (entry_frame) and presses are kept until the
+   editor reads them: after each letter the game redraws the box, which can take
+   a few frames. */
+#define ENTRY_CALLER 0xF68Cu
+#define ENTRY_MAX 12
+enum { E_UP = 1, E_DOWN = 2, E_LEFT = 4, E_RIGHT = 8, E_FIRE = 16 };
+static const char entry_letters[] = "abcdefghijklmnopqrstuvwxyz ";
+static struct {
+    uint32_t down, presses, held_since;
+    int choosing;                         /* the letter before the cursor is the one up and down change */
+    uint8_t queue[2];
+    int queued;
+} entry;
+
+static uint32_t entry_pad(void)
+{
+    static const uint8_t keymap[][2] = { { 51, E_UP }, { 88, E_UP }, { 50, E_DOWN }, { 79, E_DOWN }, { 97, E_LEFT },
+                                         { 102, E_LEFT }, { 66, E_RIGHT }, { 103, E_RIGHT }, { 5, E_FIRE }, { 8, E_FIRE } };
+    uint32_t down = 0;
+    for (unsigned i = 0; i < sizeof keymap / sizeof keymap[0]; i++) if (M.keys[keymap[i][0]]) down |= keymap[i][1];
+    return down;
+}
+
+/* a new box: what is held already does not count */
+static void entry_open(void)
+{
+    entry.down = entry_pad();
+    entry.presses = 0;
+    entry.choosing = 0;
+    entry.queued = 0;
+}
+
+void entry_frame(void)
+{
+    uint32_t down = entry_pad(), pressed = down & ~entry.down;
+    if (pressed & (E_UP | E_DOWN)) entry.held_since = M.frame;
+    else if (down & (E_UP | E_DOWN)) {
+        /* held: repeat after 0.4 s, then 12 letters a second */
+        uint32_t held = M.frame - entry.held_since;
+        if (held >= 20 && held % 4 == 0) pressed |= down & (E_UP | E_DOWN);
+    }
+    entry.down = down;
+    entry.presses |= pressed;
+}
+
+static char entry_step(char c, int dir)
+{
+    const char *p = c ? strchr(entry_letters, c) : NULL;
+    int n = (int)sizeof entry_letters - 1, i = p ? (int)(p - entry_letters) : (dir > 0 ? -1 : 0);
+    return entry_letters[(i + dir + n) % n];
+}
+
+static void timed_key_read(arm26_t *cpu)
+{
+    uint32_t cursor = cpu->r[7], buffer = cpu->r[8];
+    int editor = cpu->pc == ENTRY_CALLER && cursor <= ENTRY_MAX && buffer >= APP_BASE && buffer + ENTRY_MAX < APP_LIMIT;
+    uint32_t p = entry.presses;
+    if (!entry.queued && p) {
+        if (!editor || (p & E_FIRE)) {
+            entry.queue[entry.queued++] = 13;     /* done; from an unknown caller any press is Return */
+            entry.choosing = 0;
+            p = 0;
+        } else if (p & E_LEFT) {
+            if (cursor > 0) entry.queue[entry.queued++] = 8;
+            entry.choosing = cursor > 1;
+            p &= ~E_LEFT;
+        } else if (p & (E_UP | E_DOWN)) {
+            int dir = (p & E_UP) ? 1 : -1;
+            if (cursor > 0 && (entry.choosing || cursor == ENTRY_MAX)) {
+                entry.queue[entry.queued++] = 8;
+                entry.queue[entry.queued++] = (uint8_t)entry_step((char)bus_read8(buffer + cursor - 1), dir);
+            } else {
+                entry.queue[entry.queued++] = (uint8_t)entry_step(0, dir);
+            }
+            entry.choosing = 1;
+            p &= ~(E_UP | E_DOWN);
+        } else if (p & E_RIGHT) {
+            if (!entry.choosing && cursor < ENTRY_MAX) entry.queue[entry.queued++] = ' ';
+            entry.choosing = 0;
+            p &= ~E_RIGHT;
+        }
+        entry.presses = p;
+    }
+    if (entry.queued) {
+        cpu->r[1] = entry.queue[0];
+        cpu->r[2] = 0;
+        entry.queue[0] = entry.queue[1];
+        entry.queued--;
+    } else {
+        /* nothing typed: wait until the next frame, as a real timed read waits, and
+           report the time-out (answering at once made the loop spin) */
+        cpu->r[1] = 0;
+        cpu->r[2] = 0xFF;
+        M.wait_vsync = 1;
+        cpu->cycles = 0;
+    }
 }
 
 static void os_byte(arm26_t *cpu)
@@ -93,25 +200,14 @@ static void os_byte(arm26_t *cpu)
         } else if ((y & 0xFF) == 0xFF) {
             cpu->r[1] = cpu->r[2] = M.keys[(x ^ 0xFF) & 0x7F] ? 0xFF : 0;
         } else {
-            /* Timed read (INKEY with a limit): the game's name and password boxes poll it
-               in a loop that ends on Return (&F678). There is no keyboard, so a newly
-               pressed fire or direction on either pad types Return, which leaves the box
-               with the name or password unchanged. Otherwise the read waits until the
-               next frame, as a real timed read waits, and reports the time-out; answering
-               at once made the loop spin through thousands of calls a frame. */
-            static const uint8_t enter[] = { 5, 50, 51, 66, 97, 8, 79, 88, 102, 103 };
-            static uint32_t prev, last_frame;
-            uint32_t down = 0;
-            for (unsigned i = 0; i < sizeof enter; i++) down |= (uint32_t)(M.keys[enter[i]] != 0) << i;
-            if (M.frame - last_frame > 2) prev = down;   /* a new box: keys already held do not count */
-            last_frame = M.frame;
-            uint32_t pressed = down & ~prev;
-            prev = down;
-            if (pressed) { cpu->r[1] = 13; cpu->r[2] = 0; }
-            else { cpu->r[1] = 0; cpu->r[2] = 0xFF; M.wait_vsync = 1; cpu->cycles = 0; }
+            timed_key_read(cpu);              /* INKEY with a time limit: the name and password boxes */
         }
         break;
-    case 200: case 201: case 229: case 4: case 15: case 21: case 124: case 126: case 9: case 10:
+    case 15:                              /* flush the keyboard buffer: the name and password boxes start so */
+        entry_open();
+        cpu->r[1] = 0;
+        break;
+    case 200: case 201: case 229: case 4: case 21: case 124: case 126: case 9: case 10:
         cpu->r[1] = 0;
         break;
     default:
@@ -264,14 +360,12 @@ int swi_call(arm26_t *cpu, uint32_t number)
     case 0x40: cpu->r[1] = cpu->r[2] = cpu->r[3] = 0; break;
     case 0x42: cpu->r[0] = M.monotonic_cs; break;
     case 0x43F40: {                           /* Joystick_Read: Y, X signed bytes, then switches */
-        uint32_t v = 0;
-        if (cpu->r[0] == 0) {
-            if (M.pad & PAD_UP) v |= 0x40;
-            if (M.pad & PAD_DOWN) v |= 0xC0;
-            if (M.pad & PAD_RIGHT) v |= 0x4000;
-            if (M.pad & PAD_LEFT) v |= 0xC000;
-            if (M.pad & PAD_FIRE) v |= 0x10000;
-        }
+        uint32_t v = 0, pad = cpu->r[0] == 0 ? M.pad : cpu->r[0] == 1 ? M.pad2 : 0;
+        if (pad & PAD_UP) v |= 0x40;
+        if (pad & PAD_DOWN) v |= 0xC0;
+        if (pad & PAD_RIGHT) v |= 0x4000;
+        if (pad & PAD_LEFT) v |= 0xC000;
+        if (pad & PAD_FIRE) v |= 0x10000;
         cpu->r[0] = v;
         break;
     }

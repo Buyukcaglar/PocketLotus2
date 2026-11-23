@@ -4,7 +4,7 @@ set -e
 cd "$(dirname "$0")/../.."
 [ -d /c/msys64/ucrt64/bin ] && PATH=/c/msys64/ucrt64/bin:$PATH
 mkdir -p build/host build/lotus/frames
-SRC="port/core/arm26.c port/core/machine.c port/core/riscos.c port/core/sound.c port/core/view.c port/host/main.c"
+SRC="port/core/arm26.c port/core/machine.c port/core/riscos.c port/core/sound.c port/core/view.c port/core/save.c port/host/main.c"
 ${CC:-gcc} -O2 -Wall -Wextra -o build/host/lotus_host $SRC
 # analysis build: execution coverage and self-modification reports
 ${CC:-gcc} -O2 -Wall -Wextra -DARM26_COVERAGE -o build/host/lotus_host_cov $SRC

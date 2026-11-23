@@ -13,6 +13,7 @@
 
 # Generated FPGA, firmware and release outputs
 /build/
+/PocketLotus2-SD/
 /release/
 **/output_files/
 **/incremental_db/

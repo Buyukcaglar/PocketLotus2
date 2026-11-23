@@ -2,6 +2,16 @@
 
 Commands for the recompilation route. Run them from the repository root in a POSIX shell (Git Bash works). The hardware-route commands are in [BUILD.md](BUILD.md) and are not needed.
 
+## One-step build
+
+`build_core.py` (on Windows `Build-PocketLotus2.cmd`, which first installs MSYS2 and the compilers) runs the whole chain below from the user's disk images or JASPP package: extraction, `unpack.py`, the PC runner up to the title screen (program image, music module and the platform art from frame 100), `recomp.py` with the maps in `tools/lotus/maps` instead of recorded play sessions, `pack.py`, SDK download at the pinned commit, `customize.sh` and `port/of/build.sh`. It checks the program image, platform image, generated C and asset pack against `tools/lotus/maps/expected.json` and stops at the first difference. Options: game files or folders (default `Lotus`), `--out DIR` (default `PocketLotus2-SD`), `--sd CARD` to also copy onto a card, `--toolchain auto|host|docker`.
+
+Regenerate the maps and the hashes in `expected.json` after changing the recompiler or the runtime's code hooks (see `tools/lotus/maps/README.md`). Changes to the runtime alone do not affect them.
+
+## Release package
+
+The release zip holds the files of the built core that contain no game: `Cores/Buyukcaglar.lotus2` (openfpgaOS bitstream, loader and core definitions), `Platforms` (definition and platform art), the instance file and `os.bin`, `lotus2.ini`. It leaves out `lotus2.elf` and `lotus2.dat` (game content) and `bank.ofsf` (the SDK's General MIDI sound bank, whose samples are not freely licensed); the builder supplies all three.
+
 ## Requirements
 
 | Need | Present on the development machine |
@@ -33,7 +43,7 @@ sh port/host/build.sh
 python tools/lotus/ppm2png.py build/lotus/frames/*.ppm
 ```
 
-Options: `--input SCRIPT` timed input (below), `--frames N` frames to run, `--every N` dump interval, `--out DIR` existing output directory, `--trace` log OS and hardware accesses, `--hash FILE` write one state hash per frame, `--dump-app FILE` save application memory at the end, `--lenient` continue past unknown non-X SWIs.
+Options: `--input SCRIPT` timed input (below), `--from N` first frame to dump, `--save FILE` restore high scores, names and options from FILE once the program has started and write them back at the end, `--frames N` frames to run, `--every N` dump interval, `--out DIR` existing output directory, `--trace` log OS and hardware accesses, `--hash FILE` write one state hash per frame, `--dump-app FILE` save application memory at the end, `--lenient` continue past unknown non-X SWIs.
 
 `build.sh` produces three programs: `lotus_host` (interpreter), `lotus_host_cov` (interpreter with coverage and self-modification reports, writes `build/lotus/coverage.bin`) and, once generated code exists, `lotus_host_rc`.
 
@@ -76,7 +86,7 @@ Coverage accumulates across `lotus_host_cov` runs, so run it once per scripted s
 One-time, in `build/deps/openfpgaSDK`:
 
 ```sh
-bash scripts/customize.sh --batch --name "PocketLotus2" --short lotus2 --author "Onur Buyukcaglar" --platform lotus2 --version 1.0 --variant os25
+bash scripts/customize.sh --batch --name "PocketLotus2" --short lotus2 --author "Buyukcaglar" --platform lotus2 --version 1.0 --variant os25
 ```
 
 Then, from the repository root:
@@ -88,7 +98,7 @@ sh port/of/build.sh            # installs sources into the SDK src/lotus2 and bu
 
 `build.sh` copies `port/core`, `port/of/main.c`, the generated C and the pack into the SDK custom-core directory, adds the pack as data slot 4 and writes `lotus2.ini`, then runs the SDK build with `USE_SDK_CONTAINER=0` (host toolchain instead of Docker). The result is `build/deps/openfpgaSDK/build/pocket/lotus2`; copy its `Assets`, `Cores` and `Platforms` folders to the root of the Pocket SD card. It contains game content and is for personal use only.
 
-Pocket controls: D-pad steers and moves in menus, A or B is fire and accelerate, R and L change gear up and down (the default gearbox is manual), X or Start skips the attract sequence, Select is Escape. A second pad on the dock plays as player 2. The player name and password boxes in the options menu take typed text, which the Pocket cannot type: the next fire or d-pad press leaves the box unchanged (it reads as Return).
+Pocket controls: D-pad steers and moves in menus, A or B is fire and accelerate, R and L change gear up and down (the default gearbox is manual), X or Start skips the attract sequence, Select is Escape. A second pad on the dock plays as player 2. In the player name and password boxes, up and down change the letter at the cursor, right accepts it, left deletes and fire closes the box. The high score table, names, password and options are saved in `lotus2_0.sav` (save slot 0) when they change and restored at start, except in link cable play.
 
 Link cable play: connect two Pockets, hold **L** on one while starting the core (host, player 1) and **R** on the other (joins, player 2). Each waits up to 30 s for the other. In the options menu the host moves up to PLAYERS, presses fire to choose two players, then starts the game. In the race each console shows its own car full screen: the host player 1, the joining console player 2. If the link drops, play continues alone.
 

@@ -54,13 +54,17 @@ typedef struct machine {
     uint16_t line_palette[SCREEN_H][16];
     uint32_t line_display[SCREEN_H];      /* display start per line */
     uint8_t line_pixels[SCREEN_H][SCREEN_W]; /* screen bytes of each line as the beam passed it */
-    uint8_t line_new_palette[SCREEN_H];   /* palette written since the line before */
-    int palette_dirty;                    /* set by every palette write */
+    uint8_t line_new_palette[SCREEN_H];   /* palette differs from the line before */
+    uint16_t line_sample[16];             /* the palette early in the current line (machine.c) */
+    int line_sampled;
+    uint64_t line_start_clock;
     uint32_t display_offset;              /* hardware bank, bytes from SCREEN_BASE */
     uint32_t driver_offset;               /* VDU driver bank */
     /* IOC */
     uint8_t irqa_status, irqa_mask, irqb_status, irqb_mask, fiq_mask;
     uint16_t timer_latch[4], timer_count[4], timer_out[4];
+    uint64_t vsync_clock, timer1_clock;   /* when VSync and Timer 1 last raised their interrupts */
+    uint64_t irq_delay;                   /* cycles between raising and taking the interrupt being served */
     /* OS state */
     uint32_t event_handler[4], event_r12[4];
     int event_handlers;
@@ -71,6 +75,7 @@ typedef struct machine {
     int wait_vsync;
     uint8_t keys[128];                    /* RISC OS internal key numbers, nonzero = down */
     uint32_t pad;                         /* PAD_* bits for joystick 0 */
+    uint32_t pad2;                        /* joystick 1: player 2 with the control option set to joystick */
     /* sound */
     uint32_t snd_channels, snd_samples, snd_period, snd_handler, snd_scheduler;
     int8_t snd_stereo[8];
@@ -84,6 +89,7 @@ typedef struct machine {
     int vdu_mute;
     int view_player;                      /* linked consoles: 0 draw both views, 1 or 2 own view only */
     int view_patched;
+    unsigned display_shift;               /* even: extra pixels the race picture moves left (machine.c) */
     /* emulated time: cycles run before the current CPU slice, and that slice's size */
     uint64_t cycle_clock;
     int32_t run_slice;
@@ -103,6 +109,8 @@ void machine_init(void);
 void machine_run_frame(void);
 void os_irq_handler(arm26_t *cpu);
 void machine_render_rgb(uint8_t *rgb);   /* SCREEN_W*SCREEN_H*3 bytes */
+void machine_palette_write(void);        /* call before every change to M.palette */
+void entry_frame(void);                  /* name entry with the pad: read it once a frame (riscos.c) */
 /* RGB565 picture for a display: `lines` rows starting at guest line `first`, `stride` bytes apart */
 /* Lines first..first+lines-1 as RGB565 rows, each written `repeat` times (1 = normal). */
 #define SWI_VIEW_START 0x0FFFF2u
@@ -128,6 +136,12 @@ int mus_swi(arm26_t *cpu, uint32_t offset);
 unsigned sound_read(int16_t *out, unsigned max_frames, uint32_t out_rate);
 void *guest_ptr(uint32_t addr);
 void guest_string(uint32_t addr, char *out, size_t max);
+
+/* Saved high scores, names and options (save.c) */
+#define SAVE_SIZE 348u
+int save_game_ready(void);               /* the program has started: a save can be applied */
+void save_capture(uint8_t out[SAVE_SIZE]);
+int save_apply(const uint8_t in[SAVE_SIZE]);   /* 0: not a valid save for this program */
 
 /* Host services */
 int host_load_file(const char *guest_name, uint32_t load_addr, uint32_t *size);

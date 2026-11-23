@@ -14,6 +14,8 @@ Each milestone ends with something that can be observed. A later milestone is no
 
 M0, M1, M2 and M4 are met on PC. The reference plays the first-disk loop unattended (an autopilot drives races, game over returns to the menu and the next game starts), with music and sound effects. Translated code matches the interpreter frame for frame and sample for sample over 40,000 frames. M3 is done up to the device: the core builds and packages, runs in the SDK desktop shim, and runs the scripted session to the end in the SDK's simulator of the Pocket processor, at about 1.4 million estimated cycles per race frame against 2 million available. The core runs on a Pocket (M3 step 5). Fixes for the sound crackle and the race-view flicker seen on the first device run are built and copied to the card but not yet confirmed on the device. Two-console play over the link cable (M7) works between two desktop instances, each showing its own player full screen.
 
+On 24 November 2026: name and password entry with the pad, saving of the high score table, names, password and options to save slot 0, and the horizon flicker fixed (raster band timing, see [PORT_ARCHITECTURE.md](../docs/PORT_ARCHITECTURE.md)). Name entry, saving and the race picture are confirmed on a Pocket; the Pocket shows the framebuffer 2 pixels right of where it is written, which the race picture now allows for. The one-step builder (`build_core.py`, `Build-PocketLotus2.cmd`) reproduces the tested core from the disk images, and version 1.0 is released with source and the core's game-free files.
+
 ## M1 Complete reference behaviour on PC
 
 The reference has to play the whole game before it can judge a translation.
@@ -68,6 +70,8 @@ Exit: a complete race on a Pocket at full speed with sound.
 
 User-side build from the user's own disks, core ZIP layout, documentation, licence notices, audit that no game content is in the published tree.
 
+State: done for version 1.0 (24 November 2026). The builder makes the core from the disk images or the JASPP package and checks every intermediate result; the release holds the source and a zip of the core files that contain no game. The platform art (the title logo) is published in the README and the release by the author's decision.
+
 ## M7 Two Pockets over the link cable
 
 The Archimedes version has a split-screen two-player mode but no link play. Both consoles run that mode in lockstep, exchanging only pad input (`port/of/link.c`), and each draws only its own player's view at full height (`port/core/view.c`).
@@ -77,6 +81,30 @@ The Archimedes version has a split-screen two-player mode but no link play. Both
 3. Run on two Pockets with a link cable: connection, latency of the 3-frame input delay, sound and speed on both.
 
 Exit: a complete two-player race on two linked Pockets.
+
+## M8 After release: making the core known
+
+Researched 23 November 2026. The core cannot be offered as a download, because a built core contains game content. The community core list and the updaters that read it (pupdate, Pocket Sync) expect a downloadable release, so players have to be pointed at the repository and the build guide instead.
+
+Before announcing:
+
+1. GitHub topics on the repository: `analogue-pocket`, `openfpga`, `openfpgaos`, `static-recompilation`.
+2. A screenshot or GIF near the top of the README (title screen, a race, two linked Pockets).
+3. A tagged v1.0 release with source and tools only, whose notes say that the core is built from the user's own disks.
+4. Wording that cannot be read as distributing Lotus Turbo Challenge 2; every post links to the README's game content section.
+5. Every post names what is untested: link play on two real Pockets and the disk 2 courses.
+
+Where to announce:
+
+1. openFPGA core list ([openfpga-library/analogue-pocket](https://github.com/openfpga-library/analogue-pocket), which the old cores-inventory link now opens). Open an issue first to ask how a build-it-yourself core should be listed, then use the [New Core form](https://github.com/openfpga-library/analogue-pocket/issues/new?template=new-core.yml). An entry without a download may confuse the updaters.
+2. openfpgaOS developers: an issue or discussion on [openfpgaSDK](https://github.com/openfpgaOS/openfpgaSDK) presenting the port. The [openfpgaOS organisation](https://github.com/openfpgaOS) hosts other game ports (Doom, Quake, Diablo, ScummVM), and no Discord or forum was found for it.
+3. FPGA Gaming Discord, which Pocket tool developers such as [Pocket Sync](https://github.com/neil-morrison44/pocket-sync) point users to.
+4. Reddit r/AnaloguePocket, with a short video of a race and of linked play.
+5. News tips to sites that cover new Pocket cores: [Time Extension](https://timeextension.com/guides/all-analogue-pocket-openfpga-cores-and-where-to-download-them), [RetroRGB](https://www.retrorgb.com/), [Retro Game Corps](https://retrogamecorps.com/category/fpga/).
+6. Acorn communities: StarDot forums, RISC OS Open forums, r/acorn.
+7. Technical audiences: a write-up of the recompiler and its frame-exact verification, based on [PORT_ARCHITECTURE.md](../docs/PORT_ARCHITECTURE.md), posted as a Show HN and shared with static-recompilation projects.
+
+Exit: the core is listed or linked on the core list and announced in the Pocket, openfpgaOS and Acorn communities.
 
 ## Risks
 

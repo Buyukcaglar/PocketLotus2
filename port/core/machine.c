@@ -51,12 +51,81 @@ static uint32_t io_read(uint32_t addr, int byte)
     return 0xFFFFFFFFu;
 }
 
+/* The race draws the sky, the ground and the road stripes with palette changes
+   timed by Timer 1 (the interrupt at &DEA0 changes colours 4, 8 and 12 for each
+   band of the road). The changes for a band are made in the time of the line
+   before it, about 300 cycles in, so each line is shown with the palette as it was
+   a little way into its own line time (PALETTE_SAMPLE_CYCLE). Taking it at the end
+   of the line instead put every change one line too early: the last scenery line
+   at the horizon took the ground and stripe colours, and its haze row turned
+   into a row of white dots whenever a stripe band started there. */
+#define PALETTE_SAMPLE_CYCLE 64
+void machine_palette_write(void)
+{
+    if (!M.line_sampled && machine_now(&M.cpu) >= M.line_start_clock + PALETTE_SAMPLE_CYCLE) {
+        memcpy(M.line_sample, M.palette, sizeof M.palette);
+        M.line_sampled = 1;
+    }
+}
+
+/* An interrupt is taken at a block boundary of the translated code, up to a few
+   hundred cycles after it was raised, where an ARM2 takes it within a few cycles.
+   That moved the band changes of the race by a line in some frames (the night
+   course alternated every frame). A palette write made in an interrupt handler
+   therefore counts from when the interrupt was raised (irq_delay, set when it is
+   taken), and lines whose palette was already taken after that moment get it. */
+static void palette_write_vidc(unsigned reg, uint16_t value)
+{
+    uint64_t now = machine_now(&M.cpu);
+    uint64_t at = now;
+    if ((M.cpu.psr & PSR_MODE) == MODE_IRQ && M.irq_delay) at = now - M.irq_delay;
+    machine_palette_write();
+    M.palette[reg] = value;
+    if (at >= now) return;
+    if (M.line_sampled && at < M.line_start_clock + PALETTE_SAMPLE_CYCLE) M.line_sample[reg] = value;
+    uint64_t sample = M.line_start_clock + PALETTE_SAMPLE_CYCLE;
+    for (int line = (int)M.line - 1; line >= 0 && sample >= CYCLES_PER_LINE; line--) {
+        sample -= CYCLES_PER_LINE;
+        if (at >= sample) break;
+        if (line >= SCREEN_H) continue;
+        M.line_palette[line][reg] = value;
+        M.line_new_palette[line] = 1;
+        if (line + 1 < SCREEN_H) M.line_new_palette[line + 1] = 1;
+    }
+}
+
 static void vidc_write(uint32_t v)
 {
     unsigned reg = v >> 26;
-    if (reg < 16) { M.palette[reg] = v & 0x1FFF; M.palette_dirty = 1; }
+    if (reg < 16) palette_write_vidc(reg, v & 0x1FFF);
     else if (reg == 16) M.border = v & 0x1FFF;
     else if (M.trace) host_log("VIDC %08x pc=%08x\n", v, M.cpu.pc - 4);
+}
+
+/* Timer GO: the count restarts from the latch. The race interrupt restarts Timer 1
+   for each band with "lines x 128 - 29" ticks, the 29 being the time from the
+   interrupt to that write, which the game measures for itself when it starts
+   (&DFD8, stored at &E01B). Here an interrupt is taken at a block boundary, later
+   than that by a varying amount, and the lateness added up from band to band:
+   the bands moved by up to a line from frame to frame. A GO written in a Timer 1
+   or VSync interrupt is therefore timed from the interrupt, as on the real
+   machine. The timers count down when a slice of CPU time ends, so the count is
+   set as from the start of this slice. */
+#define IRQ_TO_GO_TICKS 29
+static void timer_go(unsigned t)
+{
+    uint64_t now = machine_now(&M.cpu), raised = 0;
+    M.timer_count[t] = M.timer_latch[t];
+    if (t != 1) return;
+    if ((M.irqa_mask & 0x08) && M.vsync_clock <= now) raised = M.vsync_clock;
+    if ((M.irqa_mask & 0x40) && M.timer1_clock <= now && M.timer1_clock > raised) raised = M.timer1_clock;
+    if (!raised || now - raised > 4 * CYCLES_PER_LINE) return;
+    /* runs out IRQ_TO_GO_TICKS + latch ticks after the interrupt was raised */
+    int64_t count = (int64_t)M.timer_latch[t] + IRQ_TO_GO_TICKS + ((int64_t)raised - (int64_t)M.cycle_clock) / 4;
+    if (count < 1) count = 1;
+    if (count > 0xFFFF) count = 0xFFFF;
+    M.timer_count[t] = (uint16_t)count;
+    arm26_yield(&M.cpu);                  /* the next slice ends when this timer runs out */
 }
 
 static void io_write(uint32_t addr, uint32_t v, int byte)
@@ -74,7 +143,7 @@ static void io_write(uint32_t addr, uint32_t v, int byte)
                 unsigned t = (reg - 0x40) >> 4, sub = reg & 0x0C;
                 if (sub == 0) M.timer_latch[t] = (M.timer_latch[t] & 0xFF00) | (v & 0xFF);
                 else if (sub == 4) M.timer_latch[t] = (M.timer_latch[t] & 0x00FF) | ((v & 0xFF) << 8);
-                else if (sub == 8) M.timer_count[t] = M.timer_latch[t];
+                else if (sub == 8) timer_go(t);
                 else M.timer_out[t] = M.timer_count[t];
                 if (M.trace) host_log("IOC timer%u reg %x = %02x pc=%08x\n", t, sub, v & 0xFF, M.cpu.pc - 4);
                 return;
@@ -260,6 +329,7 @@ static void timers_tick(uint32_t ticks)
         uint32_t over = ticks - c;
         M.timer_count[t] = latch - (over % latch);
         M.irqa_status |= (t == 0) ? 0x20 : 0x40;
+        if (t == 1) M.timer1_clock = M.cycle_clock - (uint64_t)over * 4;   /* timers_tick runs after the clock moved on */
     }
 }
 
@@ -309,20 +379,31 @@ void machine_run_frame(void)
         view_patch();
         M.view_patched = 1;
     }
+    entry_frame();
     for (M.line = 0; M.line < LINES_PER_FRAME && !M.fatal; M.line++) {
         if (M.line == VSYNC_LINE) {
             M.irqa_status |= 0x08;
+            M.vsync_clock = M.cycle_clock - (uint64_t)M.line_debt;
             M.monotonic_cs += 2;
             M.wait_vsync = 0;
         }
         int32_t left = CYCLES_PER_LINE - M.line_debt;
+        M.line_start_clock = M.cycle_clock - (uint64_t)M.line_debt;
+        M.line_sampled = 0;
         while (left > 0 && !M.fatal) {
             int32_t slice = (int32_t)next_timer_cycles();
             if (slice > left) slice = left;
             int32_t used = slice;
             /* while own-view drawing is frozen no time passes, so nothing new is pending;
                anything already pending waits until the drawing is done */
-            if (irq_pending() && !(M.cpu.psr & PSR_I) && !M.frozen) { arm26_irq(&M.cpu); M.wait_vsync = 0; }
+            if (irq_pending() && !(M.cpu.psr & PSR_I) && !M.frozen) {
+                /* how long ago the interrupt the handler will serve was raised (palette_write_vidc) */
+                uint8_t req = (M.irqa_status | 0x80) & M.irqa_mask;
+                uint64_t raised = (req & 0x40) ? M.timer1_clock : (req & 0x08) ? M.vsync_clock : 0;
+                M.irq_delay = (raised && M.cycle_clock > raised && M.cycle_clock - raised <= CYCLES_PER_LINE) ? M.cycle_clock - raised : 0;
+                arm26_irq(&M.cpu);
+                M.wait_vsync = 0;
+            }
             if (!M.wait_vsync) {
                 M.cpu.cycles = slice;
                 M.cpu.yielded = 0;
@@ -346,9 +427,8 @@ void machine_run_frame(void)
         }
         M.line_debt = -left;
         if (M.line < SCREEN_H) {
-            memcpy(M.line_palette[M.line], M.palette, sizeof M.palette);
-            M.line_new_palette[M.line] = M.palette_dirty || M.line == 0;
-            M.palette_dirty = 0;
+            memcpy(M.line_palette[M.line], M.line_sampled ? M.line_sample : M.palette, sizeof M.palette);
+            M.line_new_palette[M.line] = M.line == 0 || memcmp(M.line_palette[M.line], M.line_palette[M.line - 1], sizeof M.palette) != 0;
             M.line_display[M.line] = M.display_offset;
             /* The picture is what the video hardware read while this line was on
                screen. The race swaps banks at vertical sync and starts drawing the next
@@ -364,11 +444,12 @@ void machine_run_frame(void)
 /* The race clears the leftmost word of every line, 8 pixels, to hide its scroll
    seam (&16E64), which leaves the picture looking pushed to the right. While
    racing the picture is moved 4 pixels left so the black edge is shared by both
-   sides. Racing: the game's own IRQ handler is installed at &18. */
+   sides. Racing: the game's own IRQ handler is installed at &18. The front end
+   adds display_shift where the display itself moves the picture (port/of). */
 #define RACE_IRQ_VECTOR 0xEA0037A0u
 static unsigned race_shift(void)
 {
-    return (M.bpp != 8 && bus_read32(0x18) == RACE_IRQ_VECTOR) ? 4 : 0;
+    return (M.bpp != 8 && bus_read32(0x18) == RACE_IRQ_VECTOR) ? 4 + M.display_shift : 0;
 }
 
 void machine_render_rgb(uint8_t *rgb)
