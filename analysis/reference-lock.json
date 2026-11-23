@@ -1,0 +1,101 @@
+[
+  {
+    "directory": "Archimedes_ArcEm",
+    "origin": "https://github.com/ArcEm-emu/ArcEm.git",
+    "commit": "b682d4b5c9e1bd01138d46859adc1738e7eaf94a",
+    "commit_date": "2026-09-23T21:55:24+01:00",
+    "working_tree_clean": true,
+    "checkout_state": "materialized source checkout",
+    "shallow": true
+  },
+  {
+    "directory": "Archimedes_Arculator",
+    "origin": "https://github.com/sarah-walker-pcem/arculator.git",
+    "commit": "7d3d2679589bba759197e3a9288a12749c797381",
+    "commit_date": "2026-08-10T17:10:59+01:00",
+    "working_tree_clean": true,
+    "checkout_state": "materialized source checkout",
+    "shallow": true
+  },
+  {
+    "directory": "Archimedes_MiST",
+    "origin": "https://github.com/mist-devel/mist-board.git",
+    "commit": "ef88f77e4069f0cef8a4bcb7ccb7b1f1f6710470",
+    "commit_date": "2023-09-20T11:11:13+01:00",
+    "working_tree_clean": null,
+    "checkout_state": "unused intentional no-checkout clone",
+    "shallow": true
+  },
+  {
+    "directory": "Archimedes_MiSTCore",
+    "origin": "https://github.com/mist-devel/archimedes.git",
+    "commit": "09ac3d0c68a16ef6524ad0a392e098bfe079fc89",
+    "commit_date": "2024-02-06T20:21:20+01:00",
+    "working_tree_clean": true,
+    "checkout_state": "materialized source checkout",
+    "shallow": true
+  },
+  {
+    "directory": "Archimedes_MiSTer",
+    "origin": "https://github.com/MiSTer-devel/Archie_MiSTer.git",
+    "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+    "commit_date": "2026-06-03T20:05:40+08:00",
+    "working_tree_clean": true,
+    "checkout_state": "materialized source checkout",
+    "shallow": true
+  },
+  {
+    "directory": "DoomUltra64",
+    "origin": "https://github.com/thinkelastic/DoomUltra64.git",
+    "commit": "8a3d35ff44661a5f091fea9f7fc43d916db35b75",
+    "commit_date": "2026-08-19T15:27:43-07:00",
+    "working_tree_clean": true,
+    "checkout_state": "materialized source checkout",
+    "shallow": true
+  },
+  {
+    "directory": "openfpgaCore",
+    "origin": "https://github.com/openfpgaOS/openfpgaCore.git",
+    "commit": "8318f25066b0b75d2e34081919dfc337ac6abf73",
+    "commit_date": "2026-09-29T15:04:24-07:00",
+    "working_tree_clean": true,
+    "checkout_state": "materialized source checkout",
+    "shallow": true
+  },
+  {
+    "directory": "openfpgaSDK",
+    "origin": "https://github.com/openfpgaOS/openfpgaSDK.git",
+    "commit": "a408ddc12aed0dfaa4aa22c06af82f829db77126",
+    "commit_date": "2026-08-18T21:08:38-07:00",
+    "working_tree_clean": true,
+    "checkout_state": "materialized source checkout",
+    "shallow": true
+  },
+  {
+    "directory": "PocketDoom",
+    "origin": "https://github.com/thinkelastic/PocketDoom.git",
+    "commit": "11cfcf96813603244ad6394f9ddc7eee36e5d9cc",
+    "commit_date": "2026-04-04T10:01:42-07:00",
+    "working_tree_clean": true,
+    "checkout_state": "materialized source checkout",
+    "shallow": true
+  },
+  {
+    "directory": "PocketQuake",
+    "origin": "https://github.com/thinkelastic/PocketQuake.git",
+    "commit": "5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902",
+    "commit_date": "2026-03-17T13:21:37-07:00",
+    "working_tree_clean": true,
+    "checkout_state": "materialized source checkout",
+    "shallow": true
+  },
+  {
+    "directory": "PocketRiscV",
+    "origin": "https://github.com/thinkelastic/PocketRiscV.git",
+    "commit": "88430e4d049e112413221433af12f3c0604f5470",
+    "commit_date": "2026-02-01T17:56:32-08:00",
+    "working_tree_clean": true,
+    "checkout_state": "materialized source checkout",
+    "shallow": true
+  }
+]

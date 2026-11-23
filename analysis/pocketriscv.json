@@ -1,0 +1,48 @@
+{
+  "observed_date": "2026-10-08",
+  "repository": "https://github.com/thinkelastic/PocketRiscV",
+  "commit": "88430e4d049e112413221433af12f3c0604f5470",
+  "checkout": "references/PocketRiscV",
+  "evidence_level": "static source inspection; no compilation, synthesis, device test, or game execution",
+  "target": {
+    "fpga": "5CEBA4F23C8",
+    "active_quartus_project": "src/fpga/ap_core.qsf",
+    "top_level_entity": "apf_top",
+    "cpu_isa": "RV32IM",
+    "configured_cpu_and_sdram_clock_mhz": 133.119993,
+    "configured_video_clock_mhz": 12.287999,
+    "video_active": [320, 240],
+    "video_total": [400, 512],
+    "video_hz_derived_from_configuration": 59.9999951171875,
+    "cpu_reset_vector": "0x00000000"
+  },
+  "memory": [
+    {"address": "0x00000000", "bytes": 65536, "use": "BRAM firmware, data, stack"},
+    {"address": "0x10000000", "bytes": 67108864, "use": "SDRAM, including RGB565 framebuffer"},
+    {"address": "0x10100000", "use": "second framebuffer within SDRAM"},
+    {"address": "0x20000000", "decoded_bytes": 8192, "use": "terminal VRAM interface"},
+    {"address": "0x30000000", "bytes": 16777216, "use": "CRAM0 PSRAM; not the full 32 MiB physically present on Pocket"},
+    {"address": "0x40000000", "decoded_bytes": 256, "use": "status, counters, display mode, buffer pointers, swap"}
+  ],
+  "findings": [
+    {"id": "PRV-01", "finding": "Game cannot execute natively on this ISA: supplied media require an Archimedes ARM environment", "classification": "architecture incompatibility", "source": "src/firmware/Makefile", "lines": [24, 29]},
+    {"id": "PRV-02", "finding": "Latest source includes 16 MiB PSRAM at 0x30000000, absent from README memory table", "classification": "documentation drift", "source": "src/fpga/core/cpu_system.v", "lines": [143, 157]},
+    {"id": "PRV-03", "finding": "Audio serial data is deliberately zero; I2S silence generator only", "classification": "missing game interface", "source": "src/fpga/core/core_top.v", "lines": [900, 939]},
+    {"id": "PRV-04", "finding": "No asset slots or controller definitions configured", "classification": "missing game interface", "sources": ["data.json", "input.json"]},
+    {"id": "PRV-05", "finding": "Firmware is embedded in core/firmware.mif; packaging mentions firmware.bin but does not include an active loader slot", "classification": "build and loader mismatch", "sources": ["src/fpga/core/cpu_system.v", "src/firmware/Makefile", "Makefile", "data.json"]},
+    {"id": "PRV-06", "finding": "CPU byte write masks exist, but SDRAM and PSRAM adapters do not receive them; both PSRAM bytes enabled and SDRAM DQM unmasked", "classification": "static correctness concern requiring validation before reuse", "source_ranges": [{"path": "src/fpga/core/cpu_system.v", "lines": [138, 140]}, {"path": "src/fpga/core/cpu_system.v", "lines": [361, 381]}, {"path": "src/fpga/core/psram_controller.v", "lines": [67, 76]}, {"path": "src/fpga/core/io_sdram.v", "lines": [369, 389]}]},
+    {"id": "PRV-07", "finding": "Active project is in src/fpga. Root QSF is a different incomplete project with DEVICE AUTO and top ap_core", "classification": "build entry point risk", "sources": ["Makefile", "ap_core.qsf", "src/fpga/ap_core.qsf"]},
+    {"id": "PRV-08", "finding": "MIT asserted by README, but no root LICENSE file found; APF files carry separate Analogue agreement", "classification": "component provenance to preserve before publication", "sources": ["README.md", "src/fpga/apf/apf_top.v"]},
+    {"id": "PRV-09", "finding": "Generated VexRiscv RTL is checked in; no matching CPU generator project was found", "classification": "regeneration gap", "source": "src/fpga/vexriscv/VexRiscv_Full.v", "lines": [1, 3]},
+    {"id": "PRV-10", "finding": "Configured 320x240 at about 60 Hz differs from Lotus ADFFS loader MODE 9 and reported 50 Hz timing", "classification": "video and timing adaptation required", "source": "src/fpga/core/core_top.v", "lines": [703, 710]}
+  ],
+  "reuse": ["Pocket pin assignments and APF interface reference", "bridge CDC and memory controller examples after validation", "small framebuffer and terminal bring-up diagnostics", "bit-reversal and SD package layout examples"],
+  "not_present": ["ARM2 compatible CPU", "Archimedes MEMC/VIDC/IOC", "RISC OS boot environment", "floppy controller or JFD loader", "Lotus source code or translated engine"],
+  "tool_environment": {
+    "python": "C:/Python314/python.exe",
+    "git": "available",
+    "not_found_on_current_path": ["quartus_sh", "riscv64-elf-gcc", "riscv64-elf-objcopy", "riscv64-unknown-elf-gcc", "riscv32-unknown-elf-gcc", "iverilog", "verilator", "make", "gcc"],
+    "wsl": "launcher exists; reports subsystem not installed",
+    "scope": "PATH lookup only; no exhaustive installed-software audit or tool installation"
+  }
+}

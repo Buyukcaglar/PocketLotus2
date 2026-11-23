@@ -1,0 +1,887 @@
+{
+  "schema_version": 1,
+  "analyzed_on": "2026-10-08",
+  "scope": "Static inspection of optional architecture references for PocketLotus",
+  "assurance": {
+    "repositories_cloned_shallow": true,
+    "submodules_initialized": false,
+    "game_media_downloaded": false,
+    "builds_run": false,
+    "simulations_run": false,
+    "hardware_run": false,
+    "performance_measured": false,
+    "license_advice": "Inventory of source notices, not a legal determination"
+  },
+  "repositories": [
+    {
+      "name": "PocketQuake",
+      "commit": "5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902",
+      "url": "https://github.com/thinkelastic/PocketQuake",
+      "local_path": "C:\\Projects\\PocketLotus\\references\\PocketQuake",
+      "working_tree_clean": true,
+      "submodule": {
+        "path": "src/fpga/analogizer",
+        "commit": "d3aa72ee9d567182f85fffe23568eae99dd36996",
+        "initialized": false
+      }
+    },
+    {
+      "name": "PocketDoom",
+      "commit": "11cfcf96813603244ad6394f9ddc7eee36e5d9cc",
+      "url": "https://github.com/thinkelastic/PocketDoom",
+      "local_path": "C:\\Projects\\PocketLotus\\references\\PocketDoom",
+      "working_tree_clean": true
+    },
+    {
+      "name": "DoomUltra64",
+      "commit": "8a3d35ff44661a5f091fea9f7fc43d916db35b75",
+      "url": "https://github.com/thinkelastic/DoomUltra64",
+      "local_path": "C:\\Projects\\PocketLotus\\references\\DoomUltra64",
+      "working_tree_clean": true
+    }
+  ],
+  "conclusions": [
+    {
+      "id": "native_ports",
+      "status": "confirmed_source",
+      "claim": "PocketQuake and PocketDoom compile the existing Quake/Doom C engines as freestanding RISC-V firmware. Their PAK/WAD data loaders do not emulate DOS, Amiga, Atari ST, x86, or 68000 execution. Lotus disk images cannot be substituted for game data to run Lotus.",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "src/firmware/Makefile",
+          "lines": [
+            36,
+            110
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/firmware/Makefile#L36-L110"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/Makefile",
+          "lines": [
+            119,
+            135
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/firmware/Makefile#L119-L135"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/Makefile",
+          "lines": [
+            109,
+            125
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/firmware/Makefile#L109-L125"
+        }
+      ]
+    },
+    {
+      "id": "reuse_priority",
+      "status": "inference",
+      "claim": "For the confirmed standalone openFPGA core and Archimedes ARM/VIDC media, prioritize a compatible Archimedes hardware-core port. PocketRiscV and PocketDoom are board-wrapper and peripheral references, not preferred replacement CPU/game substrates. Quake accelerators should only follow profiling in any separately chosen native reconstruction."
+    },
+    {
+      "id": "doomultra64_relevance",
+      "status": "confirmed_source_plus_inference",
+      "claim": "DoomUltra64 is an N64/libdragon native engine port using RDP triangle submission, not an OpenFPGA Pocket core. It offers an example of replacing a renderer while keeping game logic and reading original data, but has no directly reusable Pocket HDL/board interface.",
+      "evidence": [
+        {
+          "kind": "documentation",
+          "path": "README.md",
+          "lines": [
+            3,
+            7
+          ],
+          "url": "https://github.com/thinkelastic/DoomUltra64/blob/8a3d35ff44661a5f091fea9f7fc43d916db35b75/README.md#L3-L7"
+        },
+        {
+          "kind": "source",
+          "path": "Makefile",
+          "lines": [
+            15,
+            22
+          ],
+          "url": "https://github.com/thinkelastic/DoomUltra64/blob/8a3d35ff44661a5f091fea9f7fc43d916db35b75/Makefile#L15-L22"
+        },
+        {
+          "kind": "source",
+          "path": "src/r_tri.c",
+          "lines": [
+            149,
+            174
+          ],
+          "url": "https://github.com/thinkelastic/DoomUltra64/blob/8a3d35ff44661a5f091fea9f7fc43d916db35b75/src/r_tri.c#L149-L174"
+        }
+      ]
+    },
+    {
+      "id": "no_speed_claim",
+      "status": "boundary",
+      "claim": "Clock parameters, hardware modules, README features, and repository screenshots are not measured Lotus feasibility. No timing closure, gameplay, media compatibility, performance, or fidelity is established by this analysis."
+    }
+  ],
+  "components": [
+    {
+      "repo": "PocketDoom",
+      "area": "Pocket FPGA board integration",
+      "facts": [
+        "Active Quartus project top is apf_top, targeting Cyclone V 5CEBA4F23C8.",
+        "Pin assignments include bridge SPI, dual 74.25 MHz clocks, SDRAM, both CellularRAM banks, SRAM, scaler RGB, and audio interfaces.",
+        "Active project includes VexiiRiscv_Full.v, CPU AXI routing, framebuffer scanout, audio DMA/upsampler, OPL3 and Analogizer."
+      ],
+      "reuse": "Board interface, packaging metadata, APF bridge/controller/audio/video adaptation patterns.",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "src/fpga/ap_core.qsf",
+          "lines": [
+            53,
+            55
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/ap_core.qsf#L53-L55"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/ap_core.qsf",
+          "lines": [
+            90,
+            121
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/ap_core.qsf#L90-L121"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/ap_core.qsf",
+          "lines": [
+            289,
+            303
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/ap_core.qsf#L289-L303"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/ap_core.qsf",
+          "lines": [
+            746,
+            782
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/ap_core.qsf#L746-L782"
+        }
+      ]
+    },
+    {
+      "repo": "PocketDoom",
+      "area": "Memory map and loading",
+      "facts": [
+        "Linker puts 64 KB BRAM at 0x00000000 and Doom firmware at 0x10200000 in SDRAM, with 64 MB SDRAM base 0x10000000.",
+        "data.json defines deferred WAD/binary/config inputs and automatic nonvolatile save/config slots in bridge CRAM1 at 0x30000000 and 0x30060000.",
+        "Dataslot firmware issues APF open/read/write commands, converts CPU SDRAM 0x10000000 to bridge 0x00000000 and exposes uncached SDRAM alias 0x50000000.",
+        "A 512 KB bounce buffer at 0x10180000 and uncached reads are used to avoid stale CPU cache following bridge writes."
+      ],
+      "reuse": "Deferred loading of user-supplied disk images or extracted data, save persistence, terminal diagnostics, and explicit DMA coherency. Change all data formats/maps for Lotus.",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "src/firmware/linker.ld",
+          "lines": [
+            20,
+            32
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/firmware/linker.ld#L20-L32"
+        },
+        {
+          "kind": "source",
+          "path": "data.json",
+          "lines": [
+            14,
+            72
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/data.json#L14-L72"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/dataslot.h",
+          "lines": [
+            1,
+            19
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/firmware/dataslot.h#L1-L19"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/dataslot.h",
+          "lines": [
+            54,
+            70
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/firmware/dataslot.h#L54-L70"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/core/core_top.v",
+          "lines": [
+            1433,
+            1481
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/core/core_top.v#L1433-L1481"
+        }
+      ]
+    },
+    {
+      "repo": "PocketDoom",
+      "area": "Video/controls",
+      "facts": [
+        "The compiled scanout reads 320 eight-bit palette indices per line from SDRAM using 32-bit bursts and a 256-entry RGB888 palette.",
+        "Firmware renders directly to one SDRAM buffer, evicts cache lines, requests a vsync swap and waits for the pending swap before beginning another frame.",
+        "Controller keys/axes/triggers are mapped into system MMIO and software translates edges into engine input."
+      ],
+      "reuse": "Palette framebuffer and vsync swap are good native-port or software-emulator presentation primitives. Target timing/aspect/line changes must match the actual Lotus platform, especially PAL 50 Hz rather than blindly adopting 60 Hz.",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "src/fpga/core/video_CRT_scanout_indexed_BRAM.v",
+          "lines": [
+            42,
+            71
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/core/video_CRT_scanout_indexed_BRAM.v#L42-L71"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/doom_pocket.c",
+          "lines": [
+            188,
+            223
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/firmware/doom_pocket.c#L188-L223"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/doom_pocket.c",
+          "lines": [
+            365,
+            374
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/firmware/doom_pocket.c#L365-L374"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/doom_pocket.c",
+          "lines": [
+            39,
+            56
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/firmware/doom_pocket.c#L39-L56"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/doom_pocket.c",
+          "lines": [
+            563,
+            598
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/firmware/doom_pocket.c#L563-L598"
+        }
+      ]
+    },
+    {
+      "repo": "PocketDoom",
+      "area": "Audio",
+      "facts": [
+        "Active design has SDRAM audio DMA at 0x4F000000, a BRAM ring/upsampler from 11,025 Hz source to 48 kHz and a dual-clock FIFO/I2S serializer.",
+        "Firmware sound mixer writes uncached ring entries and interrupts refill a 2,048-sample ring.",
+        "OPL3 is an independent hardware synthesizer and LGPL-3.0-or-later according to its source."
+      ],
+      "reuse": "DMA rings, interpolation, clock-domain crossing and I2S illustrate presentation infrastructure. The confirmed Archimedes source edition requires VIDC sound behavior; OPL3 does not reproduce that hardware.",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "src/fpga/core/core_top.v",
+          "lines": [
+            2235,
+            2301
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/core/core_top.v#L2235-L2301"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/doom_sound.c",
+          "lines": [
+            34,
+            79
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/firmware/doom_sound.c#L34-L79"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/doom_sound.c",
+          "lines": [
+            291,
+            339
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/firmware/doom_sound.c#L291-L339"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/core/audio_output.v",
+          "lines": [
+            34,
+            69
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/core/audio_output.v#L34-L69"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/opl3/opl3.sv",
+          "lines": [
+            13,
+            28
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/opl3/opl3.sv#L13-L28"
+        }
+      ]
+    },
+    {
+      "repo": "PocketQuake",
+      "area": "PSRAM code split and accelerators",
+      "facts": [
+        "Actual linker allocates 32 KB BRAM, 16 MB read-only executable PSRAM at 0x30000000, and SDRAM data/BSS/heap from 0x10400000.",
+        "Bootloader loads quake.bin into SDRAM then copies code to PSRAM; initialized writable data remains in SDRAM.",
+        "Quake framebuffer uses the uncached SDRAM alias.",
+        "HDL contains DMA fill/copy, textured span and z-span rasterizer, SRAM z-buffer fill, and alias transform MAC; these are wired into active core_top."
+      ],
+      "reuse": "PSRAM execution can separate instruction traffic from data/framebuffer traffic, at cost of controller/CDC/timing complexity. DMA fill/copy is general; remaining acceleration is specialized.",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "src/firmware/linker.ld",
+          "lines": [
+            23,
+            35
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/firmware/linker.ld#L23-L35"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/linker.ld",
+          "lines": [
+            79,
+            113
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/firmware/linker.ld#L79-L113"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/main.c",
+          "lines": [
+            40,
+            86
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/firmware/main.c#L40-L86"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/quake/vid_pocket.c",
+          "lines": [
+            23,
+            38
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/firmware/quake/vid_pocket.c#L23-L38"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/core/dma_clear_blit.v",
+          "lines": [
+            1,
+            12
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/fpga/core/dma_clear_blit.v#L1-L12"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/core/span_rasterizer.v",
+          "lines": [
+            1,
+            50
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/fpga/core/span_rasterizer.v#L1-L50"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/core/core_top.v",
+          "lines": [
+            2247,
+            2322
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/fpga/core/core_top.v#L2247-L2322"
+        }
+      ]
+    },
+    {
+      "repo": "DoomUltra64",
+      "area": "Port/reconstruction lessons",
+      "facts": [
+        "Original game logic is GPL Doom code; a custom native renderer emits libdragon RDP triangles.",
+        "Memory-constrained data streaming is illustrated by w_n64.c: IWAD does not remain in 8 MB RAM; lumps are copied into the game allocator on demand.",
+        "Host tests compile real renderer sources against a mock RDP to inspect projection, clipping, texture addressing and fog.",
+        "Runtime artwork mode composes original WAD assets when levels load; Makefile has verification flags to compare original-data conversion."
+      ],
+      "reuse": "Platform abstraction, native renderer split, user-supplied data, streamed assets, and host-side regression testing are useful design approaches. Enhanced lights/reflections are outside faithful Lotus preservation unless separately authorized.",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "src/w_n64.c",
+          "lines": [
+            1,
+            13
+          ],
+          "url": "https://github.com/thinkelastic/DoomUltra64/blob/8a3d35ff44661a5f091fea9f7fc43d916db35b75/src/w_n64.c#L1-L13"
+        },
+        {
+          "kind": "source",
+          "path": "src/w_n64.c",
+          "lines": [
+            42,
+            43
+          ],
+          "url": "https://github.com/thinkelastic/DoomUltra64/blob/8a3d35ff44661a5f091fea9f7fc43d916db35b75/src/w_n64.c#L42-L43"
+        },
+        {
+          "kind": "source",
+          "path": "Makefile",
+          "lines": [
+            443,
+            466
+          ],
+          "url": "https://github.com/thinkelastic/DoomUltra64/blob/8a3d35ff44661a5f091fea9f7fc43d916db35b75/Makefile#L443-L466"
+        },
+        {
+          "kind": "source",
+          "path": "Makefile",
+          "lines": [
+            1386,
+            1399
+          ],
+          "url": "https://github.com/thinkelastic/DoomUltra64/blob/8a3d35ff44661a5f091fea9f7fc43d916db35b75/Makefile#L1386-L1399"
+        }
+      ]
+    }
+  ],
+  "risks": [
+    {
+      "id": "quake_doc_drift",
+      "severity": "medium",
+      "claim": "PocketQuake documentation claims 100 MHz and 64 KB BRAM, but active PLL requests 105 MHz and actual HDL/linker allocate 32 KB. Documentation architecture tables should not be used as a hardware manifest.",
+      "evidence": [
+        {
+          "kind": "documentation",
+          "path": "README.md",
+          "lines": [
+            51,
+            57
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/README.md#L51-L57"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/core/mf_pllram_133.v",
+          "lines": [
+            17,
+            27
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/fpga/core/mf_pllram_133.v#L17-L27"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/linker.ld",
+          "lines": [
+            23,
+            26
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/firmware/linker.ld#L23-L26"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/core/axi_periph_slave.v",
+          "lines": [
+            224,
+            238
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/fpga/core/axi_periph_slave.v#L224-L238"
+        },
+        {
+          "kind": "documentation",
+          "path": "README.md",
+          "lines": [
+            73,
+            76
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/README.md#L73-L76"
+        }
+      ]
+    },
+    {
+      "id": "doom_clock_drift",
+      "severity": "medium",
+      "claim": "PocketDoom PLL requests 100.227260 MHz while timing firmware uses CPU_HZ=100000000. These are configured/requested frequencies, not measured achieved clocks.",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "src/fpga/core/mf_pllram_133.v",
+          "lines": [
+            17,
+            24
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/core/mf_pllram_133.v#L17-L24"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/doom_pocket.c",
+          "lines": [
+            86,
+            89
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/firmware/doom_pocket.c#L86-L89"
+        }
+      ]
+    },
+    {
+      "id": "doom_audio_doc_drift",
+      "severity": "medium",
+      "claim": "README describes 4096-entry software-pushed audio FIFO, whereas current compiled audio_output FIFO is 512 entries and active core also has SDRAM DMA/hardware upsampling. Follow active instantiated modules.",
+      "evidence": [
+        {
+          "kind": "documentation",
+          "path": "README.md",
+          "lines": [
+            165,
+            173
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/README.md#L165-L173"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/core/audio_output.v",
+          "lines": [
+            59,
+            64
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/core/audio_output.v#L59-L64"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/core/core_top.v",
+          "lines": [
+            2235,
+            2301
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/core/core_top.v#L2235-L2301"
+        }
+      ]
+    },
+    {
+      "id": "cpu_regeneration",
+      "severity": "high",
+      "claim": "Both active QSF files compile VexiiRiscv_Full.v, but generate.sh/GenPocket*.scala produce the older VexRiscv; generated HDL cannot be regenerated by those scripts. Quake vexii_sweep.sh is a separate configurable recipe depending on an unpinned developer-local VexiiRiscv checkout.",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "src/fpga/ap_core.qsf",
+          "lines": [
+            822,
+            822
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/fpga/ap_core.qsf#L822"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/ap_core.qsf",
+          "lines": [
+            766,
+            766
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/ap_core.qsf#L766"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/vexriscv/generate.sh",
+          "lines": [
+            18,
+            38
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/fpga/vexriscv/generate.sh#L18-L38"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/vexriscv/generate.sh",
+          "lines": [
+            11,
+            29
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/vexriscv/generate.sh#L11-L29"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/vexii_sweep.sh",
+          "lines": [
+            21,
+            53
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/fpga/vexii_sweep.sh#L21-L53"
+        }
+      ]
+    },
+    {
+      "id": "toolchains_not_portable",
+      "severity": "medium",
+      "claim": "Pocket projects use bash/GNU Make, GNU RISC-V cross compiler rv32imafc/ilp32f, Unix hexdump/awk, and Quartus Lite 25.1 in source settings; FPGA Makefiles contain a developer-specific Linux Quartus path. Windows environment needs tooling adaptation and matched generated CPU/MIF/firmware.",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "src/firmware/Makefile",
+          "lines": [
+            4,
+            11
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/firmware/Makefile#L4-L11"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/Makefile",
+          "lines": [
+            119,
+            157
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/firmware/Makefile#L119-L157"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/Makefile",
+          "lines": [
+            179,
+            207
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/firmware/Makefile#L179-L207"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/Makefile",
+          "lines": [
+            1,
+            19
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/Makefile#L1-L19"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/ap_core.qsf",
+          "lines": [
+            43,
+            45
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/ap_core.qsf#L43-L45"
+        },
+        {
+          "kind": "documentation",
+          "path": "README.md",
+          "lines": [
+            417,
+            420
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/README.md#L417-L420"
+        }
+      ]
+    },
+    {
+      "id": "quake_submodule",
+      "severity": "medium",
+      "claim": "PocketQuake QSF refers to analogizer/analogizer/analogizer.qip in a git submodule absent in this intentionally non-recursive clone. Build completeness requires the pinned gitlink checkout, or deliberate pruning of optional functionality.",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": ".gitmodules",
+          "lines": [
+            1,
+            3
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/.gitmodules#L1-L3"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/ap_core.qsf",
+          "lines": [
+            800,
+            800
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/fpga/ap_core.qsf#L800"
+        }
+      ]
+    },
+    {
+      "id": "doomultra_toolchain",
+      "severity": "high",
+      "claim": "DoomUltra64 README/build.sh call the container pinned, but Dockerfile uses a floating libdragon:latest base and COPYs ignored/untracked toolchain/libdragon, which is absent in this clean clone. Out-of-box build reproducibility is not established by the checked-in source.",
+      "evidence": [
+        {
+          "kind": "documentation",
+          "path": "README.md",
+          "lines": [
+            144,
+            147
+          ],
+          "url": "https://github.com/thinkelastic/DoomUltra64/blob/8a3d35ff44661a5f091fea9f7fc43d916db35b75/README.md#L144-L147"
+        },
+        {
+          "kind": "source",
+          "path": "build.sh",
+          "lines": [
+            1,
+            32
+          ],
+          "url": "https://github.com/thinkelastic/DoomUltra64/blob/8a3d35ff44661a5f091fea9f7fc43d916db35b75/build.sh#L1-L32"
+        },
+        {
+          "kind": "source",
+          "path": "Dockerfile",
+          "lines": [
+            1,
+            20
+          ],
+          "url": "https://github.com/thinkelastic/DoomUltra64/blob/8a3d35ff44661a5f091fea9f7fc43d916db35b75/Dockerfile#L1-L20"
+        },
+        {
+          "kind": "source",
+          "path": ".gitignore",
+          "lines": [
+            25,
+            25
+          ],
+          "url": "https://github.com/thinkelastic/DoomUltra64/blob/8a3d35ff44661a5f091fea9f7fc43d916db35b75/.gitignore#L25"
+        }
+      ]
+    },
+    {
+      "id": "license_inventory",
+      "severity": "high",
+      "claim": "Pocket README files state custom FPGA/firmware MIT and VexiiRiscv MIT, but no top-level LICENSE/COPYING file is present in either reference clone. Imported engine sources have GPL-2-or-later notices, OPL3 has LGPL-3-or-later, and APF files carry Analogue's software agreement/EULA reference. Preserve component provenance and obtain explicit license texts before selecting reusable code.",
+      "evidence": [
+        {
+          "kind": "documentation",
+          "path": "README.md",
+          "lines": [
+            422,
+            426
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/README.md#L422-L426"
+        },
+        {
+          "kind": "documentation",
+          "path": "README.md",
+          "lines": [
+            466,
+            471
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/README.md#L466-L471"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/quake/quakedef.h",
+          "lines": [
+            1,
+            17
+          ],
+          "url": "https://github.com/thinkelastic/PocketQuake/blob/5792fe2a0dbc4af50dbf1b64cffa0c8e3bd3c902/src/firmware/quake/quakedef.h#L1-L17"
+        },
+        {
+          "kind": "source",
+          "path": "src/firmware/doom/doomdef.h",
+          "lines": [
+            6,
+            18
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/firmware/doom/doomdef.h#L6-L18"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/opl3/opl3.sv",
+          "lines": [
+            13,
+            28
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/opl3/opl3.sv#L13-L28"
+        },
+        {
+          "kind": "source",
+          "path": "src/fpga/apf/apf_top.v",
+          "lines": [
+            1,
+            15
+          ],
+          "url": "https://github.com/thinkelastic/PocketDoom/blob/11cfcf96813603244ad6394f9ddc7eee36e5d9cc/src/fpga/apf/apf_top.v#L1-L15"
+        },
+        {
+          "kind": "documentation",
+          "path": "README.md",
+          "lines": [
+            162,
+            165
+          ],
+          "url": "https://github.com/thinkelastic/DoomUltra64/blob/8a3d35ff44661a5f091fea9f7fc43d916db35b75/README.md#L162-L165"
+        }
+      ]
+    },
+    {
+      "id": "asset_release_audit",
+      "severity": "high",
+      "claim": "DoomUltra64 release sets EXTWAD=1, but still converts palette/sound effects from a WAD at build time and copies music WADs into the archive whenever locally present. Excluding a raw WAD alone is not proof a release has no derived copyrighted game assets. PocketLotus should distribute code/tools/manifests and require the user to supply original Lotus media.",
+      "evidence": [
+        {
+          "kind": "source",
+          "path": "Makefile",
+          "lines": [
+            1276,
+            1297
+          ],
+          "url": "https://github.com/thinkelastic/DoomUltra64/blob/8a3d35ff44661a5f091fea9f7fc43d916db35b75/Makefile#L1276-L1297"
+        },
+        {
+          "kind": "source",
+          "path": "Makefile",
+          "lines": [
+            1364,
+            1383
+          ],
+          "url": "https://github.com/thinkelastic/DoomUltra64/blob/8a3d35ff44661a5f091fea9f7fc43d916db35b75/Makefile#L1364-L1383"
+        }
+      ]
+    }
+  ],
+  "recommendation": {
+    "first_gate": "Use the media analysis confirmation of the Archimedes ARM/VIDC edition to assess an Archimedes FPGA core port, including original-machine clocks, memory, display modes, keyboard/joystick mapping, floppy timing, and protected image sectors. Treat RISC-V runtime/native reconstruction as a separate fallback decision.",
+    "native_port_requirements": [
+      "Reconstruct or obtain game logic and renderer source",
+      "Decode original artwork/audio/track data without arbitrary replacement",
+      "Preserve original timing/input/save behavior",
+      "Add game-specific loading and persistence on APF dataslots",
+      "Measure CPU/render/audio paths and then add only justified accelerators"
+    ],
+    "emulator_requirements": [
+      "Implement/reuse the source machine's CPU and devices",
+      "Confirm image format/boot/protection compatibility",
+      "Match original graphics/audio/timing",
+      "Demonstrate real Pocket performance before adopting a RISC-V software-emulation route"
+    ],
+    "validation_boundaries": [
+      "No compilation performed",
+      "No source machine emulator or game launched",
+      "No Pocket hardware qualification",
+      "No performance or fidelity acceptance claimed"
+    ]
+  },
+  "steering": {
+    "user_target": "Standalone Analogue Pocket openFPGA core; not openfpgaOS runtime",
+    "source_platform": "Archimedes ARM/VIDC, per sibling media analysis",
+    "preferred_path": "Assess compatible Archimedes hardware-core port",
+    "supersedes": "Initial baseline board/CPU reuse hypothesis in reuse_priority"
+  }
+}

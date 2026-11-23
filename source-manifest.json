@@ -1,0 +1,360 @@
+{
+  "schema": 1,
+  "imports": [
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_alu.v",
+      "destination": "rtl/vendor/archie/amber/a23_alu.v",
+      "sha256": "ec973cd98b57915b049e18df1ecf15a8fc066c6da77819a81bf2949ef239b33c",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_barrel_shift.v",
+      "destination": "rtl/vendor/archie/amber/a23_barrel_shift.v",
+      "sha256": "2c2c10730152317940782237e142e2f57ae4cf0b633bd0ad26cd7ff57b7f4924",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_barrel_shift_fpga.v",
+      "destination": "rtl/vendor/archie/amber/a23_barrel_shift_fpga.v",
+      "sha256": "59cb973ca9fb50146bf8a5ce52c3ceb2fc8953a63c91088ab8c70748304f32fc",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_cache.v",
+      "destination": "rtl/vendor/archie/amber/a23_cache.v",
+      "sha256": "9e48a24cd8091029ba9af3f636006074b9e04b572aa82d19597ebda3c72a020d",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_config_defines.v",
+      "destination": "rtl/vendor/archie/amber/a23_config_defines.v",
+      "sha256": "190133e58a1d2fe48f334b06504da980f6ea6535d8972c3522cc9ad4fb445a22",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_coprocessor.v",
+      "destination": "rtl/vendor/archie/amber/a23_coprocessor.v",
+      "sha256": "9e1c9574e2eb9fb0074591ba1f0d719ffab5b812acd757aa940c1851549372cb",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_core.v",
+      "destination": "rtl/vendor/archie/amber/a23_core.v",
+      "sha256": "fcbe845866840cf2e1fd3e3105f44192c595a1ec09e44b20d7f893cf195787f3",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_decode.v",
+      "destination": "rtl/vendor/archie/amber/a23_decode.v",
+      "sha256": "09eab3b56d866ada5af84c3f0dd8472a8047518067b385beaedeca8968ed431b",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_decompile.v",
+      "destination": "rtl/vendor/archie/amber/a23_decompile.v",
+      "sha256": "e8b1de5220c6887fa93d29eaad99903dc8f89b86a4e7fa605aef71d87dd4532d",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_execute.v",
+      "destination": "rtl/vendor/archie/amber/a23_execute.v",
+      "sha256": "079bdb02122f3e554d6de3970e8257e02d1f7554fc5f25d804575954fc10d9cc",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_fetch.v",
+      "destination": "rtl/vendor/archie/amber/a23_fetch.v",
+      "sha256": "d032a326f030859da671073d771f24afaff394fb004ca6faaeb06339d898a3c8",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_functions.v",
+      "destination": "rtl/vendor/archie/amber/a23_functions.v",
+      "sha256": "6c8f8fd7395e12ef93495e52c993b87d84c73af7861bab5c570e31906a8ddc63",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_localparams.v",
+      "destination": "rtl/vendor/archie/amber/a23_localparams.v",
+      "sha256": "eb17fd2013c218327684c727d7912d9bf57bc0f04c12912db8674fe85db525fe",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_multiply.v",
+      "destination": "rtl/vendor/archie/amber/a23_multiply.v",
+      "sha256": "baeeb2ce89ff66ffce225e6a587855fc8ee0da2986726fbe3de3e5507431a613",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_ram_register_bank.v",
+      "destination": "rtl/vendor/archie/amber/a23_ram_register_bank.v",
+      "sha256": "9651e78146df253c1292b6a0c4aab753daac3cf6f1ed609d5e59d696c9835a1c",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_register_bank.v",
+      "destination": "rtl/vendor/archie/amber/a23_register_bank.v",
+      "sha256": "a4a8112a77bb395e83b783e00785227447a30ccdfd888d2abaa15f174bc469c5",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/a23_wishbone.v",
+      "destination": "rtl/vendor/archie/amber/a23_wishbone.v",
+      "sha256": "2659c6be228d3bb2aaedf173b8ed91d51a6fff095b42c510690cfb21c9eb8520",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/debug_functions.v",
+      "destination": "rtl/vendor/archie/amber/debug_functions.v",
+      "sha256": "300781585480978d449e70364a7ebeac51ffa2d305a14d4044d19c4425573c04",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/memory_configuration.v",
+      "destination": "rtl/vendor/archie/amber/memory_configuration.v",
+      "sha256": "6c1c0d8f5ccdeb01c9625c4f25b70161f6f37898fc530255a44c981f950e715d",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/sram_byte_en.v",
+      "destination": "rtl/vendor/archie/amber/sram_byte_en.v",
+      "sha256": "55ac3e3340209516c8cd420393ab134206726680f2e7f2beb33d1c66ae01cd02",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/amber/sram_line_en.v",
+      "destination": "rtl/vendor/archie/amber/sram_line_en.v",
+      "sha256": "30a8fb3183b8f06aa5ef9ec23f9738ad57ffc9295926fe05392e808886a6815f",
+      "notice": "LGPL-2.1-or-later"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/ioc.v",
+      "destination": "rtl/vendor/archie/ioc.v",
+      "sha256": "55e37eeb514bc151aa90ea78d32f42beb6f271b8131d67a7ddc041e38ff0b1d7",
+      "notice": "BSD-3-Clause (per-file notice)"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/ioc_irq.v",
+      "destination": "rtl/vendor/archie/ioc_irq.v",
+      "sha256": "f01f2473e83527f5c2e7bca362aa0d27a125249b92fefa7fa637d78c3af40a94",
+      "notice": "BSD-3-Clause (per-file notice)"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/latches.v",
+      "destination": "rtl/vendor/archie/latches.v",
+      "sha256": "8d34ed0488e2d014f1ff6d3408a1db7114416b97650014afcb0139450a44382b",
+      "notice": "BSD-3-Clause (per-file notice)"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/memc.v",
+      "destination": "rtl/vendor/archie/memc.v",
+      "sha256": "acdac3ea98ec77b66d25060086d543bb89820f505a07b238ebd5663a92734fed",
+      "notice": "BSD-3-Clause (per-file notice)"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/memc_translator.v",
+      "destination": "rtl/vendor/archie/memc_translator.v",
+      "sha256": "f26f5c549b5057b0013f4cfa2252b8ba388c8265c752a963b9bf620eed92559b",
+      "notice": "BSD-3-Clause (per-file notice)"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/vidc/vidc.v",
+      "destination": "rtl/vendor/archie/vidc/vidc.v",
+      "sha256": "a78e17d800246f9071290c819861ae20598685c48d1fa064cb28a43092ec57e8",
+      "notice": "BSD-3-Clause (per-file notice)"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/vidc/vidc_audio.v",
+      "destination": "rtl/vendor/archie/vidc/vidc_audio.v",
+      "sha256": "ff5a472f97ee25f34a1aafeca3bfbcb4bde36fe226252737e6f6a64c7a4faf70",
+      "notice": "BSD-3-Clause (per-file notice)"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/vidc/vidc_dmachannel.v",
+      "destination": "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+      "sha256": "4d2bfc0949358b4d346f7b71550f38f64af945272be366b6f8b309d0db3119cc",
+      "notice": "BSD-3-Clause (per-file notice)"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/vidc/vidc_fifo.v",
+      "destination": "rtl/vendor/archie/vidc/vidc_fifo.v",
+      "sha256": "6e7552312483e0a1593e2b8a26c77ac1ae70db56a267a075a6590d7fad68ce6d",
+      "notice": "BSD-3-Clause (per-file notice)"
+    },
+    {
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "source": "rtl/vidc/vidc_timing.v",
+      "destination": "rtl/vendor/archie/vidc/vidc_timing.v",
+      "sha256": "f6d97537e863b9a292b716cede1527be17c6e2c3f9e515126c8ddcccbff0fade",
+      "notice": "BSD-3-Clause (per-file notice)"
+    },
+    {
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "source": "src/fpga/ap_core.qsf",
+      "destination": "rtl/vendor/pocket/ap_core.qsf",
+      "sha256": "dd53a2203ad33de300aea167ebaf905147e7cd75661c976eae29c7496bbe9492",
+      "notice": "Analogue APF agreement; embedded Intel IP notices where present"
+    },
+    {
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "source": "src/fpga/apf/apf.qip",
+      "destination": "rtl/vendor/pocket/apf/apf.qip",
+      "sha256": "94af53185dde4d51ef30e75bb1ec8df672126742af36399bd62f4efb3a84b26a",
+      "notice": "Analogue APF agreement; embedded Intel IP notices where present"
+    },
+    {
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "source": "src/fpga/apf/apf_top.v",
+      "destination": "rtl/vendor/pocket/apf/apf_top.v",
+      "sha256": "6c24aa45a3dab52d8b86944cdd90330aa74cfdcd62e2d43e39d33d4791d173c7",
+      "notice": "Analogue APF agreement; embedded Intel IP notices where present"
+    },
+    {
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "source": "src/fpga/apf/build_id.mif",
+      "destination": "rtl/vendor/pocket/apf/build_id.mif",
+      "sha256": "5ccdb6f84dac515748a1d538a1d66956a595f667d81a4905bb6104674443467a",
+      "notice": "Analogue APF agreement; embedded Intel IP notices where present"
+    },
+    {
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "source": "src/fpga/apf/common.v",
+      "destination": "rtl/vendor/pocket/apf/common.v",
+      "sha256": "c1615e2c6c12b111537f6ca11e826e5061eb91f405e349bdc649a17b48e24d4e",
+      "notice": "Analogue APF agreement; embedded Intel IP notices where present"
+    },
+    {
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "source": "src/fpga/apf/io_bridge_peripheral.v",
+      "destination": "rtl/vendor/pocket/apf/io_bridge_peripheral.v",
+      "sha256": "2323c3fa114abf21ac6ca96375860d3530f9fc6b7b5ef3c0eb1cb68add7f840c",
+      "notice": "Analogue APF agreement; embedded Intel IP notices where present"
+    },
+    {
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "source": "src/fpga/apf/io_pad_controller.v",
+      "destination": "rtl/vendor/pocket/apf/io_pad_controller.v",
+      "sha256": "2087e191ead148fa54f9cbfba136683ae2b6f84830f3fad3a204b81cd3a633a5",
+      "notice": "Analogue APF agreement; embedded Intel IP notices where present"
+    },
+    {
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "source": "src/fpga/apf/mf_datatable.qip",
+      "destination": "rtl/vendor/pocket/apf/mf_datatable.qip",
+      "sha256": "8d4fac9c708f86c426e5241055d8000063e16dbe9b5c414f320a8b24c44a0632",
+      "notice": "Analogue APF agreement; embedded Intel IP notices where present"
+    },
+    {
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "source": "src/fpga/apf/mf_datatable.v",
+      "destination": "rtl/vendor/pocket/apf/mf_datatable.v",
+      "sha256": "e2cc2e33ccc22b9a8be3c426141848e0ea7800abb45ce55530eebe17dd23ffd7",
+      "notice": "Analogue APF agreement; embedded Intel IP notices where present"
+    },
+    {
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "source": "src/fpga/apf/mf_ddio_bidir_12.qip",
+      "destination": "rtl/vendor/pocket/apf/mf_ddio_bidir_12.qip",
+      "sha256": "f0ed4e73a07d734115bbde6501b43fe5878a7409f9b3b68bb4c7e0424b31b42e",
+      "notice": "Analogue APF agreement; embedded Intel IP notices where present"
+    },
+    {
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "source": "src/fpga/apf/mf_ddio_bidir_12.v",
+      "destination": "rtl/vendor/pocket/apf/mf_ddio_bidir_12.v",
+      "sha256": "31c8b62114d7bc916104a6199d919d9e2235a164aba518360b339867a08426aa",
+      "notice": "Analogue APF agreement; embedded Intel IP notices where present"
+    },
+    {
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "source": "src/fpga/core/core_bridge_cmd.v",
+      "destination": "rtl/vendor/pocket/core/core_bridge_cmd.v",
+      "sha256": "e6e0185218b3a63799db0f80085b0f4570c003c5f2197e8c9b8a1b1350f733fe",
+      "notice": "Analogue APF agreement; embedded Intel IP notices where present"
+    }
+  ],
+  "original_code": "GPL-3.0-or-later; see LICENSES/README.md",
+  "excluded": [
+    "MiSTer HPS/sys shell, PLL and SDRAM board IP",
+    "FDC/IDE podule and RiscDev IDE ROM: no disk services in diagnostic target",
+    "RISC OS ROM, ADFFS, Lotus programs/assets and all derived game media",
+    "PocketRiscV CPU/firmware, game engines and unneeded accelerators"
+  ],
+  "reference_only": {
+    "PocketDoom": "11cfcf96813603244ad6394f9ddc7eee36e5d9cc",
+    "Archimedes_MiSTCore": "09ac3d0c68a16ef6524ad0a392e098bfe079fc89"
+  }
+}

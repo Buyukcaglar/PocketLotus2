@@ -1,0 +1,576 @@
+{
+  "schema": 1,
+  "top": "apf_top",
+  "device": "5CEBA4F23C8",
+  "modules": [
+    {
+      "module": "a23_barrel_shift",
+      "selected_file": "rtl/vendor/archie/amber/a23_barrel_shift.v",
+      "sha256": "2c2c10730152317940782237e142e2f57ae4cf0b633bd0ad26cd7ff57b7f4924",
+      "preserved_source": "rtl/vendor/archie/amber/a23_barrel_shift.v",
+      "license": "LGPL-2.1-or-later",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "2c2c10730152317940782237e142e2f57ae4cf0b633bd0ad26cd7ff57b7f4924",
+      "dependencies": []
+    },
+    {
+      "module": "a23_wishbone",
+      "selected_file": "rtl/vendor/archie/amber/a23_wishbone.v",
+      "sha256": "2659c6be228d3bb2aaedf173b8ed91d51a6fff095b42c510690cfb21c9eb8520",
+      "preserved_source": "rtl/vendor/archie/amber/a23_wishbone.v",
+      "license": "LGPL-2.1-or-later",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "2659c6be228d3bb2aaedf173b8ed91d51a6fff095b42c510690cfb21c9eb8520",
+      "dependencies": []
+    },
+    {
+      "module": "a23_register_bank",
+      "selected_file": "rtl/vendor/archie/amber/a23_register_bank.v",
+      "sha256": "a4a8112a77bb395e83b783e00785227447a30ccdfd888d2abaa15f174bc469c5",
+      "preserved_source": "rtl/vendor/archie/amber/a23_register_bank.v",
+      "license": "LGPL-2.1-or-later",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "a4a8112a77bb395e83b783e00785227447a30ccdfd888d2abaa15f174bc469c5",
+      "dependencies": []
+    },
+    {
+      "module": "a23_multiply",
+      "selected_file": "rtl/vendor/archie/amber/a23_multiply.v",
+      "sha256": "baeeb2ce89ff66ffce225e6a587855fc8ee0da2986726fbe3de3e5507431a613",
+      "preserved_source": "rtl/vendor/archie/amber/a23_multiply.v",
+      "license": "LGPL-2.1-or-later",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "baeeb2ce89ff66ffce225e6a587855fc8ee0da2986726fbe3de3e5507431a613",
+      "dependencies": []
+    },
+    {
+      "module": "a23_fetch",
+      "selected_file": "rtl/vendor/archie/amber/a23_fetch.v",
+      "sha256": "d032a326f030859da671073d771f24afaff394fb004ca6faaeb06339d898a3c8",
+      "preserved_source": "rtl/vendor/archie/amber/a23_fetch.v",
+      "license": "LGPL-2.1-or-later",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "d032a326f030859da671073d771f24afaff394fb004ca6faaeb06339d898a3c8",
+      "dependencies": [
+        "a23_cache",
+        "a23_wishbone"
+      ]
+    },
+    {
+      "module": "a23_execute",
+      "selected_file": "rtl/vendor/archie/amber/a23_execute.v",
+      "sha256": "079bdb02122f3e554d6de3970e8257e02d1f7554fc5f25d804575954fc10d9cc",
+      "preserved_source": "rtl/vendor/archie/amber/a23_execute.v",
+      "license": "LGPL-2.1-or-later",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "079bdb02122f3e554d6de3970e8257e02d1f7554fc5f25d804575954fc10d9cc",
+      "dependencies": [
+        "a23_alu",
+        "a23_barrel_shift",
+        "a23_multiply",
+        "a23_register_bank"
+      ]
+    },
+    {
+      "module": "a23_decode",
+      "selected_file": "rtl/vendor/archie/amber/a23_decode.v",
+      "sha256": "09eab3b56d866ada5af84c3f0dd8472a8047518067b385beaedeca8968ed431b",
+      "preserved_source": "rtl/vendor/archie/amber/a23_decode.v",
+      "license": "LGPL-2.1-or-later",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "09eab3b56d866ada5af84c3f0dd8472a8047518067b385beaedeca8968ed431b",
+      "dependencies": []
+    },
+    {
+      "module": "a23_coprocessor",
+      "selected_file": "rtl/vendor/archie/amber/a23_coprocessor.v",
+      "sha256": "9e1c9574e2eb9fb0074591ba1f0d719ffab5b812acd757aa940c1851549372cb",
+      "preserved_source": "rtl/vendor/archie/amber/a23_coprocessor.v",
+      "license": "LGPL-2.1-or-later",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "9e1c9574e2eb9fb0074591ba1f0d719ffab5b812acd757aa940c1851549372cb",
+      "dependencies": []
+    },
+    {
+      "module": "a23_cache",
+      "selected_file": "rtl/vendor/archie/amber/a23_cache.v",
+      "sha256": "9e48a24cd8091029ba9af3f636006074b9e04b572aa82d19597ebda3c72a020d",
+      "preserved_source": "rtl/vendor/archie/amber/a23_cache.v",
+      "license": "LGPL-2.1-or-later",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "9e48a24cd8091029ba9af3f636006074b9e04b572aa82d19597ebda3c72a020d",
+      "dependencies": [
+        "sram_byte_en",
+        "sram_line_en"
+      ]
+    },
+    {
+      "module": "a23_alu",
+      "selected_file": "rtl/vendor/archie/amber/a23_alu.v",
+      "sha256": "ec973cd98b57915b049e18df1ecf15a8fc066c6da77819a81bf2949ef239b33c",
+      "preserved_source": "rtl/vendor/archie/amber/a23_alu.v",
+      "license": "LGPL-2.1-or-later",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "ec973cd98b57915b049e18df1ecf15a8fc066c6da77819a81bf2949ef239b33c",
+      "dependencies": []
+    },
+    {
+      "module": "sram_byte_en",
+      "selected_file": "rtl/vendor/archie/amber/sram_byte_en.v",
+      "sha256": "55ac3e3340209516c8cd420393ab134206726680f2e7f2beb33d1c66ae01cd02",
+      "preserved_source": "rtl/vendor/archie/amber/sram_byte_en.v",
+      "license": "LGPL-2.1-or-later",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "55ac3e3340209516c8cd420393ab134206726680f2e7f2beb33d1c66ae01cd02",
+      "notice_detail": "No license header in this file; Amber directory provenance is LGPL, not a newly added per-file upstream notice. Audit before distribution.",
+      "dependencies": [
+        "altsyncram"
+      ]
+    },
+    {
+      "module": "sram_line_en",
+      "selected_file": "rtl/vendor/archie/amber/sram_line_en.v",
+      "sha256": "30a8fb3183b8f06aa5ef9ec23f9738ad57ffc9295926fe05392e808886a6815f",
+      "preserved_source": "rtl/vendor/archie/amber/sram_line_en.v",
+      "license": "LGPL-2.1-or-later",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "30a8fb3183b8f06aa5ef9ec23f9738ad57ffc9295926fe05392e808886a6815f",
+      "notice_detail": "No license header in this file; Amber directory provenance is LGPL, not a newly added per-file upstream notice. Audit before distribution.",
+      "dependencies": [
+        "altsyncram"
+      ]
+    },
+    {
+      "module": "a23_core",
+      "selected_file": "rtl/vendor/archie/amber/a23_core.v",
+      "sha256": "fcbe845866840cf2e1fd3e3105f44192c595a1ec09e44b20d7f893cf195787f3",
+      "preserved_source": "rtl/vendor/archie/amber/a23_core.v",
+      "license": "LGPL-2.1-or-later",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "fcbe845866840cf2e1fd3e3105f44192c595a1ec09e44b20d7f893cf195787f3",
+      "dependencies": [
+        "a23_coprocessor",
+        "a23_decode",
+        "a23_execute",
+        "a23_fetch"
+      ]
+    },
+    {
+      "module": "memc",
+      "selected_file": "build/ported/memc.v",
+      "sha256": "0691109b0ae4971bc6addb21ac6870680eba449af13ec64869dc2e3a6a657c31",
+      "preserved_source": "rtl/vendor/archie/memc.v",
+      "license": "BSD-3-Clause (per-file notice)",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "acdac3ea98ec77b66d25060086d543bb89820f505a07b238ebd5663a92734fed",
+      "transform": "tools/prepare_chipset.py",
+      "dependencies": [
+        "memc_translator"
+      ]
+    },
+    {
+      "module": "memc_translator",
+      "selected_file": "rtl/vendor/archie/memc_translator.v",
+      "sha256": "f26f5c549b5057b0013f4cfa2252b8ba388c8265c752a963b9bf620eed92559b",
+      "preserved_source": "rtl/vendor/archie/memc_translator.v",
+      "license": "BSD-3-Clause (per-file notice)",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "f26f5c549b5057b0013f4cfa2252b8ba388c8265c752a963b9bf620eed92559b",
+      "dependencies": []
+    },
+    {
+      "module": "ioc",
+      "selected_file": "rtl/vendor/archie/ioc.v",
+      "sha256": "55e37eeb514bc151aa90ea78d32f42beb6f271b8131d67a7ddc041e38ff0b1d7",
+      "preserved_source": "rtl/vendor/archie/ioc.v",
+      "license": "BSD-3-Clause (per-file notice)",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "55e37eeb514bc151aa90ea78d32f42beb6f271b8131d67a7ddc041e38ff0b1d7",
+      "dependencies": [
+        "ioc_irq"
+      ]
+    },
+    {
+      "module": "ioc_irq",
+      "selected_file": "rtl/vendor/archie/ioc_irq.v",
+      "sha256": "f01f2473e83527f5c2e7bca362aa0d27a125249b92fefa7fa637d78c3af40a94",
+      "preserved_source": "rtl/vendor/archie/ioc_irq.v",
+      "license": "BSD-3-Clause (per-file notice)",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "f01f2473e83527f5c2e7bca362aa0d27a125249b92fefa7fa637d78c3af40a94",
+      "dependencies": []
+    },
+    {
+      "module": "latches",
+      "selected_file": "rtl/vendor/archie/latches.v",
+      "sha256": "8d34ed0488e2d014f1ff6d3408a1db7114416b97650014afcb0139450a44382b",
+      "preserved_source": "rtl/vendor/archie/latches.v",
+      "license": "BSD-3-Clause (per-file notice)",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "8d34ed0488e2d014f1ff6d3408a1db7114416b97650014afcb0139450a44382b",
+      "dependencies": []
+    },
+    {
+      "module": "vidc",
+      "selected_file": "build/ported/vidc.v",
+      "sha256": "36c383507ed0a2f56f24ed08bc73f8b70898a9462467dd808a5197b415ff6325",
+      "preserved_source": "rtl/vendor/archie/vidc/vidc.v",
+      "license": "BSD-3-Clause (per-file notice)",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "a78e17d800246f9071290c819861ae20598685c48d1fa064cb28a43092ec57e8",
+      "transform": "tools/prepare_chipset.py",
+      "dependencies": [
+        "vidc_audio",
+        "vidc_dmachannel",
+        "vidc_timing"
+      ]
+    },
+    {
+      "module": "vidc_timing",
+      "selected_file": "rtl/vendor/archie/vidc/vidc_timing.v",
+      "sha256": "f6d97537e863b9a292b716cede1527be17c6e2c3f9e515126c8ddcccbff0fade",
+      "preserved_source": "rtl/vendor/archie/vidc/vidc_timing.v",
+      "license": "BSD-3-Clause (per-file notice)",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "f6d97537e863b9a292b716cede1527be17c6e2c3f9e515126c8ddcccbff0fade",
+      "dependencies": []
+    },
+    {
+      "module": "vidc_fifo",
+      "selected_file": "build/ported/vidc_fifo.v",
+      "sha256": "f01aec68a1de0ad07da329bf3387d818d99c024e1299a9d9c87f279f0b6235ac",
+      "preserved_source": "rtl/vendor/archie/vidc/vidc_fifo.v",
+      "license": "BSD-3-Clause (per-file notice)",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "6e7552312483e0a1593e2b8a26c77ac1ae70db56a267a075a6590d7fad68ce6d",
+      "transform": "tools/prepare_chipset.py",
+      "replacement_body": "rtl/vidc_fifo_body.vh",
+      "dependencies": []
+    },
+    {
+      "module": "vidc_dmachannel",
+      "selected_file": "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+      "sha256": "4d2bfc0949358b4d346f7b71550f38f64af945272be366b6f8b309d0db3119cc",
+      "preserved_source": "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+      "license": "BSD-3-Clause (per-file notice)",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "4d2bfc0949358b4d346f7b71550f38f64af945272be366b6f8b309d0db3119cc",
+      "dependencies": [
+        "vidc_fifo"
+      ]
+    },
+    {
+      "module": "vidc_audio",
+      "selected_file": "build/ported/vidc_audio.v",
+      "sha256": "d63607c9939642381e0a3c3405d29a025e156e3ef984708f84a1a106bdce7da8",
+      "preserved_source": "rtl/vendor/archie/vidc/vidc_audio.v",
+      "license": "BSD-3-Clause (per-file notice)",
+      "repository": "Archimedes_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "original_sha256": "ff5a472f97ee25f34a1aafeca3bfbcb4bde36fe226252737e6f6a64c7a4faf70",
+      "transform": "tools/prepare_chipset.py",
+      "dependencies": []
+    },
+    {
+      "module": "pocket_chipset",
+      "selected_file": "rtl/pocket_chipset.v",
+      "sha256": "43936ceb9e22d4792d360ad0eca9d847be0902f17acaa6454653b7f07069ca0d",
+      "preserved_source": "rtl/pocket_chipset.v",
+      "license": "GPL-3.0-or-later",
+      "dependencies": [
+        "a23_core",
+        "async_fifo",
+        "ioc",
+        "latches",
+        "memc",
+        "vidc"
+      ]
+    },
+    {
+      "module": "memory_arbiter",
+      "selected_file": "rtl/memory_arbiter.v",
+      "sha256": "79992a1f212bc0adca57ce171de97557b5e0e81de74bcb0a25b386f9f8018bbb",
+      "preserved_source": "rtl/memory_arbiter.v",
+      "license": "GPL-3.0-or-later",
+      "dependencies": []
+    },
+    {
+      "module": "psram_word",
+      "selected_file": "rtl/psram_word.v",
+      "sha256": "a9943c6a7f424f4784fb264265cc6cbabf6e69029ea7cb9f19eee08aa62e05ff",
+      "preserved_source": "rtl/psram_word.v",
+      "license": "GPL-3.0-or-later",
+      "dependencies": []
+    },
+    {
+      "module": "async_fifo",
+      "selected_file": "rtl/async_fifo.v",
+      "sha256": "5466659a2c2b05e368293639db9a25deab9a4b0f751e0140fe8ee0e4cd319dfa",
+      "preserved_source": "rtl/async_fifo.v",
+      "license": "GPL-3.0-or-later",
+      "dependencies": [
+        "reset_sync"
+      ]
+    },
+    {
+      "module": "reset_sync",
+      "selected_file": "rtl/reset_sync.v",
+      "sha256": "c3774c90d1511f3be31b3bac32b450833055ef934385ef9736b1ece361d93295",
+      "preserved_source": "rtl/reset_sync.v",
+      "license": "GPL-3.0-or-later",
+      "dependencies": []
+    },
+    {
+      "module": "pocket_video",
+      "selected_file": "rtl/pocket_video.v",
+      "sha256": "edde9697a31f58a18963a99b5e2e762d7adf34a29574b3e2e84927ce08ddc226",
+      "preserved_source": "rtl/pocket_video.v",
+      "license": "GPL-3.0-or-later",
+      "dependencies": []
+    },
+    {
+      "module": "pocket_debug",
+      "selected_file": "rtl/pocket_debug.v",
+      "sha256": "36c59b1fbc3e8460a794cbb3fe451a0124df8f8489da74d867c6503ddc9b8c47",
+      "preserved_source": "rtl/pocket_debug.v",
+      "license": "GPL-3.0-or-later",
+      "dependencies": []
+    },
+    {
+      "module": "pocket_probe",
+      "selected_file": "rtl/pocket_probe.v",
+      "sha256": "4c4681bdffdd9a3e158adde658e68954e8e6baaa7c870f552b12e4e63c08877e",
+      "preserved_source": "rtl/pocket_probe.v",
+      "license": "GPL-3.0-or-later",
+      "dependencies": []
+    },
+    {
+      "module": "core_top",
+      "selected_file": "rtl/core_top.v",
+      "sha256": "7014c69ad678de260d1dab9265aec023c78afea610f3d0cfb0ce85b140fefbbe",
+      "preserved_source": "rtl/core_top.v",
+      "license": "GPL-3.0-or-later",
+      "dependencies": [
+        "core_bridge_cmd",
+        "memory_arbiter",
+        "pocket_audio",
+        "pocket_chipset",
+        "pocket_debug",
+        "pocket_host",
+        "pocket_pll",
+        "pocket_probe",
+        "pocket_reset",
+        "pocket_video",
+        "psram_word",
+        "reset_sync"
+      ]
+    },
+    {
+      "module": "pocket_host",
+      "selected_file": "rtl/pocket_host.v",
+      "sha256": "bc2efecb8d3a6278bb0a4e35e7507f9c53643d5d45f7b69ff7df699a4f73624b",
+      "preserved_source": "rtl/pocket_host.v",
+      "license": "GPL-3.0-or-later",
+      "dependencies": [
+        "async_fifo",
+        "reset_sync"
+      ]
+    },
+    {
+      "module": "pocket_reset",
+      "selected_file": "rtl/pocket_reset.v",
+      "sha256": "39b61c8159b891c89e569c45bd771f69f18533973077813c43b68875425517e6",
+      "preserved_source": "rtl/pocket_reset.v",
+      "license": "GPL-3.0-or-later",
+      "dependencies": []
+    },
+    {
+      "module": "pocket_pll",
+      "selected_file": "rtl/pocket_pll.v",
+      "sha256": "131e9c10dc039b2c653b8495d615e3d3ca0e0540a54a2c0eab607d0ef1559a32",
+      "preserved_source": "rtl/pocket_pll.v",
+      "license": "GPL-3.0-or-later",
+      "dependencies": [
+        "altera_pll"
+      ]
+    },
+    {
+      "module": "pocket_audio",
+      "selected_file": "rtl/pocket_audio.v",
+      "sha256": "86de5206c5941ba33db98faab2c976cc645d14d1a7b727925b24561fabbfa3f1",
+      "preserved_source": "rtl/pocket_audio.v",
+      "license": "GPL-3.0-or-later",
+      "dependencies": [
+        "reset_sync"
+      ]
+    },
+    {
+      "module": "apf_top",
+      "selected_file": "build/ported/apf_top.v",
+      "sha256": "95848f4e16cf400a94d6855a2347daa6bd6952e215d9a92665f61030f645a1fd",
+      "preserved_source": "rtl/vendor/pocket/apf/apf_top.v",
+      "license": "Analogue APF agreement; embedded Intel IP notices where present",
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "original_sha256": "6c24aa45a3dab52d8b86944cdd90330aa74cfdcd62e2d43e39d33d4791d173c7",
+      "transform": "tools/prepare_chipset.py",
+      "dependencies": [
+        "core_top",
+        "io_bridge_peripheral",
+        "io_pad_controller",
+        "mf_ddio_bidir_12"
+      ]
+    },
+    {
+      "module": "synch_2",
+      "selected_file": "rtl/vendor/pocket/apf/common.v",
+      "sha256": "c1615e2c6c12b111537f6ca11e826e5061eb91f405e349bdc649a17b48e24d4e",
+      "preserved_source": "rtl/vendor/pocket/apf/common.v",
+      "license": "Analogue APF agreement; embedded Intel IP notices where present",
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "original_sha256": "c1615e2c6c12b111537f6ca11e826e5061eb91f405e349bdc649a17b48e24d4e",
+      "dependencies": []
+    },
+    {
+      "module": "synch_3",
+      "selected_file": "rtl/vendor/pocket/apf/common.v",
+      "sha256": "c1615e2c6c12b111537f6ca11e826e5061eb91f405e349bdc649a17b48e24d4e",
+      "preserved_source": "rtl/vendor/pocket/apf/common.v",
+      "license": "Analogue APF agreement; embedded Intel IP notices where present",
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "original_sha256": "c1615e2c6c12b111537f6ca11e826e5061eb91f405e349bdc649a17b48e24d4e",
+      "dependencies": []
+    },
+    {
+      "module": "bram_block_dp",
+      "selected_file": "rtl/vendor/pocket/apf/common.v",
+      "sha256": "c1615e2c6c12b111537f6ca11e826e5061eb91f405e349bdc649a17b48e24d4e",
+      "preserved_source": "rtl/vendor/pocket/apf/common.v",
+      "license": "Analogue APF agreement; embedded Intel IP notices where present",
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "original_sha256": "c1615e2c6c12b111537f6ca11e826e5061eb91f405e349bdc649a17b48e24d4e",
+      "dependencies": []
+    },
+    {
+      "module": "bram_block_dp_nonstd",
+      "selected_file": "rtl/vendor/pocket/apf/common.v",
+      "sha256": "c1615e2c6c12b111537f6ca11e826e5061eb91f405e349bdc649a17b48e24d4e",
+      "preserved_source": "rtl/vendor/pocket/apf/common.v",
+      "license": "Analogue APF agreement; embedded Intel IP notices where present",
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "original_sha256": "c1615e2c6c12b111537f6ca11e826e5061eb91f405e349bdc649a17b48e24d4e",
+      "dependencies": []
+    },
+    {
+      "module": "io_bridge_peripheral",
+      "selected_file": "build/ported/io_bridge_peripheral.v",
+      "sha256": "e72afa08976872eaa50ef426bce539092493f40c8a2d635f098eff461b684c73",
+      "preserved_source": "rtl/vendor/pocket/apf/io_bridge_peripheral.v",
+      "license": "Analogue APF agreement; embedded Intel IP notices where present",
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "original_sha256": "2323c3fa114abf21ac6ca96375860d3530f9fc6b7b5ef3c0eb1cb68add7f840c",
+      "transform": "tools/prepare_chipset.py",
+      "dependencies": [
+        "synch_3"
+      ]
+    },
+    {
+      "module": "io_pad_controller",
+      "selected_file": "build/ported/io_pad_controller.v",
+      "sha256": "a3367def5d0627fb58928937c0d3098b5d296bd3966908e0d04e5b3e7919f406",
+      "preserved_source": "rtl/vendor/pocket/apf/io_pad_controller.v",
+      "license": "Analogue APF agreement; embedded Intel IP notices where present",
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "original_sha256": "2087e191ead148fa54f9cbfba136683ae2b6f84830f3fad3a204b81cd3a633a5",
+      "transform": "tools/prepare_chipset.py",
+      "dependencies": [
+        "synch_3"
+      ]
+    },
+    {
+      "module": "mf_ddio_bidir_12",
+      "selected_file": "rtl/vendor/pocket/apf/mf_ddio_bidir_12.v",
+      "sha256": "31c8b62114d7bc916104a6199d919d9e2235a164aba518360b339867a08426aa",
+      "preserved_source": "rtl/vendor/pocket/apf/mf_ddio_bidir_12.v",
+      "license": "Analogue APF agreement; embedded Intel IP notices where present",
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "original_sha256": "31c8b62114d7bc916104a6199d919d9e2235a164aba518360b339867a08426aa",
+      "dependencies": [
+        "altddio_bidir"
+      ]
+    },
+    {
+      "module": "mf_datatable",
+      "selected_file": "rtl/vendor/pocket/apf/mf_datatable.v",
+      "sha256": "e2cc2e33ccc22b9a8be3c426141848e0ea7800abb45ce55530eebe17dd23ffd7",
+      "preserved_source": "rtl/vendor/pocket/apf/mf_datatable.v",
+      "license": "Analogue APF agreement; embedded Intel IP notices where present",
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "original_sha256": "e2cc2e33ccc22b9a8be3c426141848e0ea7800abb45ce55530eebe17dd23ffd7",
+      "dependencies": [
+        "altsyncram"
+      ]
+    },
+    {
+      "module": "core_bridge_cmd",
+      "selected_file": "build/ported/core_bridge_cmd.v",
+      "sha256": "8911e4ab46da2408a4cd5c12d51775b69244e2cc7e447479b191d6a37e98f004",
+      "preserved_source": "rtl/vendor/pocket/core/core_bridge_cmd.v",
+      "license": "Analogue APF agreement; embedded Intel IP notices where present",
+      "repository": "PocketRiscV",
+      "commit": "88430e4d049e112413221433af12f3c0604f5470",
+      "original_sha256": "e6e0185218b3a63799db0f80085b0f4570c003c5f2197e8c9b8a1b1350f733fe",
+      "transform": "tools/prepare_chipset.py",
+      "dependencies": [
+        "mf_datatable",
+        "synch_3"
+      ]
+    }
+  ],
+  "external_primitives": [
+    "altsyncram (Amber cache and APF datatable)",
+    "altddio_bidir (APF scaler)",
+    "altera_pll (two independent PLLs)"
+  ],
+  "source_manifest": "source-manifest.json",
+  "excluded": [
+    "MiSTer HPS/sys/SDRAM/PLL shell",
+    "FDC and IDE podule/IDE ROM",
+    "RISC OS ROM/ADFFS/Lotus content"
+  ],
+  "transformations_sha256": "0efaf65eb3559713873cf14bc286d76709111537e86e9dcb3f2a6d7f5b202b49",
+  "reference_interfaces": {
+    "PocketRiscV": "88430e4d049e112413221433af12f3c0604f5470",
+    "PocketDoom": "11cfcf96813603244ad6394f9ddc7eee36e5d9cc"
+  }
+}

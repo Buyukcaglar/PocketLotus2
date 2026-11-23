@@ -1,0 +1,59 @@
+{
+  "verified_at_utc": "2026-10-08T17:07:45.435471+00:00",
+  "media": [
+    {
+      "path": "C:\\Projects\\PocketLotus\\Lotus\\Lotus Turbo Challenge 2 (1992) (Krisalis Software) F1023201.jfd",
+      "size_matches": true,
+      "sha256_matches": true
+    },
+    {
+      "path": "C:\\Projects\\PocketLotus\\Lotus\\Lotus Turbo Challenge 2 (1992) (Krisalis Software) F1023202.jfd",
+      "size_matches": true,
+      "sha256_matches": true
+    }
+  ],
+  "zip_archives": [
+    {
+      "path": "C:\\Projects\\PocketLotus\\Lotus\\zip\\Lotus-Turbo-Challenge-2_0-1.zip",
+      "size_matches": true,
+      "sha256_matches": true
+    },
+    {
+      "path": "C:\\Projects\\PocketLotus\\Lotus\\zip\\Lotus-Turbo-Challenge-2_0-2.zip",
+      "size_matches": true,
+      "sha256_matches": true
+    },
+    {
+      "path": "C:\\Projects\\PocketLotus\\Lotus\\zip\\Lotus-Turbo-Challenge-2_0-3.zip",
+      "size_matches": true,
+      "sha256_matches": true
+    }
+  ],
+  "reference_count": 11,
+  "all_materialized_reference_working_trees_clean": true,
+  "json_documents_parsed": [
+    "analysis/archimedes/findings.json",
+    "analysis/media/evidence.json",
+    "analysis/media/F1023201/directories.json",
+    "analysis/media/F1023201/extents.json",
+    "analysis/media/F1023201/files.json",
+    "analysis/media/F1023201/metadata.json",
+    "analysis/media/F1023201/sectors.json",
+    "analysis/media/F1023201/tracks.json",
+    "analysis/media/F1023202/directories.json",
+    "analysis/media/F1023202/extents.json",
+    "analysis/media/F1023202/files.json",
+    "analysis/media/F1023202/metadata.json",
+    "analysis/media/F1023202/sectors.json",
+    "analysis/media/F1023202/tracks.json",
+    "analysis/media/inventory.json",
+    "analysis/pocketriscv.json",
+    "analysis/references/findings.json",
+    "analysis/references/openfpgaos.json",
+    "analysis/zip/comparison.json",
+    "analysis/zip/inventory.json"
+  ],
+  "errors": [],
+  "passed": true,
+  "scope": "Evidence syntax, checkout pins and original byte preservation only. No compilation, HDL simulation, synthesis, timing closure, emulator launch, game runtime, audio/video or user acceptance validation."
+}

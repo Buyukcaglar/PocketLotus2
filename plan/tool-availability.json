@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-08",
+  "platform": "Windows x64 / PowerShell",
+  "available": {
+    "python": "System Python 3; restricted ARM assembler uses only the standard library",
+    "git": "System Git; source pins and cleanliness checked",
+    "iverilog": "14.0 (devel), s20260301-538-gf45ffabed-dirty",
+    "yosys": "0.69+260, git dcd59343b"
+  },
+  "isolated_suite": {
+    "directory": "build/deps/oss-cad-suite",
+    "url": "https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2026-10-08/oss-cad-suite-windows-x64-20261008.tgz",
+    "bytes": 601728860,
+    "sha256": "86dea50f6de7dc193d6760e01f3e4317021b68097271c3555b613c16caaafb0a",
+    "hash_verified": true,
+    "system_environment_modified": false
+  },
+  "quartus": {
+    "status": "installed",
+    "searched": [
+      "PATH",
+      "common C:/intelFPGA and C:/intelFPGA_lite roots",
+      "C:/Intel",
+      "Program Files",
+      "bounded C:/work and local installer locations"
+    ],
+    "required": "Quartus Prime Lite 25.1 Windows plus Cyclone V device support",
+    "official_page": "https://www.altera.com/downloads/fpga-development-tools/quartus-prime-lite-edition-design-software-version-25-1-windows",
+    "official_access_result": "Installer download redirected to MyAltera customer login",
+    "direct_download_results": [
+      "downloads.intel.com/akdlm/software/acdsinst/25.1std/1129/ib_installers returned approximately 155KB HTML, not an installer",
+      "download.altera.com corresponding endpoint returned HTTP 403"
+    ],
+    "invalid_responses_executed": false,
+    "bounded_search_not_entire_filesystem_inventory": true,
+    "synthesis_fitting_assembly_timing": "All stages passed with real 5CEBA4F23C8; all reported internal timing checks pass, active APF external I/O remains unqualified. See implementation-results.json.",
+    "initial_discovery_status": "unavailable before user installation",
+    "installation": "C:/altera_lite/25.1std",
+    "version": "25.1std.0 Build 1129 10/21/2025 SC Lite Edition",
+    "device_support": "5CEBA4F23C8 recognized by quartus_map and quartus_fit"
+  },
+  "other_limits": [
+    "WSL launcher reported subsystem not installed during analysis",
+    "No ARM cross-compiler required: original diagnostic uses restricted deterministic ARMv2 assembler",
+    "Functional vendor simulation models and Yosys black boxes do not substitute for Quartus IP validation",
+    "No Pocket hardware test performed"
+  ]
+}

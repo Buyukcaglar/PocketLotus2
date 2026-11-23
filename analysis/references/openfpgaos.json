@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "analyzed_on": "2026-10-08",
+  "scope": "Concise snapshot captured before user clarified standalone openFPGA hardware core; no further SDK evaluation is required for current objective",
+  "repositories": [
+    {
+      "name": "openfpgaSDK",
+      "commit": "a408ddc12aed0dfaa4aa22c06af82f829db77126",
+      "url": "https://github.com/openfpgaOS/openfpgaSDK",
+      "local_path": "C:\\Projects\\PocketLotus\\references\\openfpgaSDK",
+      "checkout": "Sparse source/text files; runtime ELF/bitstream/asset binary files excluded from working tree"
+    },
+    {
+      "name": "openfpgaCore",
+      "commit": "8318f25066b0b75d2e34081919dfc337ac6abf73",
+      "url": "https://github.com/openfpgaOS/openfpgaCore",
+      "local_path": "C:\\Projects\\PocketLotus\\references\\openfpgaCore",
+      "checkout": "Sparse source/text files; runtime ELF/bitstream/asset binary files excluded from working tree"
+    }
+  ],
+  "assurance": {
+    "installed": false,
+    "built": false,
+    "run": false,
+    "game_media_downloaded": false,
+    "hardware_qualified": false
+  },
+  "findings": [
+    {
+      "claim": "The OS is a bare-metal RISC-V FPGA runtime for Pocket/MiSTer, not a hardware implementation of the Archimedes computer.",
+      "kind": "documentation_plus_inference",
+      "evidence": [
+        {
+          "path": "openfpgaCore/README.md",
+          "lines": [
+            1,
+            5
+          ],
+          "url": "https://github.com/openfpgaOS/openfpgaCore/blob/8318f25066b0b75d2e34081919dfc337ac6abf73/README.md#L1-L5"
+        }
+      ]
+    },
+    {
+      "claim": "OS applications are compiled rv32imafc/ilp32f and therefore cannot directly execute the Archimedes ARM binaries on the supplied Lotus discs. They would need an Archimedes emulator or a reconstructed native game implementation.",
+      "kind": "source_plus_inference",
+      "evidence": [
+        {
+          "path": "openfpgaCore/src/firmware/api/Makefile.fpga",
+          "lines": [
+            39,
+            54
+          ],
+          "url": "https://github.com/openfpgaOS/openfpgaCore/blob/8318f25066b0b75d2e34081919dfc337ac6abf73/src/firmware/api/Makefile.fpga#L39-L54"
+        }
+      ]
+    },
+    {
+      "claim": "SDK app boot ABI uses a SysV initial stack and vendor auxv tags for capability/service table pointers. Apps are not standalone FPGA hardware cores.",
+      "kind": "source",
+      "evidence": [
+        {
+          "path": "openfpgaSDK/src/sdk/include/of_app_abi.h",
+          "lines": [
+            17,
+            43
+          ],
+          "url": "https://github.com/openfpgaOS/openfpgaSDK/blob/a408ddc12aed0dfaa4aa22c06af82f829db77126/src/sdk/include/of_app_abi.h#L17-L43"
+        }
+      ]
+    },
+    {
+      "claim": "SDK source boots with an indexed 320x240 framebuffer but exposes larger source modes, max width 800/max height 600, physical output 320x240, and a 50 Hz vertical-total constant. It should not be described as strictly fixed to 320x240/60 Hz. This limited header inspection does not establish faithful native 320x256 Archimedes display support.",
+      "kind": "source_with_boundary",
+      "evidence": [
+        {
+          "path": "openfpgaSDK/src/sdk/include/of_video.h",
+          "lines": [
+            39,
+            84
+          ],
+          "url": "https://github.com/openfpgaOS/openfpgaSDK/blob/a408ddc12aed0dfaa4aa22c06af82f829db77126/src/sdk/include/of_video.h#L39-L84"
+        },
+        {
+          "path": "openfpgaSDK/src/sdk/include/of_video.h",
+          "lines": [
+            230,
+            233
+          ],
+          "url": "https://github.com/openfpgaOS/openfpgaSDK/blob/a408ddc12aed0dfaa4aa22c06af82f829db77126/src/sdk/include/of_video.h#L230-L233"
+        }
+      ]
+    },
+    {
+      "claim": "Current project direction is the standalone openFPGA Archimedes ARM/VIDC hardware route. SDK/runtime merits do not determine that route; these repositories are optional interface examples.",
+      "kind": "user_steering"
+    }
+  ],
+  "instructions_read": {
+    "path": "openfpgaSDK/AGENTS.md",
+    "content": "CLAUDE.md",
+    "resolved_to": "openfpgaSDK/CLAUDE.md",
+    "applied": "Read-only source analysis; no SDK-owned paths edited; no toolchain installation/build/deployment"
+  }
+}

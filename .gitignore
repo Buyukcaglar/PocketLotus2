@@ -1,0 +1,40 @@
+# User supplied game media and private derived game content
+/Lotus/
+/analysis/media/F*/
+/analysis/zip/private/
+*.jfd
+*.adf
+*.apd
+*.hfe
+*.rom
+
+# Reference checkouts are pinned in analysis/reference-lock.json
+/references/
+
+# Generated FPGA, firmware and release outputs
+/build/
+/release/
+**/output_files/
+**/incremental_db/
+**/db/
+*.rbf
+*.rbf_r
+*.sof
+*.pof
+*.elf
+*.o
+__pycache__/
+/private/
+*.vvp
+*.vcd
+*.fst
+*.log
+*.rpt
+*.summary
+
+# Game package analysis outputs that quote bytes and script text from the game archives
+/analysis/zip/inventory.json
+/analysis/zip/comparison.json
+# Vendored wrappers without licence headers (see LICENSES/README.md)
+/rtl/vendor/archie/amber/sram_byte_en.v
+/rtl/vendor/archie/amber/sram_line_en.v

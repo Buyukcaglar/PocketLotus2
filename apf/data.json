@@ -1,0 +1,14 @@
+{
+  "data": {
+    "magic": "APF_VER_1",
+    "data_slots": [{
+      "id": 0,
+      "name": "ARM diagnostic",
+      "required": true,
+      "parameters": "0x0",
+      "address": "0x00400000",
+      "size_maximum": "0x4000",
+      "extensions": ["bin"]
+    }]
+  }
+}

@@ -1,0 +1,794 @@
+{
+  "reported_date": "2026-10-08",
+  "evidence_type": "user_report",
+  "firmware": "2.7",
+  "phase": "Immediately after Run, before any asset selection is possible",
+  "message": [
+    "Load error in 'core'",
+    "General error",
+    "Error in core setup"
+  ],
+  "failed_package_sha256": "40a21999cdd04d2ba9e1d009affdf8135dbeeb31f775cc943f18f88c143dd422",
+  "status": "standalone_diagnostic_execution_display_tone_and_a_verified",
+  "diagnostic_execution": "39 complete eight-word physical log snapshots show ARM success and strictly increasing CPU/video/sound/peripheral acknowledgements; independent clock probes live",
+  "local_findings": [
+    "0082 slot-0 writes rejected; reproduced with documented boot regression",
+    "Data slot name 23 characters exceeds documented 15",
+    "Input mapping name 22 characters exceeds documented 19",
+    "Device boot log confirms author.shortname mismatch with installed core directory",
+    "0.1.2 direct VIDC outputs violate APF sync width, VS-to-HS spacing and blanking RGB contracts; directed regression fails"
+  ],
+  "limits": "No measured physical geometry/frame rate/pin timing, Dock qualification or stereo/sample fidelity proof. A press/release verified; other inputs/Archimedes keyboard untested. No RISC OS/protected JFD/Lotus execution.",
+  "candidate_version": "0.1.5-diagnostic",
+  "candidate_hardware_acceptance": "0.1.5 sustained ARM/DMA and physical A press/release verified by logs; persistent coloured bars and continuous tone user-reported; board timing/geometry/stereo fidelity unqualified",
+  "risc_os_boot": "not_tested",
+  "protected_jfd": "not_tested",
+  "lotus_gameplay": "not_tested",
+  "candidate_archive": {
+    "path": "PocketLotus.Diagnostic.zip",
+    "bytes": 520488,
+    "sha256": "29003c92faec7c05d2a28fbf554db2b8637b6bb3532b74f7834ea7b1275c08e6"
+  },
+  "candidate_raw_rbf_sha256": "16f154a112b06d4ca4edd4d36da7c2f30dfc11716b11c3160b75f3f57fdda7b8",
+  "local_regression": {
+    "previous_rtl": "failed: APF command 0082 returned 4f4b0002",
+    "corrected_rtl": "passed: documented boot and second load",
+    "command": "python tools/simulate.py --test apf_boot",
+    "failed_log_sha256": "714cb6eacd1b378c8ede684bc54df7ab5f0abaa41444bc4052c66eb42b90b3c5",
+    "passed_log_sha256": "ba11c4ca3947499af68fa36611d354aba51d0a6f90ada1592bd919073492f43f"
+  },
+  "attempts": [
+    {
+      "version": "0.1.1-diagnostic",
+      "status": "failed",
+      "user_report": "Same setup errors; About does nothing",
+      "sd_files_verified": true,
+      "all_eleven_matched_package": true,
+      "debug_log_sha256": "f13466c87f80d54a360001c8fac489d8998ccf86661626b244cc2958fffd2f44",
+      "debug_log_text": "APF Debug Log\nPocket OS version 2_7\n\nStart\nLoad core normally\nOpening /Cores/PocketLotus.PocketLotusDiag/core.json\n",
+      "confirmed_failure": "APF opens nonexistent /Cores/PocketLotus.PocketLotusDiag/core.json; installed path is /Cores/PocketLotus.Diagnostic",
+      "fpga_execution": "not_reached_by_trace"
+    },
+    {
+      "version": "0.1.2-diagnostic",
+      "status": "loaded_user_reported",
+      "evidence_type": "user_report",
+      "observation": "Core ran, user chose diagnostic, white bar appeared at bottom and a tone was heard",
+      "diagnostic_display_acceptance": false,
+      "audio_acceptance": "tone heard; channel/sample fidelity unverified",
+      "device_log": "No new log available after power cycle; Debug Logging resets on power-off",
+      "package_archive": {
+        "path": "PocketLotus.Diagnostic.zip",
+        "bytes": 509510,
+        "sha256": "feab2312bfd520354d202e517628c3eaf4f351caec90e5142c514cf20c75294f"
+      },
+      "raw_rbf_sha256": "db50d51b8ee1e88d6dfc5fd911ab3ccfd8f48e8a8999306bdcbd7f95714dc21e"
+    },
+    {
+      "version": "0.1.3-diagnostic",
+      "status": "display_mismatch_user_reported",
+      "evidence_type": "user_report_and_device_boot_log",
+      "all_twelve_matched_package": true,
+      "changed_files": 3,
+      "package_archive": {
+        "path": "PocketLotus.Diagnostic.zip",
+        "bytes": 502596,
+        "sha256": "060b74df5aa04ca5da499ccf8fda5636d81083f1da2b41d9b5fc73b855fc9bb5"
+      },
+      "raw_rbf_sha256": "890bfcea0d8337fe5cc56fc2d61b43d56ac95c7274109585ee7d2b16c5cf937c",
+      "diagnostic_display_acceptance": false,
+      "device_log": {
+        "path": "build\\hardware-logs\\PocketLotus.Diagnostic_20261008_184955.txt",
+        "sha256": "de89558c9349b27279046ba4bb2f345c702a0e22eb0e2fd4099b10a6a308f1fd",
+        "bytes": 5261,
+        "setup": "Bitstream OK, 688-byte load complete, Ready to Run and Reset Exit complete",
+        "limit": "No internal CPU/video diagnostic events in this build"
+      },
+      "observation": "White bar and tone, then briefly thin coloured stripes which disappear; user corrected the temporal order",
+      "sd_installation": {
+        "version": "0.1.3-diagnostic",
+        "command": [
+          "python",
+          "tools/install_diagnostic.py",
+          "--root",
+          "F:\\"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "changes": [
+          {
+            "path": "F:\\Cores\\PocketLotus.Diagnostic\\bitstream.rbf_r",
+            "previous_sha256": "119c2f7f54f15d2daecb9588c8bd2a61a42444c522518784fea0f38ab57942c3",
+            "sha256": "54d1c49e536497cb5025c53908cbd4429d4a33506ee1daa9730bccc79e717577"
+          },
+          {
+            "path": "F:\\Cores\\PocketLotus.Diagnostic\\core.json",
+            "previous_sha256": "cbfd2552ad9be48e5433a79a1ae3fd2ee217d9f11ac4f53a7ff6991e3184e878",
+            "sha256": "bffcda9c8e5b4a72fce0b164bf3bbbfe5ab57d0b9354e358b6291192d45de5d6"
+          },
+          {
+            "path": "F:\\Cores\\PocketLotus.Diagnostic\\info.txt",
+            "previous_sha256": "143fc74fd04b5e3595d61ea335696acec7834040d9d263a96df8f654978367d5",
+            "sha256": "a4e03203e331df41f7faa5a53a42015e6df5f7a43833180da0081dd6f82e4fa0"
+          }
+        ],
+        "files": [
+          {
+            "path": "F:\\Assets\\pocketlotusdiag\\common\\diagnostic.bin",
+            "sha256": "4aeefc75ebc25f583fbd6ff0aedeb4ac7e65fd0f255a8698c1bf5aab73c8d8f7",
+            "matches_package": true
+          },
+          {
+            "path": "F:\\Assets\\pocketlotusdiag\\common\\diagnostic.json",
+            "sha256": "d9db193d6bcd5be3b322d9cfda25b72ac40a0d7aafb83919a3610afc06c24ad1",
+            "matches_package": true
+          },
+          {
+            "path": "F:\\Cores\\PocketLotus.Diagnostic\\audio.json",
+            "sha256": "901bd52a78484af4e73d4c67dbed75ca9f42e2e7e00b3306b91e0a51e062a870",
+            "matches_package": true
+          },
+          {
+            "path": "F:\\Cores\\PocketLotus.Diagnostic\\bitstream.rbf_r",
+            "sha256": "54d1c49e536497cb5025c53908cbd4429d4a33506ee1daa9730bccc79e717577",
+            "matches_package": true
+          },
+          {
+            "path": "F:\\Cores\\PocketLotus.Diagnostic\\core.json",
+            "sha256": "bffcda9c8e5b4a72fce0b164bf3bbbfe5ab57d0b9354e358b6291192d45de5d6",
+            "matches_package": true
+          },
+          {
+            "path": "F:\\Cores\\PocketLotus.Diagnostic\\data.json",
+            "sha256": "ce9ca967ee17084b58bdc6d9a8c20ea84b5384e8fa0f58d26c6fbb05c164f792",
+            "matches_package": true
+          },
+          {
+            "path": "F:\\Cores\\PocketLotus.Diagnostic\\info.txt",
+            "sha256": "a4e03203e331df41f7faa5a53a42015e6df5f7a43833180da0081dd6f82e4fa0",
+            "matches_package": true
+          },
+          {
+            "path": "F:\\Cores\\PocketLotus.Diagnostic\\input.json",
+            "sha256": "f0323b1d12940edbb47bf8f846f8fb8f8c898559c1ceffbf33b22fa0e6a267c9",
+            "matches_package": true
+          },
+          {
+            "path": "F:\\Cores\\PocketLotus.Diagnostic\\interact.json",
+            "sha256": "dc506ef71695d9ab4c903440f499a888152de1bad57dfbb2843adc9aa74d15b8",
+            "matches_package": true
+          },
+          {
+            "path": "F:\\Cores\\PocketLotus.Diagnostic\\variants.json",
+            "sha256": "445c0e6f3e20bd57bf02dbea55c3c19ef8c50aeb3343d91fdf09d3f0c0f12e21",
+            "matches_package": true
+          },
+          {
+            "path": "F:\\Cores\\PocketLotus.Diagnostic\\video.json",
+            "sha256": "131411fee0bc7e1bac547b9cdf41c65fe8a36fbae246e4343f308d82352a2d38",
+            "matches_package": true
+          },
+          {
+            "path": "F:\\Platforms\\pocketlotusdiag.json",
+            "sha256": "d3d40fc22f0e9795a7898655702673ecd453bf1fcb4f8550293c44a2696cb41b",
+            "matches_package": true
+          }
+        ],
+        "all_matched": true,
+        "scope": "SD file installation/readback only; no hardware execution claim"
+      }
+    },
+    {
+      "version": "0.1.4-diagnostic",
+      "status": "runtime_status_frozen",
+      "evidence_type": "device_runtime_log",
+      "changed_files": 3,
+      "all_twelve_matched_package": true,
+      "package_archive": {
+        "path": "PocketLotus.Diagnostic.zip",
+        "bytes": 520989,
+        "sha256": "213f4994a543ce764479351c707690ac167dc23756e2138cc5a1229f14bee7dd"
+      },
+      "raw_rbf_sha256": "c14e3f81ab65af11ba50c000e6cde321ba7d761c803e78f3ae55b5fae7ee54ad",
+      "scope": "Periodic coherent CPU/DMA log snapshots; no display fix or hardware acceptance claimed",
+      "device_log": {
+        "path": "build\\hardware-logs\\PocketLotus.Diagnostic_20261008_191327.txt",
+        "bytes": 36941,
+        "sha256": "e284cb71c15937cd3397af0ec15e3c235a1a6f825142bd0a58a012923dc454a5",
+        "event_count": 396,
+        "complete_bursts": 33,
+        "unique_snapshots": 1
+      },
+      "runtime_analysis_path": "build/hardware-logs/runtime-0.1.4.json",
+      "first_snapshot": {
+        "timestamp": "2026/10/08 19:13:31",
+        "words": [
+          "600d0000",
+          "00021c3c",
+          "00023190",
+          "00000880",
+          "0000289e",
+          "03800188"
+        ]
+      },
+      "last_snapshot": {
+        "timestamp": "2026/10/08 19:13:47",
+        "words": [
+          "600d0000",
+          "00021c3c",
+          "00023190",
+          "00000880",
+          "0000289e",
+          "03800188"
+        ]
+      },
+      "diagnostic_display_acceptance": false,
+      "observation": "User completed requested run; no new explicit display description for 0.1.4",
+      "finding": "33 identical six-word snapshots across 16 seconds: ARM result 600d0000, CPU 138300, video 143760, sound 2176, peripheral 10398, last acknowledged CPU address 03800188 (heartbeat ldr r7,[r1])",
+      "limit": "Does not distinguish stopped clocks, memory/bus deadlock or stale coherent status mailbox; APF bridge/debug logger remained responsive"
+    },
+    {
+      "version": "0.1.5-diagnostic",
+      "status": "sustained_diagnostic_progress_and_display_user_reported",
+      "evidence_type": "device_runtime_log_and_user_report",
+      "changed_files": 3,
+      "all_twelve_matched_package": true,
+      "package_archive": {
+        "path": "PocketLotus.Diagnostic.zip",
+        "bytes": 520488,
+        "sha256": "29003c92faec7c05d2a28fbf554db2b8637b6bb3532b74f7834ea7b1275c08e6"
+      },
+      "raw_rbf_sha256": "16f154a112b06d4ca4edd4d36da7c2f30dfc11716b11c3160b75f3f57fdda7b8",
+      "scope": "Sustained ARM/CPU/video/sound/peripheral activity and display/tone observations on OS 2.7; no RISC OS/gameplay or complete physical timing qualification",
+      "device_log": {
+        "path": "build\\hardware-logs\\PocketLotus.Diagnostic_20261008_195020.txt",
+        "bytes": 55181,
+        "sha256": "e6a0b5156da59c7922212205835260f92e3b1efc7690aa4ff18560ef09c9855d",
+        "event_count": 624,
+        "complete_bursts": 39,
+        "unique_snapshots": 39,
+        "unique_status_snapshots": 39,
+        "unique_probe_snapshots": 39
+      },
+      "runtime_analysis_path": "build/hardware-logs/runtime-0.1.5.json",
+      "first_snapshot": {
+        "timestamp": "2026/10/08 19:50:24",
+        "words": [
+          "600d0000",
+          "000377c9",
+          "0003c6ec",
+          "00000ec4",
+          "000046d7",
+          "0380019c",
+          "8def4626",
+          "9d188dd8"
+        ],
+        "status": {
+          "result": 1611464704,
+          "cpu_ack_count": 227273,
+          "video_ack_count": 247532,
+          "sound_ack_count": 3780,
+          "peripheral_ack_count": 18135,
+          "last_cpu_address": 58720668
+        },
+        "probe_edge_observations_mod256": {
+          "system_clock": 38,
+          "pixel_clock": 70,
+          "cpu_ack": 239,
+          "video_ack": 141,
+          "sound_ack": 216,
+          "peripheral_ack": 141
+        },
+        "individually_synchronized_flags": {
+          "pll_locked": true,
+          "cpu_reset": false,
+          "pixel_reset": false,
+          "ready": true,
+          "memc_cyc": true,
+          "memc_stb": true,
+          "memc_write": false,
+          "memory_ack": true,
+          "psram_busy": false,
+          "arbiter_armed": false,
+          "arbiter_state": 3,
+          "psram_state": 0
+        }
+      },
+      "last_snapshot": {
+        "timestamp": "2026/10/08 19:50:42",
+        "words": [
+          "600d0000",
+          "0082775d",
+          "009b8f00",
+          "00025db4",
+          "000b51ef",
+          "0380019c",
+          "1eee3563",
+          "9c08a3b6"
+        ],
+        "status": {
+          "result": 1611464704,
+          "cpu_ack_count": 8550237,
+          "video_ack_count": 10194688,
+          "sound_ack_count": 155060,
+          "peripheral_ack_count": 741871,
+          "last_cpu_address": 58720668
+        },
+        "probe_edge_observations_mod256": {
+          "system_clock": 99,
+          "pixel_clock": 53,
+          "cpu_ack": 238,
+          "video_ack": 30,
+          "sound_ack": 182,
+          "peripheral_ack": 163
+        },
+        "individually_synchronized_flags": {
+          "pll_locked": true,
+          "cpu_reset": false,
+          "pixel_reset": false,
+          "ready": true,
+          "memc_cyc": true,
+          "memc_stb": true,
+          "memc_write": false,
+          "memory_ack": false,
+          "psram_busy": false,
+          "arbiter_armed": false,
+          "arbiter_state": 1,
+          "psram_state": 0
+        }
+      },
+      "counter_progress": {
+        "cpu_ack_count": {
+          "first": 227273,
+          "last": 8550237,
+          "strictly_increasing": true
+        },
+        "video_ack_count": {
+          "first": 247532,
+          "last": 10194688,
+          "strictly_increasing": true
+        },
+        "sound_ack_count": {
+          "first": 3780,
+          "last": 155060,
+          "strictly_increasing": true
+        },
+        "peripheral_ack_count": {
+          "first": 18135,
+          "last": 741871,
+          "strictly_increasing": true
+        }
+      },
+      "generated_clock_probes": "System and pixel divided-clock edge observations advance across all 39 snapshots; not calibrated physical frequency measurements",
+      "reset_flags": "Locked/ready true and CPU/pixel reset false in all 39 captures",
+      "observation": "User: yes, white horizontal bar at bottom, continuous tone sound, coloured striped bars on screen. User reiterated that this time the tone was continuous.",
+      "diagnostic_display_acceptance": "Persistent coloured bars reported for this run; physical geometry, frame rate and LCD/Dock fidelity unmeasured",
+      "audio_acceptance": "Continuous tone reported, sound DMA advances; stereo channel/sample fidelity unverified",
+      "input_acceptance": "Subsequent input trace verifies 600d0000 -> 600d0010 -> 600d0000 with continuous CPU/DMA progress"
+    },
+    {
+      "version": "0.1.5-diagnostic",
+      "status": "a_press_and_release_verified_in_runtime_log",
+      "evidence_type": "user_performed_button_hold_and_device_runtime_log",
+      "device_log": {
+        "path": "build\\hardware-logs\\PocketLotus.Diagnostic_20261008_195617.txt",
+        "bytes": 37261,
+        "sha256": "79561798ea51663a8720696a511f63323300d91303b8a19a9844284c525eff9e",
+        "event_count": 400,
+        "complete_bursts": 25,
+        "unique_snapshots": 25
+      },
+      "runtime_analysis_path": "build/hardware-logs/runtime-0.1.5-input.json",
+      "result_sequence": [
+        {
+          "bursts": 3,
+          "result": "600d0000",
+          "interpretation": "before press"
+        },
+        {
+          "bursts": 15,
+          "result": "600d0010",
+          "interpretation": "A bit 4 held"
+        },
+        {
+          "bursts": 7,
+          "result": "600d0000",
+          "interpretation": "after release"
+        }
+      ],
+      "counter_progress": {
+        "cpu_ack_count": {
+          "first": 227273,
+          "last": 5483526,
+          "strictly_increasing": true
+        },
+        "video_ack_count": {
+          "first": 247532,
+          "last": 6530772,
+          "strictly_increasing": true
+        },
+        "sound_ack_count": {
+          "first": 3780,
+          "last": 99324,
+          "strictly_increasing": true
+        },
+        "peripheral_ack_count": {
+          "first": 18135,
+          "last": 475200,
+          "strictly_increasing": true
+        }
+      },
+      "first_snapshot": {
+        "timestamp": "2026/10/08 19:56:21",
+        "words": [
+          "600d0000",
+          "000377c9",
+          "0003c6ec",
+          "00000ec4",
+          "000046d7",
+          "0380019c",
+          "8def4e2b",
+          "9d188dd8"
+        ],
+        "status": {
+          "result": 1611464704,
+          "cpu_ack_count": 227273,
+          "video_ack_count": 247532,
+          "sound_ack_count": 3780,
+          "peripheral_ack_count": 18135,
+          "last_cpu_address": 58720668
+        },
+        "probe_edge_observations_mod256": {
+          "system_clock": 43,
+          "pixel_clock": 78,
+          "cpu_ack": 239,
+          "video_ack": 141,
+          "sound_ack": 216,
+          "peripheral_ack": 141
+        },
+        "individually_synchronized_flags": {
+          "pll_locked": true,
+          "cpu_reset": false,
+          "pixel_reset": false,
+          "ready": true,
+          "memc_cyc": true,
+          "memc_stb": true,
+          "memc_write": false,
+          "memory_ack": true,
+          "psram_busy": false,
+          "arbiter_armed": false,
+          "arbiter_state": 3,
+          "psram_state": 0
+        }
+      },
+      "last_snapshot": {
+        "timestamp": "2026/10/08 19:56:33",
+        "words": [
+          "600d0000",
+          "0053ac06",
+          "0063a6d4",
+          "000183fc",
+          "00074040",
+          "02010010",
+          "4d58a17a",
+          "9c10807f"
+        ],
+        "status": {
+          "result": 1611464704,
+          "cpu_ack_count": 5483526,
+          "video_ack_count": 6530772,
+          "sound_ack_count": 99324,
+          "peripheral_ack_count": 475200,
+          "last_cpu_address": 33619984
+        },
+        "probe_edge_observations_mod256": {
+          "system_clock": 122,
+          "pixel_clock": 161,
+          "cpu_ack": 88,
+          "video_ack": 77,
+          "sound_ack": 127,
+          "peripheral_ack": 128
+        },
+        "individually_synchronized_flags": {
+          "pll_locked": true,
+          "cpu_reset": false,
+          "pixel_reset": false,
+          "ready": true,
+          "memc_cyc": true,
+          "memc_stb": true,
+          "memc_write": false,
+          "memory_ack": false,
+          "psram_busy": false,
+          "arbiter_armed": false,
+          "arbiter_state": 2,
+          "psram_state": 0
+        }
+      },
+      "scope": "Physical A press/hold/release propagated through APF PAD, coherent key mailbox and ARM heartbeat; all CPU/video/sound/peripheral counters continue. Other keys and full Archimedes keyboard protocol remain untested."
+    }
+  ],
+  "sd_installation": {
+    "version": "0.1.5-diagnostic",
+    "command": [
+      "python",
+      "tools/install_diagnostic.py",
+      "--root",
+      "F:\\"
+    ],
+    "working_directory": "C:\\Projects\\PocketLotus",
+    "changes": [
+      {
+        "path": "F:\\Cores\\PocketLotus.Diagnostic\\bitstream.rbf_r",
+        "previous_sha256": "b3f323b90f00190692c09dc0f67797901e60634202c7da3bc730548fb970a7ed",
+        "sha256": "3c4051531b36d47c17430b22755b8e719792f73b45c37df2952d52c5a650f4de"
+      },
+      {
+        "path": "F:\\Cores\\PocketLotus.Diagnostic\\core.json",
+        "previous_sha256": "3eafe11f93b237a45c176ad234cc07a6b79b645366743a0e6a1a3200fede60b7",
+        "sha256": "db563b185d0b2ffaaf088a9cc4fc4f5e3be6a7d05f8ba117eaeb0fa7c28bdb43"
+      },
+      {
+        "path": "F:\\Cores\\PocketLotus.Diagnostic\\info.txt",
+        "previous_sha256": "d49c93c7ce3f1665614f651e72334774b0518992a6cf90e758df6c99a5420c00",
+        "sha256": "0cc9e939c34a18ec99d5d808e53f305bf2de159f7cdfc2f5b7c5af7b1d5dc5e5"
+      }
+    ],
+    "files": [
+      {
+        "path": "F:\\Assets\\pocketlotusdiag\\common\\diagnostic.bin",
+        "sha256": "4aeefc75ebc25f583fbd6ff0aedeb4ac7e65fd0f255a8698c1bf5aab73c8d8f7",
+        "matches_package": true
+      },
+      {
+        "path": "F:\\Assets\\pocketlotusdiag\\common\\diagnostic.json",
+        "sha256": "d9db193d6bcd5be3b322d9cfda25b72ac40a0d7aafb83919a3610afc06c24ad1",
+        "matches_package": true
+      },
+      {
+        "path": "F:\\Cores\\PocketLotus.Diagnostic\\audio.json",
+        "sha256": "901bd52a78484af4e73d4c67dbed75ca9f42e2e7e00b3306b91e0a51e062a870",
+        "matches_package": true
+      },
+      {
+        "path": "F:\\Cores\\PocketLotus.Diagnostic\\bitstream.rbf_r",
+        "sha256": "3c4051531b36d47c17430b22755b8e719792f73b45c37df2952d52c5a650f4de",
+        "matches_package": true
+      },
+      {
+        "path": "F:\\Cores\\PocketLotus.Diagnostic\\core.json",
+        "sha256": "db563b185d0b2ffaaf088a9cc4fc4f5e3be6a7d05f8ba117eaeb0fa7c28bdb43",
+        "matches_package": true
+      },
+      {
+        "path": "F:\\Cores\\PocketLotus.Diagnostic\\data.json",
+        "sha256": "ce9ca967ee17084b58bdc6d9a8c20ea84b5384e8fa0f58d26c6fbb05c164f792",
+        "matches_package": true
+      },
+      {
+        "path": "F:\\Cores\\PocketLotus.Diagnostic\\info.txt",
+        "sha256": "0cc9e939c34a18ec99d5d808e53f305bf2de159f7cdfc2f5b7c5af7b1d5dc5e5",
+        "matches_package": true
+      },
+      {
+        "path": "F:\\Cores\\PocketLotus.Diagnostic\\input.json",
+        "sha256": "f0323b1d12940edbb47bf8f846f8fb8f8c898559c1ceffbf33b22fa0e6a267c9",
+        "matches_package": true
+      },
+      {
+        "path": "F:\\Cores\\PocketLotus.Diagnostic\\interact.json",
+        "sha256": "dc506ef71695d9ab4c903440f499a888152de1bad57dfbb2843adc9aa74d15b8",
+        "matches_package": true
+      },
+      {
+        "path": "F:\\Cores\\PocketLotus.Diagnostic\\variants.json",
+        "sha256": "445c0e6f3e20bd57bf02dbea55c3c19ef8c50aeb3343d91fdf09d3f0c0f12e21",
+        "matches_package": true
+      },
+      {
+        "path": "F:\\Cores\\PocketLotus.Diagnostic\\video.json",
+        "sha256": "131411fee0bc7e1bac547b9cdf41c65fe8a36fbae246e4343f308d82352a2d38",
+        "matches_package": true
+      },
+      {
+        "path": "F:\\Platforms\\pocketlotusdiag.json",
+        "sha256": "d3d40fc22f0e9795a7898655702673ecd453bf1fcb4f8550293c44a2696cb41b",
+        "matches_package": true
+      }
+    ],
+    "all_matched": true,
+    "scope": "SD file installation/readback only; no hardware execution claim"
+  },
+  "next_hardware_gate": "External APF/PSRAM physical timing and geometry/stereo qualification remain open. Next software gate: RISC OS boot with real keyboard/CMOS/RTC/storage and separately supplied RISC OS ROM, ADFFS and IDE-ROM dependencies.",
+  "source_regression_followup": {
+    "version": "0.1.5-diagnostic",
+    "defect": "Flyback cancels an accepted video/cursor DMA burst; returning data can populate a new CPU cache line",
+    "legacy_expected_failure": "76543210 DMA data returned instead of cafe0000 CPU RAM word",
+    "fix": "Drain four DMA acknowledgements before resetting pointers; prevent new video/cursor grants during flyback",
+    "positive_scope": "Sixteen real MEMC/arbiter/PSRAM video/cursor read and ACK boundary cases, correct CPU cache miss/hit data",
+    "hardware_causality": "Frozen 0.1.4 status did not recur in the fixed 0.1.5 run: all 39 snapshots progress. Physical faulty DMA return was not directly captured; directed regression proves the mechanism separately.",
+    "memc_flyback": {
+      "path": "build/sim/memc_flyback.log",
+      "sha256": "e0c6094006cb9a576eee4b8228fd81bfd64d8dddeeb8ee33d21396bba9c81e98",
+      "result": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+          "-i",
+          "C:\\Projects\\PocketLotus\\build\\sim\\memc_flyback.vvp"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 0,
+        "elapsed_seconds": 0.448647000011988,
+        "expected_exit_code": 0
+      }
+    },
+    "memc_flyback-baseline": {
+      "path": "build/sim/memc_flyback-baseline.log",
+      "sha256": "aee4229a9a6fd1a4f72f828ba98703182647fb4767fb640f68895d748e958dc3",
+      "result": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+          "-i",
+          "C:\\Projects\\PocketLotus\\build\\sim\\memc_flyback-baseline.vvp"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 1,
+        "elapsed_seconds": 0.15547320002224296,
+        "expected_exit_code": 1
+      }
+    },
+    "probe": {
+      "path": "build/sim/probe.log",
+      "sha256": "739bc4dbd816ff0e152561046656626f34290c5c7bf09418cb9419a794ae1e53",
+      "result": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+          "-i",
+          "C:\\Projects\\PocketLotus\\build\\sim\\probe.vvp"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 0,
+        "elapsed_seconds": 0.04602909996174276,
+        "expected_exit_code": 0
+      }
+    }
+  },
+  "input_evidence": {
+    "version": "0.1.5-diagnostic",
+    "status": "a_press_and_release_verified_in_runtime_log",
+    "evidence_type": "user_performed_button_hold_and_device_runtime_log",
+    "device_log": {
+      "path": "build\\hardware-logs\\PocketLotus.Diagnostic_20261008_195617.txt",
+      "bytes": 37261,
+      "sha256": "79561798ea51663a8720696a511f63323300d91303b8a19a9844284c525eff9e",
+      "event_count": 400,
+      "complete_bursts": 25,
+      "unique_snapshots": 25
+    },
+    "runtime_analysis_path": "build/hardware-logs/runtime-0.1.5-input.json",
+    "result_sequence": [
+      {
+        "bursts": 3,
+        "result": "600d0000",
+        "interpretation": "before press"
+      },
+      {
+        "bursts": 15,
+        "result": "600d0010",
+        "interpretation": "A bit 4 held"
+      },
+      {
+        "bursts": 7,
+        "result": "600d0000",
+        "interpretation": "after release"
+      }
+    ],
+    "counter_progress": {
+      "cpu_ack_count": {
+        "first": 227273,
+        "last": 5483526,
+        "strictly_increasing": true
+      },
+      "video_ack_count": {
+        "first": 247532,
+        "last": 6530772,
+        "strictly_increasing": true
+      },
+      "sound_ack_count": {
+        "first": 3780,
+        "last": 99324,
+        "strictly_increasing": true
+      },
+      "peripheral_ack_count": {
+        "first": 18135,
+        "last": 475200,
+        "strictly_increasing": true
+      }
+    },
+    "first_snapshot": {
+      "timestamp": "2026/10/08 19:56:21",
+      "words": [
+        "600d0000",
+        "000377c9",
+        "0003c6ec",
+        "00000ec4",
+        "000046d7",
+        "0380019c",
+        "8def4e2b",
+        "9d188dd8"
+      ],
+      "status": {
+        "result": 1611464704,
+        "cpu_ack_count": 227273,
+        "video_ack_count": 247532,
+        "sound_ack_count": 3780,
+        "peripheral_ack_count": 18135,
+        "last_cpu_address": 58720668
+      },
+      "probe_edge_observations_mod256": {
+        "system_clock": 43,
+        "pixel_clock": 78,
+        "cpu_ack": 239,
+        "video_ack": 141,
+        "sound_ack": 216,
+        "peripheral_ack": 141
+      },
+      "individually_synchronized_flags": {
+        "pll_locked": true,
+        "cpu_reset": false,
+        "pixel_reset": false,
+        "ready": true,
+        "memc_cyc": true,
+        "memc_stb": true,
+        "memc_write": false,
+        "memory_ack": true,
+        "psram_busy": false,
+        "arbiter_armed": false,
+        "arbiter_state": 3,
+        "psram_state": 0
+      }
+    },
+    "last_snapshot": {
+      "timestamp": "2026/10/08 19:56:33",
+      "words": [
+        "600d0000",
+        "0053ac06",
+        "0063a6d4",
+        "000183fc",
+        "00074040",
+        "02010010",
+        "4d58a17a",
+        "9c10807f"
+      ],
+      "status": {
+        "result": 1611464704,
+        "cpu_ack_count": 5483526,
+        "video_ack_count": 6530772,
+        "sound_ack_count": 99324,
+        "peripheral_ack_count": 475200,
+        "last_cpu_address": 33619984
+      },
+      "probe_edge_observations_mod256": {
+        "system_clock": 122,
+        "pixel_clock": 161,
+        "cpu_ack": 88,
+        "video_ack": 77,
+        "sound_ack": 127,
+        "peripheral_ack": 128
+      },
+      "individually_synchronized_flags": {
+        "pll_locked": true,
+        "cpu_reset": false,
+        "pixel_reset": false,
+        "ready": true,
+        "memc_cyc": true,
+        "memc_stb": true,
+        "memc_write": false,
+        "memory_ack": false,
+        "psram_busy": false,
+        "arbiter_armed": false,
+        "arbiter_state": 2,
+        "psram_state": 0
+      }
+    },
+    "scope": "Physical A press/hold/release propagated through APF PAD, coherent key mailbox and ARM heartbeat; all CPU/video/sound/peripheral counters continue. Other keys and full Archimedes keyboard protocol remain untested."
+  }
+}

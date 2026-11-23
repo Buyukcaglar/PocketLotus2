@@ -1,0 +1,4 @@
+[os]
+ELF=lotus2.elf
+ARGS=$ARGS
+VARIANT=os25

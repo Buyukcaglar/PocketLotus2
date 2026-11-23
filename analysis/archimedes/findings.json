@@ -1,0 +1,178 @@
+{
+  "schema_version": 1,
+  "analysis_date": "2026-10-08",
+  "scope": "Read-only source and primary web evidence; no synthesis, compilation, emulator/game execution, hardware test, or media modification.",
+  "recommendation": {
+    "primary": "Standalone Pocket openFPGA Archimedes core using Archie_MiSTer rtl/ as the working chipset baseline, with an APF Pocket shell and replacement host services.",
+    "reason": "Latest inspected MiSTer source includes self-contained FDC/IDE RTL and current chipset maintenance. MiST predecessor supplies a smaller-FPGA target and useful CPU fuzz tests; use it as an architecture/resource cross-reference, not automatically the current behavior baseline.",
+    "first_proof_gate": "Build a ROM-free Pocket synthesis/timing/resource smoke target for retained ARM26/MEMC/VIDC/IOC and a real external-memory adapter, after a module/license/dependency manifest. The gate is actual 5CEBA4 fit and timing closure with APF; do not infer either from MiST target or Pocket capacities.",
+    "media_gate": "A second, independent early gate must show how these local JFDs will boot: most conservative candidate is user-provisioned RISC OS 3.11 plus ADFFS on HDF. ADF conversion is conditional on preserving required JFD sectors/protection/deltas/boot behavior.",
+    "fallback": "ArcEm ARM26 C interpreter app on openfpgaOS is a benchmark-first alternative if OS hosting becomes a requirement; no evidence here establishes adequate Pocket CPU performance."
+  },
+  "sources": [
+    {
+      "id": "archie_mister",
+      "url": "https://github.com/MiSTer-devel/Archie_MiSTer",
+      "commit": "7edeed510dbb80f505c1126b3a19b9416783989a",
+      "commit_date": "2026-06-03",
+      "local": "C:/Projects/PocketLotus/references/Archimedes_MiSTer",
+      "target": "Cyclone V 5CSEBA6U23I7 via sys/sys.tcl:1-2",
+      "snapshot": "Blobless shallow clone; source/config checkout excludes releases/ and embedded riscdevide ROM and CMOS data."
+    },
+    {
+      "id": "archie_mist",
+      "url": "https://github.com/mist-devel/archimedes",
+      "commit": "09ac3d0c68a16ef6524ad0a392e098bfe079fc89",
+      "commit_date": "2024-02-06",
+      "local": "C:/Projects/PocketLotus/references/Archimedes_MiSTCore",
+      "target": "Cyclone III EP3C25E144C8 via fpga/mist/archimedes_mist.qsf:39-40",
+      "snapshot": "Blobless shallow clone; selected source/config checkout excludes ROM/media/data files; submodules not fetched.",
+      "submodules": [
+        {
+          "path": "fpga/mist/mist-modules",
+          "commit": "9f47172249c5ac300402fdeebeb26cb176155a2c",
+          "url": "https://github.com/mist-devel/mist-modules.git"
+        },
+        {
+          "path": "rtl/fdc1772",
+          "commit": "be0783f8600d7d9cacacf9ccd3821a62eb17e18b",
+          "url": "https://github.com/mist-devel/fdc1772-verilator.git"
+        }
+      ]
+    },
+    {
+      "id": "arcem",
+      "url": "https://github.com/ArcEm-emu/ArcEm",
+      "commit": "b682d4b5c9e1bd01138d46859adc1738e7eaf94a",
+      "commit_date": "2026-09-23",
+      "local": "C:/Projects/PocketLotus/references/Archimedes_ArcEm",
+      "license": "GPL-2.0-or-later in armemu.h and Makefile; docs/COPYING contains GPL v2",
+      "snapshot": "Blobless shallow source/config checkout; excludes packaged native binaries, support modules, images, PDFs, ROM/CMOS data."
+    },
+    {
+      "id": "arculator",
+      "url": "https://github.com/sarah-walker-pcem/arculator",
+      "commit": "7d3d2679589bba759197e3a9288a12749c797381",
+      "commit_date": "2026-08-10",
+      "local": "C:/Projects/PocketLotus/references/Archimedes_Arculator",
+      "license": "README declares GPL v2.0; COPYING supplied",
+      "contribution_policy": "README prohibits AI generated/assisted contributions upstream.",
+      "snapshot": "Blobless shallow selected src/text checkout; excludes ROM, CMOS, samples, podule binary packages and icons."
+    }
+  ],
+  "hardware_components": [
+    {
+      "component": "ARM26",
+      "evidence": "rtl/archimedes_top.v:140 instantiates a23_core; rtl/amber/a23_execute.v:333 restricts access to 26-bit space; a23_register_bank.v:65,272-284 combines 24-bit word PC [25:2] with flags/interrupt/mode bits in R15.",
+      "license": "Amber files LGPL-2.1-or-later"
+    },
+    {
+      "component": "MEMC",
+      "evidence": "rtl/memc.v and memc_translator.v implement CPU/DMA/translation/protection; translator has 128-entry page table, 32 KiB output-page layout (128*32 KiB = 4 MiB mapped physical RAM).",
+      "license": "BSD style 3-clause per-file headers"
+    },
+    {
+      "component": "VIDC",
+      "evidence": "rtl/vidc/vidc.v, vidc_timing.v, vidc_audio.v, DMA/FIFO modules; palette/pixel timing, DMA and sound exist.",
+      "license": "BSD style headers in inspected VIDC main module; audit each retained file"
+    },
+    {
+      "component": "IOC",
+      "evidence": "rtl/ioc.v, ioc_irq.v implement IO/timers/interrupts; external keyboard interface supplied by wrapper host.",
+      "license": "BSD style per-file header in ioc.v"
+    },
+    {
+      "component": "FDC",
+      "evidence": "rtl/fdc/fdc1772.sv:104-115 IMG_ARCHIE uses regular 1024-byte sectors, sector IDs starting at 0, fixed 5/10 sectors per track and LBA reads.",
+      "license": "GPL-3.0-or-later"
+    },
+    {
+      "component": "IDE/HDF",
+      "evidence": "rtl/archimedes_top.v:381 instantiates podule_ide; podule_ide.sv:43-44 embeds 16 KiB riscdevide ROM via readmemh. ide.v provides host management port.",
+      "license": "podule_ide.sv GPL-3.0-or-later; ide.v BSD style; embedded ROM licensing not verified"
+    }
+  ],
+  "licensing": {
+    "readme_summary": "MiSTer ReadMe.md says core dual LGPL/BSD and Amber LGPL.",
+    "source_discrepancy": "Do not use README summary as blanket grant: rtl/archimedes_top.v and fdc1772.sv and podule_ide.sv carry GPL-3.0-or-later; Archie.sv wrapper is GPL-2.0-or-later; Amber LGPL-2.1-or-later; major peripherals BSD style.",
+    "adffs": "Public author release lists source288.zip; no license text found on release page. Source archive was not obtained because attachment access failed/Cloudflare blocked direct HTTP; reuse/redistribution terms remain unverified.",
+    "game": "JASPP Lotus page says distribution rights held by JASPP. That does not establish permission for this project to repackage game files.",
+    "rom": "User must separately provision suitable RISC OS ROM and any needed boot/components. No ROM binaries were downloaded or checked out."
+  },
+  "pocket_fit": {
+    "official_specs_url": "https://www.analogue.co/developer",
+    "logic_elements": 49000,
+    "bram_bits_approx": 3400000,
+    "psram_bytes": 33554432,
+    "sdram_bytes": 67108864,
+    "sram_bytes": 262144,
+    "plausibility": "Original MiST target is EP3C25 Cyclone III, so small-FPGA implementation has a source history. Pocket RAM capacity exceeds 4 MiB guest RAM plus typical 2 MiB RISC OS 3 image.",
+    "limits": "Neither device name nor memory capacity proves fit, bandwidth, power, or correct memory latency. No Quartus utilization/Fmax/timing report was found in checked-out source. Pocket/APF pin, clock, memory and video adapters remain work.",
+    "mister_clocks": "Archie.sv:281 CLKSYS=42 MHz; rtl/sdram.v:108 RAM_CLK=126 MHz. MiST top comments use 40 MHz system/120 MHz memory. Preserve guest timing intent; retarget PLL/IP and memory adapter rather than copy board clock assumptions."
+  },
+  "media": {
+    "native_floppy_support": "MiSTer README supports two drives with ADF exactly 819200 bytes, not JFD; RTL IMG_ARCHIE regular sector backend confirms no native JFD parser.",
+    "jfd_path": "ADFFS mounted from a guest hard drive can supply JFD at the guest filing-system/controller abstraction level. Must prove actual local images, game script and any required compatibility deltas on this core.",
+    "adffs_version": "2.88 posted 2026-03-28; author lists A-series 4 MiB RAM minimum, RISC OS 3.10+, hard-drive install. Lists Arculator recommended configuration and all other emulators untested.",
+    "adffs_url": "https://forums.jaspp.org.uk/forum/viewtopic.php?t=722",
+    "lotus_primary_url": "https://forums.jaspp.org.uk/forum/viewtopic.php?f=25&t=226",
+    "lotus_requirements": "JASPP entry ID 10232 lists ARM2 through newer CPUs, original game 1024 KiB RAM, OS 3.11+; use Boot floppy. These are published compatibility claims, not this project's validation.",
+    "timing_risk": "Author's Lotus thread follow-up describes VSync-count/T1-tick-based raster palette timing and possible lock on unexpected VSync; Pocket presentation adaptation must not silently change guest timing.",
+    "jfd_conversion_rule": "Do not simply unzip JFD to ADF or rename extension. Conversion can discard physical-sector layout, CRC/protection flags, delta sectors and script behavior; acceptance requires explicit comparison and runtime proof.",
+    "riscos_rom_bytes_typical": 2097152,
+    "rom_size_evidence": "Arculator romload.c:227-233 caps contiguous ROM load at 0x200000; older author Arculator readme gives SAVE rom 3800000+200000 for RISC OS 3. Use actual user image size/hash as definitive input.",
+    "rom_source_reference": "https://github.com/dboddie/arculator/blob/c88f1f5fa6acf92d69fb3b5f932f60262c9ce3a7/readme.txt",
+    "rom_provisioning_reference": "https://www.riscos.com/shop/products/101/index.htm",
+    "rom_provisioning_status": "Official Classic ROMs product page documents contiguous 3.11 ROM and boot/apps/utilities. Emulation index currently shows Ordering Offline. No purchase/download was attempted."
+  },
+  "host_adaptation": [
+    "Replace MiSTer HPS_BUS/hps_io EXT_BUS with APF bridge/data slots and Pocket options.",
+    "Implement ROM transfer/reset gating; RISC OS boot and CMOS/RTC initialization/save.",
+    "Implement filesystem/block service for floppy sectors and HDF/IDE management; choose read-only originals and explicit separate writable user storage.",
+    "Translate Pocket/Dock gamepad events to Archimedes keyboard/joystick protocol; support boot/menu/function keys and multi-disk selection.",
+    "Replace sys/ MiSTer video/audio plumbing with Pocket APF output, retaining guest VIDC timing and palette behavior.",
+    "Retarget board-specific PLL and SDRAM/PSRAM IP with arbitration for CPU/VIDC/sound/host transfer.",
+    "Audit embedded RiscDev IDE ROM dependency before build/publication; original source-only snapshot deliberately excludes it."
+  ],
+  "arcem_fallback": {
+    "cpu": "armemu.c:1155+ ARMul_Emulate26 runs a C instruction interpreter with optional cached instruction-handler pointers; no ARM-to-RISC-V native code generator was found in inspected core.",
+    "host_portability": "armemu.h:27-57 detects ARM/x86/PPC optimizations and has generic immediate-table fallback for unknown host; RISC-V compilation is not tested.",
+    "platform_changes": "CMakeLists.txt exposes X, SDL1/2/3, macOS, Windows backends. SDK video/audio/input, timers, file I/O, callbacks/control UI and optionally HostFS need a new platform backend.",
+    "memory": "arch/armarc.c:294-329 allocates guest RAM+ROM and optional equally proportional instruction handler cache on a 32-bit host; measured heap and SDRAM placement required.",
+    "disk": "arch/fdc1772.c:127-136 only lists flat ADFS/DOS geometries. No direct JFD path found. Guest ADFFS likely needs HostFS or implemented HDF controller; ArcEm current disk controller is HDC63463/ST506.",
+    "limits": "A software port cannot be promised full speed from 100 MHz host CPU rating; instruction/memory/MMIO/audio/render costs need measurement. ADFFS/MMU/protection compatibility needs independent proof."
+  },
+  "existing_pocket_core_search": {
+    "url": "https://openfpga-library.github.io/analogue-pocket/",
+    "result": "No Archie or Archimedes entry found in current library page and no specific Pocket repo found in focused searches.",
+    "limits": "Catalog/search absence is discovery evidence only; not proof no unpublished or unindexed port exists."
+  },
+  "proof_milestones": [
+    {
+      "id": "H1",
+      "name": "Source dependency and license manifest",
+      "pass": "List retained HDL/APF/memory IP and ROM-dependent modules at pinned revisions; resolve embedded ROM/ADFFS redistribution terms before distributing them."
+    },
+    {
+      "id": "H2",
+      "name": "Pocket resource and memory gate",
+      "pass": "Actual 5CEBA4 target synthesis+fit+timing report, constrained clocks, external-memory stress and DMA arbitration; no guest media required for initial gate."
+    },
+    {
+      "id": "H3",
+      "name": "Boot gate",
+      "pass": "User-provisioned RISC OS 3.11 boots with 4 MiB guest memory, stable video, IOC IRQ/timers, keyboard, sound and CMOS reset/persistence."
+    },
+    {
+      "id": "H4",
+      "name": "JFD boot gate",
+      "pass": "Guest HDF/block route reads these immutable local JFDs through a pinned ADFFS package and Boot floppy; prove both disk switching and script/delta application. Flat ADF shortcut only after a documented validity test."
+    },
+    {
+      "id": "H5",
+      "name": "Lotus runtime gate",
+      "pass": "Hardware title/demo/race, music/effects, palette raster, steering/throttle/brake/menu, later stages and disk transitions; record observed stability and timing separately from build success."
+    }
+  ],
+  "cleanup_note": "An unused blobless no-checkout Archimedes_MiST reference points to mist-devel/mist-board; it has no current Archie subtree. An attempted resolved-literal Remove-Item cleanup was rejected by automatic approval review as blocked by policy and not retried."
+}

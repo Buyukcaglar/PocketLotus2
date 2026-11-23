@@ -1,0 +1,4229 @@
+{
+  "recorded_at_utc": "2026-10-08T17:17:28.430996+00:00",
+  "source_manifest_sha256": "9d4fef1968b07256285ecddcdc19952970d0a1cc5dc068704037e37447dd20cd",
+  "module_manifest_sha256": "5db7a246ae57958f4f27c15097b951ba36a628752349fc2609d9a82583ea0178",
+  "simulation": {
+    "host_reset": {
+      "command": [
+        "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+        "-i",
+        "C:\\Projects\\PocketLotus\\build\\sim\\host_reset.vvp"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "exit_code": 0,
+      "elapsed_seconds": 0.3474703000392765,
+      "expected_exit_code": 0,
+      "elaboration": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+          "-g2012",
+          "-DSIMULATION",
+          "-I",
+          "rtl/vendor/archie/amber",
+          "-I",
+          "build/diagnostic",
+          "-s",
+          "tb_host_reset",
+          "-o",
+          "C:\\Projects\\PocketLotus\\build\\sim\\host_reset.vvp",
+          "rtl/vendor/archie/amber/a23_barrel_shift.v",
+          "rtl/vendor/archie/amber/a23_wishbone.v",
+          "rtl/vendor/archie/amber/a23_register_bank.v",
+          "rtl/vendor/archie/amber/a23_multiply.v",
+          "rtl/vendor/archie/amber/a23_fetch.v",
+          "rtl/vendor/archie/amber/a23_execute.v",
+          "rtl/vendor/archie/amber/a23_decode.v",
+          "rtl/vendor/archie/amber/a23_coprocessor.v",
+          "rtl/vendor/archie/amber/a23_cache.v",
+          "rtl/vendor/archie/amber/a23_alu.v",
+          "rtl/vendor/archie/amber/sram_byte_en.v",
+          "rtl/vendor/archie/amber/sram_line_en.v",
+          "rtl/vendor/archie/amber/a23_core.v",
+          "build/ported/memc.v",
+          "rtl/vendor/archie/memc_translator.v",
+          "rtl/vendor/archie/ioc.v",
+          "rtl/vendor/archie/ioc_irq.v",
+          "rtl/vendor/archie/latches.v",
+          "build/ported/vidc.v",
+          "rtl/vendor/archie/vidc/vidc_timing.v",
+          "build/ported/vidc_fifo.v",
+          "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+          "build/ported/vidc_audio.v",
+          "rtl/pocket_chipset.v",
+          "rtl/memory_arbiter.v",
+          "rtl/psram_word.v",
+          "rtl/async_fifo.v",
+          "rtl/reset_sync.v",
+          "rtl/pocket_video.v",
+          "rtl/pocket_debug.v",
+          "rtl/pocket_probe.v",
+          "rtl/pocket_host.v",
+          "rtl/pocket_reset.v",
+          "rtl/pocket_audio.v",
+          "sim/primitive_models.v",
+          "sim/psram_model.v",
+          "sim/tb_host_reset.v"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 0,
+        "elapsed_seconds": 0.17878570000175387,
+        "expected_exit_code": 0,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "log_sha256": "0d307a38bb134e9cb5cc628bce33cdd60ec2238b9b27978ce1234a751871755d",
+      "assertion_result": [
+        "PASS host CDC: 129 writes drained, 128 ordered reads at 88 clocks, coherent status, reset gating, sticky overrun"
+      ]
+    },
+    "apf_boot": {
+      "command": [
+        "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+        "-i",
+        "C:\\Projects\\PocketLotus\\build\\sim\\apf_boot.vvp"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "exit_code": 0,
+      "elapsed_seconds": 4.0109156999969855,
+      "expected_exit_code": 0,
+      "elaboration": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+          "-g2012",
+          "-DSIMULATION",
+          "-I",
+          "rtl/vendor/archie/amber",
+          "-I",
+          "build/diagnostic",
+          "-s",
+          "tb_apf_boot",
+          "-o",
+          "C:\\Projects\\PocketLotus\\build\\sim\\apf_boot.vvp",
+          "rtl/vendor/archie/amber/a23_barrel_shift.v",
+          "rtl/vendor/archie/amber/a23_wishbone.v",
+          "rtl/vendor/archie/amber/a23_register_bank.v",
+          "rtl/vendor/archie/amber/a23_multiply.v",
+          "rtl/vendor/archie/amber/a23_fetch.v",
+          "rtl/vendor/archie/amber/a23_execute.v",
+          "rtl/vendor/archie/amber/a23_decode.v",
+          "rtl/vendor/archie/amber/a23_coprocessor.v",
+          "rtl/vendor/archie/amber/a23_cache.v",
+          "rtl/vendor/archie/amber/a23_alu.v",
+          "rtl/vendor/archie/amber/sram_byte_en.v",
+          "rtl/vendor/archie/amber/sram_line_en.v",
+          "rtl/vendor/archie/amber/a23_core.v",
+          "build/ported/memc.v",
+          "rtl/vendor/archie/memc_translator.v",
+          "rtl/vendor/archie/ioc.v",
+          "rtl/vendor/archie/ioc_irq.v",
+          "rtl/vendor/archie/latches.v",
+          "build/ported/vidc.v",
+          "rtl/vendor/archie/vidc/vidc_timing.v",
+          "build/ported/vidc_fifo.v",
+          "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+          "build/ported/vidc_audio.v",
+          "rtl/pocket_chipset.v",
+          "rtl/memory_arbiter.v",
+          "rtl/psram_word.v",
+          "rtl/async_fifo.v",
+          "rtl/reset_sync.v",
+          "rtl/pocket_video.v",
+          "rtl/pocket_debug.v",
+          "rtl/pocket_probe.v",
+          "rtl/core_top.v",
+          "rtl/pocket_host.v",
+          "rtl/pocket_reset.v",
+          "rtl/pocket_pll.v",
+          "rtl/pocket_audio.v",
+          "build/ported/apf_top.v",
+          "rtl/vendor/pocket/apf/common.v",
+          "build/ported/io_bridge_peripheral.v",
+          "build/ported/io_pad_controller.v",
+          "rtl/vendor/pocket/apf/mf_ddio_bidir_12.v",
+          "rtl/vendor/pocket/apf/mf_datatable.v",
+          "build/ported/core_bridge_cmd.v",
+          "sim/primitive_models.v",
+          "sim/psram_model.v",
+          "sim/tb_apf_boot.v"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 0,
+        "elapsed_seconds": 0.4015438000205904,
+        "expected_exit_code": 0,
+        "log_sha256": "2423273338e6ed088cfb161caa6cdc96aeaea8fba935acf00fbd48cee7524fb3"
+      },
+      "log_sha256": "8c6e47241b0686b543fb485f6b8802d192afcfd9c141b32b4bf9cfc44558c9fc",
+      "assertion_result": [
+        "PASS documented APF boot: BRIDGE status Setup/Idle, unsupported write ID rejected, 0082 688-byte load, 008f drain, 0140 Ready to Run handshake, reset-exit/ARM word/byte test/reset-enter, second 0082 reload revokes ready and re-executes ARM"
+      ]
+    },
+    "apf_run": {
+      "command": [
+        "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+        "-i",
+        "C:\\Projects\\PocketLotus\\build\\sim\\apf_run.vvp"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "exit_code": 0,
+      "elapsed_seconds": 475.4264026999008,
+      "expected_exit_code": 0,
+      "elaboration": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+          "-g2012",
+          "-DSIMULATION",
+          "-DLONG_APF_DIAGNOSTIC",
+          "-I",
+          "rtl/vendor/archie/amber",
+          "-I",
+          "build/diagnostic",
+          "-s",
+          "tb_apf_boot",
+          "-o",
+          "C:\\Projects\\PocketLotus\\build\\sim\\apf_run.vvp",
+          "rtl/vendor/archie/amber/a23_barrel_shift.v",
+          "rtl/vendor/archie/amber/a23_wishbone.v",
+          "rtl/vendor/archie/amber/a23_register_bank.v",
+          "rtl/vendor/archie/amber/a23_multiply.v",
+          "rtl/vendor/archie/amber/a23_fetch.v",
+          "rtl/vendor/archie/amber/a23_execute.v",
+          "rtl/vendor/archie/amber/a23_decode.v",
+          "rtl/vendor/archie/amber/a23_coprocessor.v",
+          "rtl/vendor/archie/amber/a23_cache.v",
+          "rtl/vendor/archie/amber/a23_alu.v",
+          "rtl/vendor/archie/amber/sram_byte_en.v",
+          "rtl/vendor/archie/amber/sram_line_en.v",
+          "rtl/vendor/archie/amber/a23_core.v",
+          "build/ported/memc.v",
+          "rtl/vendor/archie/memc_translator.v",
+          "rtl/vendor/archie/ioc.v",
+          "rtl/vendor/archie/ioc_irq.v",
+          "rtl/vendor/archie/latches.v",
+          "build/ported/vidc.v",
+          "rtl/vendor/archie/vidc/vidc_timing.v",
+          "build/ported/vidc_fifo.v",
+          "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+          "build/ported/vidc_audio.v",
+          "rtl/pocket_chipset.v",
+          "rtl/memory_arbiter.v",
+          "rtl/psram_word.v",
+          "rtl/async_fifo.v",
+          "rtl/reset_sync.v",
+          "rtl/pocket_video.v",
+          "rtl/pocket_debug.v",
+          "rtl/pocket_probe.v",
+          "rtl/core_top.v",
+          "rtl/pocket_host.v",
+          "rtl/pocket_reset.v",
+          "rtl/pocket_pll.v",
+          "rtl/pocket_audio.v",
+          "build/ported/apf_top.v",
+          "rtl/vendor/pocket/apf/common.v",
+          "build/ported/io_bridge_peripheral.v",
+          "build/ported/io_pad_controller.v",
+          "rtl/vendor/pocket/apf/mf_ddio_bidir_12.v",
+          "rtl/vendor/pocket/apf/mf_datatable.v",
+          "build/ported/core_bridge_cmd.v",
+          "sim/primitive_models.v",
+          "sim/psram_model.v",
+          "sim/tb_apf_boot.v"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 0,
+        "elapsed_seconds": 0.5042616999708116,
+        "expected_exit_code": 0,
+        "log_sha256": "2423273338e6ed088cfb161caa6cdc96aeaea8fba935acf00fbd48cee7524fb3"
+      },
+      "log_sha256": "a575805f06f5c54ac6ae288193f5db2a1402cb525780037cd60abfe1d8c9f73f",
+      "assertion_result": [
+        "PASS sustained APF core: load/reload, ARM success/input, CPU/video/sound progress, coherent status and independent clock/reset probes through 0152 events=112, three frame boundaries at DDR pins with 320x256/gaps/blanking/19.992875ms checks",
+        "PASS documented APF boot: BRIDGE status Setup/Idle, unsupported write ID rejected, 0082 688-byte load, 008f drain, 0140 Ready to Run handshake, reset-exit/ARM word/byte test/reset-enter, second 0082 reload revokes ready and re-executes ARM"
+      ]
+    },
+    "debug": {
+      "command": [
+        "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+        "-i",
+        "C:\\Projects\\PocketLotus\\build\\sim\\debug.vvp"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "exit_code": 0,
+      "elapsed_seconds": 0.04914609994739294,
+      "expected_exit_code": 0,
+      "elaboration": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+          "-g2012",
+          "-DSIMULATION",
+          "-I",
+          "rtl/vendor/archie/amber",
+          "-I",
+          "build/diagnostic",
+          "-s",
+          "tb_debug",
+          "-o",
+          "C:\\Projects\\PocketLotus\\build\\sim\\debug.vvp",
+          "rtl/vendor/archie/amber/a23_barrel_shift.v",
+          "rtl/vendor/archie/amber/a23_wishbone.v",
+          "rtl/vendor/archie/amber/a23_register_bank.v",
+          "rtl/vendor/archie/amber/a23_multiply.v",
+          "rtl/vendor/archie/amber/a23_fetch.v",
+          "rtl/vendor/archie/amber/a23_execute.v",
+          "rtl/vendor/archie/amber/a23_decode.v",
+          "rtl/vendor/archie/amber/a23_coprocessor.v",
+          "rtl/vendor/archie/amber/a23_cache.v",
+          "rtl/vendor/archie/amber/a23_alu.v",
+          "rtl/vendor/archie/amber/sram_byte_en.v",
+          "rtl/vendor/archie/amber/sram_line_en.v",
+          "rtl/vendor/archie/amber/a23_core.v",
+          "build/ported/memc.v",
+          "rtl/vendor/archie/memc_translator.v",
+          "rtl/vendor/archie/ioc.v",
+          "rtl/vendor/archie/ioc_irq.v",
+          "rtl/vendor/archie/latches.v",
+          "build/ported/vidc.v",
+          "rtl/vendor/archie/vidc/vidc_timing.v",
+          "build/ported/vidc_fifo.v",
+          "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+          "build/ported/vidc_audio.v",
+          "rtl/pocket_chipset.v",
+          "rtl/memory_arbiter.v",
+          "rtl/psram_word.v",
+          "rtl/async_fifo.v",
+          "rtl/reset_sync.v",
+          "rtl/pocket_video.v",
+          "rtl/pocket_debug.v",
+          "rtl/pocket_probe.v",
+          "rtl/core_top.v",
+          "rtl/pocket_host.v",
+          "rtl/pocket_reset.v",
+          "rtl/pocket_pll.v",
+          "rtl/pocket_audio.v",
+          "build/ported/apf_top.v",
+          "rtl/vendor/pocket/apf/common.v",
+          "build/ported/io_bridge_peripheral.v",
+          "build/ported/io_pad_controller.v",
+          "rtl/vendor/pocket/apf/mf_ddio_bidir_12.v",
+          "rtl/vendor/pocket/apf/mf_datatable.v",
+          "build/ported/core_bridge_cmd.v",
+          "sim/primitive_models.v",
+          "sim/tb_debug.v"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 0,
+        "elapsed_seconds": 0.20171499997377396,
+        "expected_exit_code": 0,
+        "log_sha256": "15674ac5aeef14d1dd70489513e3dee518e252d5871e4e970f44154cfc285057"
+      },
+      "log_sha256": "0d6a7f8a9c40b3dfd73ca43d3334fb8a720a1cf117b2287f57c29e538fa51329",
+      "assertion_result": [
+        "PASS APF debug: Ready-to-Run priority/host fence, 32 ordered events, delayed host, coherent eight-word burst captures, reset cancellation/reload"
+      ]
+    },
+    "probe": {
+      "command": [
+        "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+        "-i",
+        "C:\\Projects\\PocketLotus\\build\\sim\\probe.vvp"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "exit_code": 0,
+      "elapsed_seconds": 0.04602909996174276,
+      "expected_exit_code": 0,
+      "elaboration": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+          "-g2012",
+          "-DSIMULATION",
+          "-I",
+          "rtl/vendor/archie/amber",
+          "-I",
+          "build/diagnostic",
+          "-s",
+          "tb_probe",
+          "-o",
+          "C:\\Projects\\PocketLotus\\build\\sim\\probe.vvp",
+          "rtl/vendor/archie/amber/a23_barrel_shift.v",
+          "rtl/vendor/archie/amber/a23_wishbone.v",
+          "rtl/vendor/archie/amber/a23_register_bank.v",
+          "rtl/vendor/archie/amber/a23_multiply.v",
+          "rtl/vendor/archie/amber/a23_fetch.v",
+          "rtl/vendor/archie/amber/a23_execute.v",
+          "rtl/vendor/archie/amber/a23_decode.v",
+          "rtl/vendor/archie/amber/a23_coprocessor.v",
+          "rtl/vendor/archie/amber/a23_cache.v",
+          "rtl/vendor/archie/amber/a23_alu.v",
+          "rtl/vendor/archie/amber/sram_byte_en.v",
+          "rtl/vendor/archie/amber/sram_line_en.v",
+          "rtl/vendor/archie/amber/a23_core.v",
+          "build/ported/memc.v",
+          "rtl/vendor/archie/memc_translator.v",
+          "rtl/vendor/archie/ioc.v",
+          "rtl/vendor/archie/ioc_irq.v",
+          "rtl/vendor/archie/latches.v",
+          "build/ported/vidc.v",
+          "rtl/vendor/archie/vidc/vidc_timing.v",
+          "build/ported/vidc_fifo.v",
+          "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+          "build/ported/vidc_audio.v",
+          "rtl/pocket_chipset.v",
+          "rtl/memory_arbiter.v",
+          "rtl/psram_word.v",
+          "rtl/async_fifo.v",
+          "rtl/reset_sync.v",
+          "rtl/pocket_video.v",
+          "rtl/pocket_debug.v",
+          "rtl/pocket_probe.v",
+          "rtl/pocket_host.v",
+          "rtl/pocket_reset.v",
+          "rtl/pocket_audio.v",
+          "sim/primitive_models.v",
+          "sim/psram_model.v",
+          "sim/tb_probe.v"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 0,
+        "elapsed_seconds": 0.1639368999749422,
+        "expected_exit_code": 0,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "log_sha256": "739bc4dbd816ff0e152561046656626f34290c5c7bf09418cb9419a794ae1e53",
+      "assertion_result": [
+        "PASS independent probes: live clocks/ACKs, stalled ACKs with clocks live, stopped generated clocks with bridge flags updating, reset while stopped"
+      ]
+    },
+    "memc_flyback": {
+      "command": [
+        "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+        "-i",
+        "C:\\Projects\\PocketLotus\\build\\sim\\memc_flyback.vvp"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "exit_code": 0,
+      "elapsed_seconds": 0.448647000011988,
+      "expected_exit_code": 0,
+      "elaboration": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+          "-g2012",
+          "-DSIMULATION",
+          "-I",
+          "rtl/vendor/archie/amber",
+          "-I",
+          "build/diagnostic",
+          "-s",
+          "tb_memc_flyback",
+          "-o",
+          "C:\\Projects\\PocketLotus\\build\\sim\\memc_flyback.vvp",
+          "rtl/vendor/archie/amber/a23_barrel_shift.v",
+          "rtl/vendor/archie/amber/a23_wishbone.v",
+          "rtl/vendor/archie/amber/a23_register_bank.v",
+          "rtl/vendor/archie/amber/a23_multiply.v",
+          "rtl/vendor/archie/amber/a23_fetch.v",
+          "rtl/vendor/archie/amber/a23_execute.v",
+          "rtl/vendor/archie/amber/a23_decode.v",
+          "rtl/vendor/archie/amber/a23_coprocessor.v",
+          "rtl/vendor/archie/amber/a23_cache.v",
+          "rtl/vendor/archie/amber/a23_alu.v",
+          "rtl/vendor/archie/amber/sram_byte_en.v",
+          "rtl/vendor/archie/amber/sram_line_en.v",
+          "rtl/vendor/archie/amber/a23_core.v",
+          "build/ported/memc.v",
+          "rtl/vendor/archie/memc_translator.v",
+          "rtl/vendor/archie/ioc.v",
+          "rtl/vendor/archie/ioc_irq.v",
+          "rtl/vendor/archie/latches.v",
+          "build/ported/vidc.v",
+          "rtl/vendor/archie/vidc/vidc_timing.v",
+          "build/ported/vidc_fifo.v",
+          "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+          "build/ported/vidc_audio.v",
+          "rtl/pocket_chipset.v",
+          "rtl/memory_arbiter.v",
+          "rtl/psram_word.v",
+          "rtl/async_fifo.v",
+          "rtl/reset_sync.v",
+          "rtl/pocket_video.v",
+          "rtl/pocket_debug.v",
+          "rtl/pocket_probe.v",
+          "rtl/pocket_host.v",
+          "rtl/pocket_reset.v",
+          "rtl/pocket_audio.v",
+          "sim/primitive_models.v",
+          "sim/psram_model.v",
+          "sim/tb_memc_flyback.v"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 0,
+        "elapsed_seconds": 0.23754989996086806,
+        "expected_exit_code": 0,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "log_sha256": "e0c6094006cb9a576eee4b8228fd81bfd64d8dddeeb8ee33d21396bba9c81e98",
+      "assertion_result": [
+        "PASS slow-memory flyback: sixteen video/cursor read/ACK boundary phases, four DMA beats drain before CPU cache read, correct CPU miss/hit data"
+      ]
+    },
+    "audio": {
+      "command": [
+        "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+        "-i",
+        "C:\\Projects\\PocketLotus\\build\\sim\\audio.vvp"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "exit_code": 0,
+      "elapsed_seconds": 0.04169840004760772,
+      "elaboration": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+          "-g2012",
+          "-DSIMULATION",
+          "-I",
+          "rtl/vendor/archie/amber",
+          "-I",
+          "build/diagnostic",
+          "-s",
+          "tb_audio",
+          "-o",
+          "C:\\Projects\\PocketLotus\\build\\sim\\audio.vvp",
+          "rtl/vendor/archie/amber/a23_barrel_shift.v",
+          "rtl/vendor/archie/amber/a23_wishbone.v",
+          "rtl/vendor/archie/amber/a23_register_bank.v",
+          "rtl/vendor/archie/amber/a23_multiply.v",
+          "rtl/vendor/archie/amber/a23_fetch.v",
+          "rtl/vendor/archie/amber/a23_execute.v",
+          "rtl/vendor/archie/amber/a23_decode.v",
+          "rtl/vendor/archie/amber/a23_coprocessor.v",
+          "rtl/vendor/archie/amber/a23_cache.v",
+          "rtl/vendor/archie/amber/a23_alu.v",
+          "rtl/vendor/archie/amber/sram_byte_en.v",
+          "rtl/vendor/archie/amber/sram_line_en.v",
+          "rtl/vendor/archie/amber/a23_core.v",
+          "build/ported/memc.v",
+          "rtl/vendor/archie/memc_translator.v",
+          "rtl/vendor/archie/ioc.v",
+          "rtl/vendor/archie/ioc_irq.v",
+          "rtl/vendor/archie/latches.v",
+          "build/ported/vidc.v",
+          "rtl/vendor/archie/vidc/vidc_timing.v",
+          "build/ported/vidc_fifo.v",
+          "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+          "build/ported/vidc_audio.v",
+          "rtl/pocket_chipset.v",
+          "rtl/memory_arbiter.v",
+          "rtl/psram_word.v",
+          "rtl/async_fifo.v",
+          "rtl/reset_sync.v",
+          "rtl/pocket_video.v",
+          "rtl/pocket_debug.v",
+          "rtl/pocket_probe.v",
+          "rtl/pocket_host.v",
+          "rtl/pocket_reset.v",
+          "rtl/pocket_audio.v",
+          "sim/primitive_models.v",
+          "sim/psram_model.v",
+          "sim/tb_audio.v"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 0,
+        "elapsed_seconds": 0.15510750003159046,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "log_sha256": "fae234dd5a5802e681dd58675dcaaa38cbf88872737d5a6af5ba2e9b8c3c6881",
+      "assertion_result": [
+        "PASS I2S: 48kHz stereo, one-bit delay, MSB order, padding, coherent changed samples, reset"
+      ]
+    },
+    "video": {
+      "command": [
+        "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+        "-i",
+        "C:\\Projects\\PocketLotus\\build\\sim\\video.vvp"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "exit_code": 0,
+      "elapsed_seconds": 3.5833188000833616,
+      "elaboration": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+          "-g2012",
+          "-DSIMULATION",
+          "-I",
+          "rtl/vendor/archie/amber",
+          "-I",
+          "build/diagnostic",
+          "-s",
+          "tb_video",
+          "-o",
+          "C:\\Projects\\PocketLotus\\build\\sim\\video.vvp",
+          "rtl/vendor/archie/amber/a23_barrel_shift.v",
+          "rtl/vendor/archie/amber/a23_wishbone.v",
+          "rtl/vendor/archie/amber/a23_register_bank.v",
+          "rtl/vendor/archie/amber/a23_multiply.v",
+          "rtl/vendor/archie/amber/a23_fetch.v",
+          "rtl/vendor/archie/amber/a23_execute.v",
+          "rtl/vendor/archie/amber/a23_decode.v",
+          "rtl/vendor/archie/amber/a23_coprocessor.v",
+          "rtl/vendor/archie/amber/a23_cache.v",
+          "rtl/vendor/archie/amber/a23_alu.v",
+          "rtl/vendor/archie/amber/sram_byte_en.v",
+          "rtl/vendor/archie/amber/sram_line_en.v",
+          "rtl/vendor/archie/amber/a23_core.v",
+          "build/ported/memc.v",
+          "rtl/vendor/archie/memc_translator.v",
+          "rtl/vendor/archie/ioc.v",
+          "rtl/vendor/archie/ioc_irq.v",
+          "rtl/vendor/archie/latches.v",
+          "build/ported/vidc.v",
+          "rtl/vendor/archie/vidc/vidc_timing.v",
+          "build/ported/vidc_fifo.v",
+          "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+          "build/ported/vidc_audio.v",
+          "rtl/pocket_chipset.v",
+          "rtl/memory_arbiter.v",
+          "rtl/psram_word.v",
+          "rtl/async_fifo.v",
+          "rtl/reset_sync.v",
+          "rtl/pocket_video.v",
+          "rtl/pocket_debug.v",
+          "rtl/pocket_probe.v",
+          "rtl/pocket_host.v",
+          "rtl/pocket_reset.v",
+          "rtl/pocket_audio.v",
+          "sim/primitive_models.v",
+          "sim/psram_model.v",
+          "sim/tb_video.v"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 0,
+        "elapsed_seconds": 0.14795380004215986,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "log_sha256": "ad90991e011d3189717d2c9dbc6830984a32bc76ae89574b23b21c2ccb87c708",
+      "assertion_result": [
+        "PASS APF video: three 320x256 frames, 511x313 timing, single-cycle HS/VS, VS/HS/DE gaps, zero blank RGB, unchanged active pixels"
+      ]
+    },
+    "serial_video": {
+      "command": [
+        "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+        "-i",
+        "C:\\Projects\\PocketLotus\\build\\sim\\serial_video.vvp"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "exit_code": 0,
+      "elapsed_seconds": 8.370746099972166,
+      "elaboration": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+          "-g2012",
+          "-DSIMULATION",
+          "-I",
+          "rtl/vendor/archie/amber",
+          "-I",
+          "build/diagnostic",
+          "-s",
+          "tb_serial_video",
+          "-o",
+          "C:\\Projects\\PocketLotus\\build\\sim\\serial_video.vvp",
+          "rtl/pocket_video.v",
+          "rtl/vendor/pocket/apf/mf_ddio_bidir_12.v",
+          "C:\\altera_lite\\25.1std\\quartus\\eda\\sim_lib\\altera_mf.v",
+          "sim/tb_serial_video.v"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 0,
+        "elapsed_seconds": 0.784087400068529,
+        "log_sha256": "60cc1f556f79666b160443cd2cf2c0169675918bbf2f3dfc70da30e1977eb84a"
+      },
+      "intel_model": {
+        "path": "C:\\altera_lite\\25.1std\\quartus\\eda\\sim_lib\\altera_mf.v",
+        "sha256": "2ae09f97f9606626da216e9eb91007beec3ebbe023c5b9415be472417fe49d5e",
+        "scope": "Installed vendor functional DDR model; not board timing or scaler IP"
+      },
+      "log_sha256": "08114717bf9e6d87d45d37c4868504c77a4d7806cc9f2380b7d9fe8d66f65450",
+      "assertion_result": [
+        "PASS Intel-model APF DDR pins: three 320x256 frames, RGB halves/control alignment, sync gaps, zero blank RGB, 19.992875ms cadence"
+      ]
+    },
+    "vidc_fifo": {
+      "command": [
+        "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+        "-i",
+        "C:\\Projects\\PocketLotus\\build\\sim\\vidc_fifo.vvp"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "exit_code": 0,
+      "elapsed_seconds": 0.04925939999520779,
+      "elaboration": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+          "-g2012",
+          "-DSIMULATION",
+          "-I",
+          "rtl/vendor/archie/amber",
+          "-I",
+          "build/diagnostic",
+          "-s",
+          "tb_vidc_fifo",
+          "-o",
+          "C:\\Projects\\PocketLotus\\build\\sim\\vidc_fifo.vvp",
+          "rtl/vendor/archie/amber/a23_barrel_shift.v",
+          "rtl/vendor/archie/amber/a23_wishbone.v",
+          "rtl/vendor/archie/amber/a23_register_bank.v",
+          "rtl/vendor/archie/amber/a23_multiply.v",
+          "rtl/vendor/archie/amber/a23_fetch.v",
+          "rtl/vendor/archie/amber/a23_execute.v",
+          "rtl/vendor/archie/amber/a23_decode.v",
+          "rtl/vendor/archie/amber/a23_coprocessor.v",
+          "rtl/vendor/archie/amber/a23_cache.v",
+          "rtl/vendor/archie/amber/a23_alu.v",
+          "rtl/vendor/archie/amber/sram_byte_en.v",
+          "rtl/vendor/archie/amber/sram_line_en.v",
+          "rtl/vendor/archie/amber/a23_core.v",
+          "build/ported/memc.v",
+          "rtl/vendor/archie/memc_translator.v",
+          "rtl/vendor/archie/ioc.v",
+          "rtl/vendor/archie/ioc_irq.v",
+          "rtl/vendor/archie/latches.v",
+          "build/ported/vidc.v",
+          "rtl/vendor/archie/vidc/vidc_timing.v",
+          "build/ported/vidc_fifo.v",
+          "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+          "build/ported/vidc_audio.v",
+          "rtl/pocket_chipset.v",
+          "rtl/memory_arbiter.v",
+          "rtl/psram_word.v",
+          "rtl/async_fifo.v",
+          "rtl/reset_sync.v",
+          "rtl/pocket_video.v",
+          "rtl/pocket_debug.v",
+          "rtl/pocket_probe.v",
+          "rtl/pocket_host.v",
+          "rtl/pocket_reset.v",
+          "rtl/pocket_audio.v",
+          "sim/primitive_models.v",
+          "sim/psram_model.v",
+          "sim/tb_vidc_fifo.v"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 0,
+        "elapsed_seconds": 0.14795689994934946,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "log_sha256": "7319e47774737ddcd72430703b8a00aa1a7f330bf48c7527ddce4ee28d07fc70",
+      "assertion_result": [
+        "PASS VIDC CDC FIFO: 128 words / 512 ordered bytes, wrap/full, ignored overflow, empty silence, CE stalls, reset"
+      ]
+    },
+    "vidc_writes": {
+      "command": [
+        "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+        "-i",
+        "C:\\Projects\\PocketLotus\\build\\sim\\vidc_writes.vvp"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "exit_code": 0,
+      "elapsed_seconds": 0.26878729998134077,
+      "elaboration": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+          "-g2012",
+          "-DSIMULATION",
+          "-I",
+          "rtl/vendor/archie/amber",
+          "-I",
+          "build/diagnostic",
+          "-s",
+          "tb_vidc_writes",
+          "-o",
+          "C:\\Projects\\PocketLotus\\build\\sim\\vidc_writes.vvp",
+          "rtl/vendor/archie/amber/a23_barrel_shift.v",
+          "rtl/vendor/archie/amber/a23_wishbone.v",
+          "rtl/vendor/archie/amber/a23_register_bank.v",
+          "rtl/vendor/archie/amber/a23_multiply.v",
+          "rtl/vendor/archie/amber/a23_fetch.v",
+          "rtl/vendor/archie/amber/a23_execute.v",
+          "rtl/vendor/archie/amber/a23_decode.v",
+          "rtl/vendor/archie/amber/a23_coprocessor.v",
+          "rtl/vendor/archie/amber/a23_cache.v",
+          "rtl/vendor/archie/amber/a23_alu.v",
+          "rtl/vendor/archie/amber/sram_byte_en.v",
+          "rtl/vendor/archie/amber/sram_line_en.v",
+          "rtl/vendor/archie/amber/a23_core.v",
+          "build/ported/memc.v",
+          "rtl/vendor/archie/memc_translator.v",
+          "rtl/vendor/archie/ioc.v",
+          "rtl/vendor/archie/ioc_irq.v",
+          "rtl/vendor/archie/latches.v",
+          "build/ported/vidc.v",
+          "rtl/vendor/archie/vidc/vidc_timing.v",
+          "build/ported/vidc_fifo.v",
+          "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+          "build/ported/vidc_audio.v",
+          "rtl/pocket_chipset.v",
+          "rtl/memory_arbiter.v",
+          "rtl/psram_word.v",
+          "rtl/async_fifo.v",
+          "rtl/reset_sync.v",
+          "rtl/pocket_video.v",
+          "rtl/pocket_debug.v",
+          "rtl/pocket_probe.v",
+          "rtl/pocket_host.v",
+          "rtl/pocket_reset.v",
+          "rtl/pocket_audio.v",
+          "sim/primitive_models.v",
+          "sim/psram_model.v",
+          "sim/tb_vidc_writes.v"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 0,
+        "elapsed_seconds": 0.31121089996304363,
+        "log_sha256": "99583159135ae921a51b6fc1b780bb4c2a01204b62773fbdf5286e60fc891521"
+      },
+      "log_sha256": "c4734b858298b02c700edad780b9e6ce0fc0cd7b44e76190139db99ad106edd0",
+      "assertion_result": [
+        "PASS VIDC register queue: 49 ordered complete words, held request deduplication, full backpressure, retained MEMC ACK, wrap and drain"
+      ]
+    },
+    "psram": {
+      "command": [
+        "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+        "-i",
+        "C:\\Projects\\PocketLotus\\build\\sim\\psram.vvp"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "exit_code": 0,
+      "elapsed_seconds": 0.0718452000292018,
+      "elaboration": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+          "-g2012",
+          "-DSIMULATION",
+          "-I",
+          "rtl/vendor/archie/amber",
+          "-I",
+          "build/diagnostic",
+          "-s",
+          "tb_psram",
+          "-o",
+          "C:\\Projects\\PocketLotus\\build\\sim\\psram.vvp",
+          "rtl/vendor/archie/amber/a23_barrel_shift.v",
+          "rtl/vendor/archie/amber/a23_wishbone.v",
+          "rtl/vendor/archie/amber/a23_register_bank.v",
+          "rtl/vendor/archie/amber/a23_multiply.v",
+          "rtl/vendor/archie/amber/a23_fetch.v",
+          "rtl/vendor/archie/amber/a23_execute.v",
+          "rtl/vendor/archie/amber/a23_decode.v",
+          "rtl/vendor/archie/amber/a23_coprocessor.v",
+          "rtl/vendor/archie/amber/a23_cache.v",
+          "rtl/vendor/archie/amber/a23_alu.v",
+          "rtl/vendor/archie/amber/sram_byte_en.v",
+          "rtl/vendor/archie/amber/sram_line_en.v",
+          "rtl/vendor/archie/amber/a23_core.v",
+          "build/ported/memc.v",
+          "rtl/vendor/archie/memc_translator.v",
+          "rtl/vendor/archie/ioc.v",
+          "rtl/vendor/archie/ioc_irq.v",
+          "rtl/vendor/archie/latches.v",
+          "build/ported/vidc.v",
+          "rtl/vendor/archie/vidc/vidc_timing.v",
+          "build/ported/vidc_fifo.v",
+          "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+          "build/ported/vidc_audio.v",
+          "rtl/pocket_chipset.v",
+          "rtl/memory_arbiter.v",
+          "rtl/psram_word.v",
+          "rtl/async_fifo.v",
+          "rtl/reset_sync.v",
+          "rtl/pocket_video.v",
+          "rtl/pocket_debug.v",
+          "rtl/pocket_probe.v",
+          "rtl/pocket_host.v",
+          "rtl/pocket_reset.v",
+          "rtl/pocket_audio.v",
+          "sim/primitive_models.v",
+          "sim/psram_model.v",
+          "sim/tb_psram.v"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 0,
+        "elapsed_seconds": 0.1576820999616757,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "log_sha256": "ac8d0550a5c6c182fb655cf64be6ff983fda6d314407597d2a6a68875888cc00",
+      "assertion_result": [
+        "PASS physical PSRAM: both dies, boundary, no alias, latched address/data/masks, byte lanes, 70ns reads, commit/recovery acknowledgement"
+      ]
+    },
+    "diagnostic": {
+      "command": [
+        "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+        "-i",
+        "C:\\Projects\\PocketLotus\\build\\sim\\diagnostic.vvp"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "exit_code": 0,
+      "elapsed_seconds": 323.59303040010855,
+      "expected_exit_code": 0,
+      "elaboration": {
+        "command": [
+          "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+          "-g2012",
+          "-DSIMULATION",
+          "-I",
+          "rtl/vendor/archie/amber",
+          "-I",
+          "build/diagnostic",
+          "-s",
+          "tb_diagnostic",
+          "-o",
+          "C:\\Projects\\PocketLotus\\build\\sim\\diagnostic.vvp",
+          "rtl/vendor/archie/amber/a23_barrel_shift.v",
+          "rtl/vendor/archie/amber/a23_wishbone.v",
+          "rtl/vendor/archie/amber/a23_register_bank.v",
+          "rtl/vendor/archie/amber/a23_multiply.v",
+          "rtl/vendor/archie/amber/a23_fetch.v",
+          "rtl/vendor/archie/amber/a23_execute.v",
+          "rtl/vendor/archie/amber/a23_decode.v",
+          "rtl/vendor/archie/amber/a23_coprocessor.v",
+          "rtl/vendor/archie/amber/a23_cache.v",
+          "rtl/vendor/archie/amber/a23_alu.v",
+          "rtl/vendor/archie/amber/sram_byte_en.v",
+          "rtl/vendor/archie/amber/sram_line_en.v",
+          "rtl/vendor/archie/amber/a23_core.v",
+          "build/ported/memc.v",
+          "rtl/vendor/archie/memc_translator.v",
+          "rtl/vendor/archie/ioc.v",
+          "rtl/vendor/archie/ioc_irq.v",
+          "rtl/vendor/archie/latches.v",
+          "build/ported/vidc.v",
+          "rtl/vendor/archie/vidc/vidc_timing.v",
+          "build/ported/vidc_fifo.v",
+          "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+          "build/ported/vidc_audio.v",
+          "rtl/pocket_chipset.v",
+          "rtl/memory_arbiter.v",
+          "rtl/psram_word.v",
+          "rtl/async_fifo.v",
+          "rtl/reset_sync.v",
+          "rtl/pocket_video.v",
+          "rtl/pocket_debug.v",
+          "rtl/pocket_probe.v",
+          "rtl/pocket_host.v",
+          "rtl/pocket_reset.v",
+          "rtl/pocket_audio.v",
+          "sim/primitive_models.v",
+          "sim/psram_model.v",
+          "sim/tb_diagnostic.v"
+        ],
+        "working_directory": "C:\\Projects\\PocketLotus",
+        "exit_code": 0,
+        "elapsed_seconds": 0.4732222999446094,
+        "expected_exit_code": 0,
+        "log_sha256": "99583159135ae921a51b6fc1b780bb4c2a01204b62773fbdf5286e60fc891521"
+      },
+      "log_sha256": "aa007b9191597105cbb0c1660c46fca7a08974c8b5ce95667f68ac997434c8a0",
+      "assertion_result": [
+        "PASS ARM26+MEMC+VIDC+IOC: cpu=44876 peripheral=2274 video=30844 sound=472 host=304 colored=211200 timers=2597 audio=0040/0040 underflows=0"
+      ]
+    },
+    "apf_elaborate": {
+      "command": [
+        "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+        "-g2012",
+        "-DSIMULATION",
+        "-I",
+        "rtl/vendor/archie/amber",
+        "-I",
+        "build/diagnostic",
+        "-s",
+        "apf_top",
+        "-o",
+        "C:\\Projects\\PocketLotus\\build\\sim\\apf_elaborate.vvp",
+        "rtl/vendor/archie/amber/a23_barrel_shift.v",
+        "rtl/vendor/archie/amber/a23_wishbone.v",
+        "rtl/vendor/archie/amber/a23_register_bank.v",
+        "rtl/vendor/archie/amber/a23_multiply.v",
+        "rtl/vendor/archie/amber/a23_fetch.v",
+        "rtl/vendor/archie/amber/a23_execute.v",
+        "rtl/vendor/archie/amber/a23_decode.v",
+        "rtl/vendor/archie/amber/a23_coprocessor.v",
+        "rtl/vendor/archie/amber/a23_cache.v",
+        "rtl/vendor/archie/amber/a23_alu.v",
+        "rtl/vendor/archie/amber/sram_byte_en.v",
+        "rtl/vendor/archie/amber/sram_line_en.v",
+        "rtl/vendor/archie/amber/a23_core.v",
+        "build/ported/memc.v",
+        "rtl/vendor/archie/memc_translator.v",
+        "rtl/vendor/archie/ioc.v",
+        "rtl/vendor/archie/ioc_irq.v",
+        "rtl/vendor/archie/latches.v",
+        "build/ported/vidc.v",
+        "rtl/vendor/archie/vidc/vidc_timing.v",
+        "build/ported/vidc_fifo.v",
+        "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+        "build/ported/vidc_audio.v",
+        "rtl/pocket_chipset.v",
+        "rtl/memory_arbiter.v",
+        "rtl/psram_word.v",
+        "rtl/async_fifo.v",
+        "rtl/reset_sync.v",
+        "rtl/pocket_video.v",
+        "rtl/pocket_debug.v",
+        "rtl/pocket_probe.v",
+        "rtl/core_top.v",
+        "rtl/pocket_host.v",
+        "rtl/pocket_reset.v",
+        "rtl/pocket_pll.v",
+        "rtl/pocket_audio.v",
+        "build/ported/apf_top.v",
+        "rtl/vendor/pocket/apf/common.v",
+        "build/ported/io_bridge_peripheral.v",
+        "build/ported/io_pad_controller.v",
+        "rtl/vendor/pocket/apf/mf_ddio_bidir_12.v",
+        "rtl/vendor/pocket/apf/mf_datatable.v",
+        "build/ported/core_bridge_cmd.v",
+        "sim/primitive_models.v"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "exit_code": 0,
+      "elapsed_seconds": 0.41631739994045347,
+      "expected_exit_code": 0,
+      "log_sha256": "c83aa0413988987e1cae9733609f3f76f91ee5f5af3fa92efff6c6b2fd3c2519",
+      "assertion_result": []
+    }
+  },
+  "generic_synthesis": {
+    "command": [
+      "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\yosys.exe",
+      "-s",
+      "build/synthesis/synth.ys"
+    ],
+    "working_directory": "C:\\Projects\\PocketLotus",
+    "exit_code": 0,
+    "elapsed_seconds": 13.3611791000003,
+    "expected_exit_code": 0,
+    "log_sha256": "8ed11a38ceb2d35721fb2e2fba6460328e1fddf239edf03b054faaa83de15f2d",
+    "stat_sha256": "f4fcf7d2596a3531198dc7d3614527fb0a7892cc536264dfab0bde2cdc50eac4",
+    "generic_design": {
+      "num_wires": 16023,
+      "num_wire_bits": 69705,
+      "num_pub_wires": 2946,
+      "num_pub_wire_bits": 30522,
+      "num_ports": 1113,
+      "num_port_bits": 9337,
+      "num_memories": 0,
+      "num_memory_bits": 0,
+      "num_processes": 0,
+      "num_cells": 48831,
+      "num_submodules": 6,
+      "num_cells_by_type": {
+        "$_AND_": 7146,
+        "$_DFFE_PN_": 175,
+        "$_DFFE_PP0P_": 122,
+        "$_DFFE_PP_": 7567,
+        "$_DFF_PP0_": 109,
+        "$_DFF_PP1_": 43,
+        "$_DFF_P_": 182,
+        "$_MUX_": 16933,
+        "$_NOT_": 2034,
+        "$_OR_": 7908,
+        "$_SDFFCE_PN0N_": 32,
+        "$_SDFFCE_PN0P_": 82,
+        "$_SDFFCE_PN1P_": 12,
+        "$_SDFFCE_PP0N_": 1,
+        "$_SDFFCE_PP0P_": 75,
+        "$_SDFFCE_PP1P_": 4,
+        "$_SDFFE_PN0N_": 1,
+        "$_SDFFE_PP0N_": 46,
+        "$_SDFFE_PP0P_": 2326,
+        "$_SDFFE_PP1N_": 23,
+        "$_SDFFE_PP1P_": 661,
+        "$_SDFF_PN0_": 2,
+        "$_SDFF_PP0_": 243,
+        "$_SDFF_PP1_": 3,
+        "$_XOR_": 2952,
+        "$print": 135,
+        "altddio_bidir": 3,
+        "altera_pll": 2,
+        "altsyncram": 9,
+        "core_top": 1,
+        "io_bridge_peripheral": 1,
+        "io_pad_controller": 1,
+        "mf_ddio_bidir_12": 3
+      }
+    },
+    "scope": "Generic unmapped synthesis; vendor RAM/DDR/PLL black boxes. Not Cyclone V utilization, fit or timing.",
+    "final_check": "0 problems",
+    "reachable_hierarchy": [
+      "$paramod$41fee198d9c71bee2e0d7aaae15866f616b12580\\sram_byte_en",
+      "$paramod$72403e25e221f114cbd9bc38f8db8ebaa615c90e\\sram_line_en",
+      "$paramod\\async_fifo\\WIDTH=s32'00000000000000000000000000100000",
+      "$paramod\\async_fifo\\WIDTH=s32'00000000000000000000000000111011",
+      "$paramod\\ioc_irq\\ADDRESS=2'01\\CANCLEAR=8'01111111\\PERMBITS=8'10000000",
+      "$paramod\\ioc_irq\\ADDRESS=2'10\\CANCLEAR=8'00000000",
+      "$paramod\\ioc_irq\\ADDRESS=2'11\\CANCLEAR=8'00000000",
+      "$paramod\\vidc\\CLKCPU=s32'00000010100000001101111010000000",
+      "$paramod\\vidc_dmachannel\\FIFO_SIZE=s32'00000000000000000000000000000010",
+      "$paramod\\vidc_dmachannel\\FIFO_SIZE=s32'00000000000000000000000000000101",
+      "$paramod\\vidc_fifo\\FIFO_SIZE=s32'00000000000000000000000000000010",
+      "$paramod\\vidc_fifo\\FIFO_SIZE=s32'00000000000000000000000000000011",
+      "$paramod\\vidc_fifo\\FIFO_SIZE=s32'00000000000000000000000000000101",
+      "a23_alu",
+      "a23_barrel_shift",
+      "a23_cache",
+      "a23_coprocessor",
+      "a23_core",
+      "a23_decode",
+      "a23_execute",
+      "a23_fetch",
+      "a23_multiply",
+      "a23_register_bank",
+      "a23_wishbone",
+      "altddio_bidir",
+      "altera_pll",
+      "altsyncram",
+      "apf_top",
+      "core_bridge_cmd",
+      "core_top",
+      "io_bridge_peripheral",
+      "io_pad_controller",
+      "ioc",
+      "latches",
+      "memc",
+      "memc_translator",
+      "memory_arbiter",
+      "mf_datatable",
+      "mf_ddio_bidir_12",
+      "pocket_audio",
+      "pocket_chipset",
+      "pocket_debug",
+      "pocket_host",
+      "pocket_pll",
+      "pocket_probe",
+      "pocket_reset",
+      "pocket_video",
+      "psram_word",
+      "reset_sync",
+      "synch_3",
+      "vidc_audio",
+      "vidc_dmachannel",
+      "vidc_timing"
+    ]
+  },
+  "quartus": {
+    "device": "5CEBA4F23C8",
+    "working_directory": "C:\\Projects\\PocketLotus\\build\\quartus",
+    "stages": [
+      {
+        "stage": "synthesis",
+        "status": "passed",
+        "command": [
+          "C:\\altera_lite\\25.1std\\quartus\\bin64\\quartus_map.exe",
+          "pocketlotus",
+          "--read_settings_files=on",
+          "--write_settings_files=off"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 151.6750350999646,
+        "log_sha256": "f8efd5a19f27873021b3c1237e18f42f5fdd277c0e25420ac56a0b900835e614",
+        "critical_warnings": [],
+        "warning_counts_by_id": {
+          "10036": 5,
+          "10230": 16,
+          "10335": 13,
+          "10762": 2,
+          "12241": 1,
+          "13009": 1,
+          "13024": 1,
+          "13032": 1,
+          "14284": 2,
+          "21074": 1,
+          "276027": 6,
+          "330000": 1
+        }
+      },
+      {
+        "stage": "fitting",
+        "status": "passed",
+        "command": [
+          "C:\\altera_lite\\25.1std\\quartus\\bin64\\quartus_fit.exe",
+          "pocketlotus",
+          "--read_settings_files=on",
+          "--write_settings_files=off"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 293.53394480003044,
+        "log_sha256": "312524fb76c615751d1cb65537ca88b205a34ce0c832c807c1bc58353ad90f41",
+        "critical_warnings": [],
+        "warning_counts_by_id": {
+          "15714": 1,
+          "16406": 1,
+          "169064": 1,
+          "177007": 2,
+          "292013": 1
+        }
+      },
+      {
+        "stage": "assembly",
+        "status": "passed",
+        "command": [
+          "C:\\altera_lite\\25.1std\\quartus\\bin64\\quartus_asm.exe",
+          "pocketlotus",
+          "--read_settings_files=on",
+          "--write_settings_files=off"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 9.045076200040057,
+        "log_sha256": "82ed84f269b7ee7763a42c077b04f80b2c1d5ef74104f4a1902388b879f94a93",
+        "critical_warnings": [],
+        "warning_counts_by_id": {}
+      },
+      {
+        "stage": "timing",
+        "status": "passed",
+        "command": [
+          "C:\\altera_lite\\25.1std\\quartus\\bin64\\quartus_sta.exe",
+          "pocketlotus",
+          "--do_report_timing"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 30.443771700025536,
+        "log_sha256": "00e7cce9c68b8bea49a3c7e47be233ac107552019d8b82115b95f0aa0a6fb6ea",
+        "critical_warnings": [],
+        "warning_counts_by_id": {
+          "332009": 16
+        }
+      },
+      {
+        "stage": "timing_audit",
+        "status": "passed",
+        "command": [
+          "C:\\altera_lite\\25.1std\\quartus\\bin64\\quartus_sta.exe",
+          "-t",
+          "../../tools/quartus_timing_audit.tcl"
+        ],
+        "exit_code": 0,
+        "elapsed_seconds": 15.812475500046276,
+        "log_sha256": "dd6e1e72f12a9c7a49c02d7ea1721481d2cb6c83fe9717e65ae21f99b5ca76cc",
+        "critical_warnings": [],
+        "warning_counts_by_id": {
+          "332009": 8
+        }
+      }
+    ],
+    "mapped_source_digest": "690e3964ddd26d04a0f55c8afd664a4e4af92c8db01659d57afd7bd06eb835e1",
+    "limitations": "Stage success alone is not timing closure: inspect unconstrained paths, CDC, PLL frequencies, utilization and slack.",
+    "report_files": [
+      {
+        "path": "build/quartus/audit/fast_0_checks.rpt",
+        "sha256": "d07555b18ef65812b175921e5b2fe72b1d83001342b28cd9eec0880033d1866c"
+      },
+      {
+        "path": "build/quartus/audit/fast_0_clocks.rpt",
+        "sha256": "7ff59b549d82c1dd47420ed2184e18f0f6d9760594e30502728fa49d58d84a7d"
+      },
+      {
+        "path": "build/quartus/audit/fast_0_clocks.tsv",
+        "sha256": "9de97735186494a8bf1cec481f15777a1ac60b6ec792bc292ff49003ce18e539"
+      },
+      {
+        "path": "build/quartus/audit/fast_0_collections.tsv",
+        "sha256": "b8ca1a6e231fd998542a89ec6a278f874914e72640cde89b3acf3ea95cd67d7d"
+      },
+      {
+        "path": "build/quartus/audit/fast_0_hold.rpt",
+        "sha256": "bfc4d0608661d6c6536319c3cf61ce799a2973c3362844ffd40631c4d4f80c0c"
+      },
+      {
+        "path": "build/quartus/audit/fast_0_hold_transfers.rpt",
+        "sha256": "c3fe51b3e39a1f33b0419740c304bce0895e65c00ab9a4927108da5b9b187593"
+      },
+      {
+        "path": "build/quartus/audit/fast_0_max_skew.rpt",
+        "sha256": "a34bd2a4fb45236adb0e273adaa9e0801ecc6e948f09f3397e42920a4e32bdf5"
+      },
+      {
+        "path": "build/quartus/audit/fast_0_net_delay.rpt",
+        "sha256": "2c1e807727a6d95397f2b307c284fc90803c0e2d480f73e07012b0a69e64dcd9"
+      },
+      {
+        "path": "build/quartus/audit/fast_0_recovery.rpt",
+        "sha256": "26a61f67ddb625a27456bcc3f65904deb1f4e6773f0fb6d1a9999b51b8344139"
+      },
+      {
+        "path": "build/quartus/audit/fast_0_recovery_transfers.rpt",
+        "sha256": "bf52f803c7314a8ffd3e5c41e2c4b39f1350881da86c8290d1fdf6c15de293e5"
+      },
+      {
+        "path": "build/quartus/audit/fast_0_removal.rpt",
+        "sha256": "bf9015834507d2aedb68a1f92e6f2246b251ddb57ab15e5e2ac22e3f0b5a9869"
+      },
+      {
+        "path": "build/quartus/audit/fast_0_removal_transfers.rpt",
+        "sha256": "169f1528545019c81653566a026f525ef7d3fcddde50bd97bb9f129c88547090"
+      },
+      {
+        "path": "build/quartus/audit/fast_0_sdc.rpt",
+        "sha256": "e61718b549ed6bbd79e04caddbc8a92d86d3a0ae5be44d8e4b9b512854d88247"
+      },
+      {
+        "path": "build/quartus/audit/fast_0_setup.rpt",
+        "sha256": "9ca3b5aa2de45b3d69c5c5509a516ebde0451fdf1459e5e311d94f0d67bf3ee7"
+      },
+      {
+        "path": "build/quartus/audit/fast_0_setup_transfers.rpt",
+        "sha256": "d12e62c8ba0e17986624325d5edbaf966f6bc59bed8bfdf1ce7eb9b9723ac5ff"
+      },
+      {
+        "path": "build/quartus/audit/fast_0_unconstrained.rpt",
+        "sha256": "a58e8564f54bbc2056dbd503e1300022481abbe3caf6ef9a5e77675e17f86638"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_checks.rpt",
+        "sha256": "d07555b18ef65812b175921e5b2fe72b1d83001342b28cd9eec0880033d1866c"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_clocks.rpt",
+        "sha256": "7ff59b549d82c1dd47420ed2184e18f0f6d9760594e30502728fa49d58d84a7d"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_clocks.tsv",
+        "sha256": "9de97735186494a8bf1cec481f15777a1ac60b6ec792bc292ff49003ce18e539"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_collections.tsv",
+        "sha256": "b8ca1a6e231fd998542a89ec6a278f874914e72640cde89b3acf3ea95cd67d7d"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_hold.rpt",
+        "sha256": "efc9bdee865fed89b8d1ddc143e952a7c07c359eaeb10c69e435b865be0cbd9d"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_hold_transfers.rpt",
+        "sha256": "c3fe51b3e39a1f33b0419740c304bce0895e65c00ab9a4927108da5b9b187593"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_max_skew.rpt",
+        "sha256": "98f47a4073557978241d77c288cd2b04e839e2cd364412ee1ae986f9e64be8f1"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_net_delay.rpt",
+        "sha256": "2c1e807727a6d95397f2b307c284fc90803c0e2d480f73e07012b0a69e64dcd9"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_recovery.rpt",
+        "sha256": "117e08dfc717a49ab87c234aa9e222c6cd4b69602e465a2eacad07b67e16df48"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_recovery_transfers.rpt",
+        "sha256": "bf52f803c7314a8ffd3e5c41e2c4b39f1350881da86c8290d1fdf6c15de293e5"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_removal.rpt",
+        "sha256": "d689fdda58f0b03d97bad8e14983962b5639be360f6665bfce71ad2829b8e43a"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_removal_transfers.rpt",
+        "sha256": "169f1528545019c81653566a026f525ef7d3fcddde50bd97bb9f129c88547090"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_sdc.rpt",
+        "sha256": "e61718b549ed6bbd79e04caddbc8a92d86d3a0ae5be44d8e4b9b512854d88247"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_setup.rpt",
+        "sha256": "586b5cf47dfc22e6f8c30d0f6102aa6eb58b194f39cb11795021fc860ae5adbf"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_setup_transfers.rpt",
+        "sha256": "d12e62c8ba0e17986624325d5edbaf966f6bc59bed8bfdf1ce7eb9b9723ac5ff"
+      },
+      {
+        "path": "build/quartus/audit/fast_85_unconstrained.rpt",
+        "sha256": "a58e8564f54bbc2056dbd503e1300022481abbe3caf6ef9a5e77675e17f86638"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_checks.rpt",
+        "sha256": "d07555b18ef65812b175921e5b2fe72b1d83001342b28cd9eec0880033d1866c"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_clocks.rpt",
+        "sha256": "7ff59b549d82c1dd47420ed2184e18f0f6d9760594e30502728fa49d58d84a7d"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_clocks.tsv",
+        "sha256": "9de97735186494a8bf1cec481f15777a1ac60b6ec792bc292ff49003ce18e539"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_collections.tsv",
+        "sha256": "b8ca1a6e231fd998542a89ec6a278f874914e72640cde89b3acf3ea95cd67d7d"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_hold.rpt",
+        "sha256": "d8e12c032a4058565bb607935c5ba089080ed51cfae5e8aab02bb64812dc783e"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_hold_transfers.rpt",
+        "sha256": "c3fe51b3e39a1f33b0419740c304bce0895e65c00ab9a4927108da5b9b187593"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_max_skew.rpt",
+        "sha256": "62a6c3fe0dbfb10139d00affc42b0f1360f0b6ad4ff44b3e37f58a85830abc3e"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_net_delay.rpt",
+        "sha256": "2c1e807727a6d95397f2b307c284fc90803c0e2d480f73e07012b0a69e64dcd9"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_recovery.rpt",
+        "sha256": "f065b636e8477a6a59d3bf1d889c28f3f338bd4e6923ed8fe9106931aa70c16f"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_recovery_transfers.rpt",
+        "sha256": "bf52f803c7314a8ffd3e5c41e2c4b39f1350881da86c8290d1fdf6c15de293e5"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_removal.rpt",
+        "sha256": "be555d6fcfcd131b32862e6cf8402b06d74b8f830b912b422f58d803dbdcb2ee"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_removal_transfers.rpt",
+        "sha256": "169f1528545019c81653566a026f525ef7d3fcddde50bd97bb9f129c88547090"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_sdc.rpt",
+        "sha256": "e61718b549ed6bbd79e04caddbc8a92d86d3a0ae5be44d8e4b9b512854d88247"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_setup.rpt",
+        "sha256": "81e48bbfc1a2e994f4c9cdba6827c9a3febca361369c5198215eec36e9fd43c2"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_setup_transfers.rpt",
+        "sha256": "d12e62c8ba0e17986624325d5edbaf966f6bc59bed8bfdf1ce7eb9b9723ac5ff"
+      },
+      {
+        "path": "build/quartus/audit/slow_0_unconstrained.rpt",
+        "sha256": "a58e8564f54bbc2056dbd503e1300022481abbe3caf6ef9a5e77675e17f86638"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_checks.rpt",
+        "sha256": "d07555b18ef65812b175921e5b2fe72b1d83001342b28cd9eec0880033d1866c"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_clocks.rpt",
+        "sha256": "7ff59b549d82c1dd47420ed2184e18f0f6d9760594e30502728fa49d58d84a7d"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_clocks.tsv",
+        "sha256": "9de97735186494a8bf1cec481f15777a1ac60b6ec792bc292ff49003ce18e539"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_collections.tsv",
+        "sha256": "b8ca1a6e231fd998542a89ec6a278f874914e72640cde89b3acf3ea95cd67d7d"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_hold.rpt",
+        "sha256": "e54a30bd6dabf21128c405c2cca8f8d0d2df38e0716c7184d2bf7210af02f4ce"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_hold_transfers.rpt",
+        "sha256": "c3fe51b3e39a1f33b0419740c304bce0895e65c00ab9a4927108da5b9b187593"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_max_skew.rpt",
+        "sha256": "7262789009902ca56b0c71c003d21cfa8dbd3d015128e92eecdc3852d331ad44"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_net_delay.rpt",
+        "sha256": "2c1e807727a6d95397f2b307c284fc90803c0e2d480f73e07012b0a69e64dcd9"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_recovery.rpt",
+        "sha256": "fbc321e9310693e46b35d20c338be708b1aeacd0591ca546e1ae67ac4e83196c"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_recovery_transfers.rpt",
+        "sha256": "bf52f803c7314a8ffd3e5c41e2c4b39f1350881da86c8290d1fdf6c15de293e5"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_removal.rpt",
+        "sha256": "7613ef68ac85e38af5d4811134ac6e0c88094ea220ee9f39904605a7025f89df"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_removal_transfers.rpt",
+        "sha256": "169f1528545019c81653566a026f525ef7d3fcddde50bd97bb9f129c88547090"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_sdc.rpt",
+        "sha256": "e61718b549ed6bbd79e04caddbc8a92d86d3a0ae5be44d8e4b9b512854d88247"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_setup.rpt",
+        "sha256": "2b77b988f32c952272ea4176c9e096bf90b233a814a65d3f5f6bf9c90f750191"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_setup_transfers.rpt",
+        "sha256": "d12e62c8ba0e17986624325d5edbaf966f6bc59bed8bfdf1ce7eb9b9723ac5ff"
+      },
+      {
+        "path": "build/quartus/audit/slow_85_unconstrained.rpt",
+        "sha256": "a58e8564f54bbc2056dbd503e1300022481abbe3caf6ef9a5e77675e17f86638"
+      },
+      {
+        "path": "build/quartus/output_files/pocketlotus.asm.rpt",
+        "sha256": "1d82f0f025da4311c3b86f7d596d2b63979a0a13ce1364f4a1aafa9abd5b37c6"
+      },
+      {
+        "path": "build/quartus/output_files/pocketlotus.fit.rpt",
+        "sha256": "3ce5181c6abbb52cdef3130324ca508976f2a6e210cb575f0560e354a1306bff"
+      },
+      {
+        "path": "build/quartus/output_files/pocketlotus.fit.summary",
+        "sha256": "3b06791cc6bc34a5fe04d7bea4affed35686dcfb1d461cb74c219dc47bd86a31"
+      },
+      {
+        "path": "build/quartus/output_files/pocketlotus.flow.rpt",
+        "sha256": "fc890668f7864cfa47042fc753ce0b0ce4bc3feb1da9c166eb050a974890cb4d"
+      },
+      {
+        "path": "build/quartus/output_files/pocketlotus.map.rpt",
+        "sha256": "df78c267d11796cb0d8aca1831456e84405650e43aa4884f42d5d327d34509cd"
+      },
+      {
+        "path": "build/quartus/output_files/pocketlotus.map.summary",
+        "sha256": "0698f79624425bf855a29220cdc534060f8eb1c701d5128f224de65e6615f8d7"
+      },
+      {
+        "path": "build/quartus/output_files/pocketlotus.sta.rpt",
+        "sha256": "58298be922e44b9eea285ada5af13fa2eccab13fd1c750acd0b542d685a2e39f"
+      },
+      {
+        "path": "build/quartus/output_files/pocketlotus.sta.summary",
+        "sha256": "0e4664f3fefff11459acece41ca8b4a154fcef647aa7a63b9edc64c22c355d50"
+      }
+    ],
+    "fit_summary": {
+      "Fitter Status": "Successful - Thu Oct  8 20:03:47 2026",
+      "Quartus Prime Version": "25.1std.0 Build 1129 10/21/2025 SC Lite Edition",
+      "Revision Name": "pocketlotus",
+      "Top-level Entity Name": "apf_top",
+      "Family": "Cyclone V",
+      "Device": "5CEBA4F23C8",
+      "Timing Models": "Final",
+      "Logic utilization (in ALMs)": "6,398 / 18,480 ( 35 % )",
+      "Total registers": "7936",
+      "Total pins": "224 / 224 ( 100 % )",
+      "Total virtual pins": "0",
+      "Total block memory bits": "33,056 / 3,153,920 ( 1 % )",
+      "Total RAM Blocks": "13 / 308 ( 4 % )",
+      "Total DSP Blocks": "0 / 66 ( 0 % )",
+      "Total HSSI RX PCSs": "0",
+      "Total HSSI PMA RX Deserializers": "0",
+      "Total HSSI TX PCSs": "0",
+      "Total HSSI PMA TX Serializers": "0",
+      "Total PLLs": "2 / 4 ( 50 % )",
+      "Total DLLs": "0 / 4 ( 0 % )"
+    },
+    "retained_chipset_entity_resources": [
+      {
+        "Compilation Hierarchy Node": "|a23_core:ARM|",
+        "ALMs needed [=A-B+C]": "3237.7 (7.2)",
+        "[A] ALMs used in final placement": "3578.7 (8.1)",
+        "[B] Estimate of ALMs recoverable by dense packing": "370.7 (0.8)",
+        "[C] Estimate of ALMs unavailable": "29.7 (0.0)",
+        "ALMs used for memory": "0.0 (0.0)",
+        "Combinational ALUTs": "4258 (32)",
+        "Dedicated Logic Registers": "2041 (0)",
+        "I/O Registers": "0 (0)",
+        "Block Memory Bits": "21504",
+        "M10Ks": "4",
+        "DSP Blocks": "0",
+        "Pins": "0",
+        "Virtual Pins": "0",
+        "Full Hierarchy Name": "|apf_top|core_top:ic|pocket_chipset:chipset|a23_core:ARM",
+        "Entity Name": "a23_core",
+        "Library Name": "work"
+      },
+      {
+        "Compilation Hierarchy Node": "|ioc:IOC|",
+        "ALMs needed [=A-B+C]": "153.7 (135.3)",
+        "[A] ALMs used in final placement": "179.7 (161.7)",
+        "[B] Estimate of ALMs recoverable by dense packing": "26.0 (26.3)",
+        "[C] Estimate of ALMs unavailable": "0.0 (0.0)",
+        "ALMs used for memory": "0.0 (0.0)",
+        "Combinational ALUTs": "258 (246)",
+        "Dedicated Logic Registers": "251 (220)",
+        "I/O Registers": "0 (0)",
+        "Block Memory Bits": "0",
+        "M10Ks": "0",
+        "DSP Blocks": "0",
+        "Pins": "0",
+        "Virtual Pins": "0",
+        "Full Hierarchy Name": "|apf_top|core_top:ic|pocket_chipset:chipset|ioc:IOC",
+        "Entity Name": "ioc",
+        "Library Name": "work"
+      },
+      {
+        "Compilation Hierarchy Node": "|memc:MEMC|",
+        "ALMs needed [=A-B+C]": "1007.5 (231.2)",
+        "[A] ALMs used in final placement": "1238.1 (276.4)",
+        "[B] Estimate of ALMs recoverable by dense packing": "230.6 (45.2)",
+        "[C] Estimate of ALMs unavailable": "0.0 (0.0)",
+        "ALMs used for memory": "0.0 (0.0)",
+        "Combinational ALUTs": "1309 (306)",
+        "Dedicated Logic Registers": "1879 (343)",
+        "I/O Registers": "0 (0)",
+        "Block Memory Bits": "0",
+        "M10Ks": "0",
+        "DSP Blocks": "0",
+        "Pins": "0",
+        "Virtual Pins": "0",
+        "Full Hierarchy Name": "|apf_top|core_top:ic|pocket_chipset:chipset|memc:MEMC",
+        "Entity Name": "memc",
+        "Library Name": "work"
+      },
+      {
+        "Compilation Hierarchy Node": "|vidc:VIDC|",
+        "ALMs needed [=A-B+C]": "562.8 (119.4)",
+        "[A] ALMs used in final placement": "695.3 (194.8)",
+        "[B] Estimate of ALMs recoverable by dense packing": "132.5 (75.4)",
+        "[C] Estimate of ALMs unavailable": "0.0 (0.0)",
+        "ALMs used for memory": "0.0 (0.0)",
+        "Combinational ALUTs": "929 (165)",
+        "Dedicated Logic Registers": "816 (318)",
+        "I/O Registers": "0 (0)",
+        "Block Memory Bits": "1408",
+        "M10Ks": "3",
+        "DSP Blocks": "0",
+        "Pins": "0",
+        "Virtual Pins": "0",
+        "Full Hierarchy Name": "|apf_top|core_top:ic|pocket_chipset:chipset|vidc:VIDC",
+        "Entity Name": "vidc",
+        "Library Name": "work"
+      }
+    ],
+    "timing_summary": [
+      {
+        "type": "Slow 1100mV 85C Model Setup 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.765,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Setup 'clk_74a'",
+        "slack_ns": 4.897,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Setup 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 4.914,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Setup 'bridge_spiclk'",
+        "slack_ns": 10.815,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Setup 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 76.058,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Hold 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.388,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Hold 'clk_74a'",
+        "slack_ns": 0.392,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Hold 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.401,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Hold 'bridge_spiclk'",
+        "slack_ns": 0.505,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Hold 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.541,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Recovery 'clk_74a'",
+        "slack_ns": 11.447,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Recovery 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 21.231,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Recovery 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 78.629,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Recovery 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 121.81,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Removal 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.823,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Removal 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 1.084,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Removal 'clk_74a'",
+        "slack_ns": 1.264,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Removal 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 1.722,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Minimum Pulse Width 'ic|pll|clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'",
+        "slack_ns": 0.744,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Minimum Pulse Width 'ic|pll|audio_clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'",
+        "slack_ns": 0.83,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Minimum Pulse Width 'clk_74a'",
+        "slack_ns": 5.345,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Minimum Pulse Width 'bridge_spiclk'",
+        "slack_ns": 5.944,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Minimum Pulse Width 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 10.303,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Minimum Pulse Width 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 39.948,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Minimum Pulse Width 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 60.942,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 85C Model Minimum Pulse Width 'ic|pll|clocks|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 61.436,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Setup 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.867,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Setup 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 4.939,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Setup 'clk_74a'",
+        "slack_ns": 5.125,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Setup 'bridge_spiclk'",
+        "slack_ns": 11.05,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Setup 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 76.034,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Hold 'clk_74a'",
+        "slack_ns": 0.377,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Hold 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.378,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Hold 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.392,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Hold 'bridge_spiclk'",
+        "slack_ns": 0.524,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Hold 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.555,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Recovery 'clk_74a'",
+        "slack_ns": 11.562,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Recovery 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 21.31,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Recovery 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 78.749,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Recovery 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 121.929,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Removal 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.77,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Removal 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 1.023,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Removal 'clk_74a'",
+        "slack_ns": 1.195,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Removal 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 1.62,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Minimum Pulse Width 'ic|pll|clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'",
+        "slack_ns": 0.744,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Minimum Pulse Width 'ic|pll|audio_clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'",
+        "slack_ns": 0.83,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Minimum Pulse Width 'clk_74a'",
+        "slack_ns": 5.283,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Minimum Pulse Width 'bridge_spiclk'",
+        "slack_ns": 5.904,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Minimum Pulse Width 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 10.259,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Minimum Pulse Width 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 39.823,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Minimum Pulse Width 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 60.876,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Slow 1100mV 0C Model Minimum Pulse Width 'ic|pll|clocks|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 61.37,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Setup 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 3.346,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Setup 'clk_74a'",
+        "slack_ns": 8.932,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Setup 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 9.352,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Setup 'bridge_spiclk'",
+        "slack_ns": 12.389,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Setup 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 79.076,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Hold 'clk_74a'",
+        "slack_ns": 0.169,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Hold 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.177,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Hold 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.179,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Hold 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.198,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Hold 'bridge_spiclk'",
+        "slack_ns": 0.238,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Recovery 'clk_74a'",
+        "slack_ns": 12.634,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Recovery 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 22.614,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Recovery 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 80.028,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Recovery 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 123.425,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Removal 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.302,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Removal 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.43,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Removal 'clk_74a'",
+        "slack_ns": 0.535,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Removal 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.736,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Minimum Pulse Width 'ic|pll|clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'",
+        "slack_ns": 0.744,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Minimum Pulse Width 'ic|pll|audio_clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'",
+        "slack_ns": 0.83,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Minimum Pulse Width 'clk_74a'",
+        "slack_ns": 5.209,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Minimum Pulse Width 'bridge_spiclk'",
+        "slack_ns": 6.35,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Minimum Pulse Width 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 10.797,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Minimum Pulse Width 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 40.233,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Minimum Pulse Width 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 61.392,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 85C Model Minimum Pulse Width 'ic|pll|clocks|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 62.01,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Setup 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 3.598,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Setup 'clk_74a'",
+        "slack_ns": 9.432,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Setup 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 9.686,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Setup 'bridge_spiclk'",
+        "slack_ns": 12.499,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Setup 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 79.259,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Hold 'clk_74a'",
+        "slack_ns": 0.098,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Hold 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.143,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Hold 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.162,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Hold 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.189,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Hold 'bridge_spiclk'",
+        "slack_ns": 0.213,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Recovery 'clk_74a'",
+        "slack_ns": 12.716,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Recovery 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 22.733,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Recovery 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 80.168,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Recovery 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 123.599,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Removal 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.273,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Removal 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.385,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Removal 'clk_74a'",
+        "slack_ns": 0.48,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Removal 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 0.669,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Minimum Pulse Width 'ic|pll|clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'",
+        "slack_ns": 0.744,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Minimum Pulse Width 'ic|pll|audio_clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]'",
+        "slack_ns": 0.83,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Minimum Pulse Width 'clk_74a'",
+        "slack_ns": 5.161,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Minimum Pulse Width 'bridge_spiclk'",
+        "slack_ns": 6.368,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Minimum Pulse Width 'ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 10.799,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Minimum Pulse Width 'ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 40.23,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Minimum Pulse Width 'ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 61.396,
+        "endpoint_tns_ns": 0.0
+      },
+      {
+        "type": "Fast 1100mV 0C Model Minimum Pulse Width 'ic|pll|clocks|general[2].gpll~PLL_OUTPUT_COUNTER|divclk'",
+        "slack_ns": 62.014,
+        "endpoint_tns_ns": 0.0
+      }
+    ],
+    "reported_timing_requirements_met": true,
+    "audit": [
+      {
+        "model": "slow_85",
+        "setup": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 0.765
+        },
+        "hold": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 0.388
+        },
+        "recovery": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 11.447
+        },
+        "removal": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 0.823
+        },
+        "max_skew": {
+          "reported_paths": 40,
+          "violated_paths": 0,
+          "worst_slack_ns": 8.287
+        },
+        "constraint_checks": {
+          "no_clock": 0,
+          "multiple_clock": 0,
+          "generated_clock": 0,
+          "no_input_delay": 4,
+          "no_output_delay": 185,
+          "partial_input_delay": 0,
+          "partial_output_delay": 0,
+          "loops": 0,
+          "latches": 0,
+          "pll_cross_check": 0,
+          "partial_multicycle": 0,
+          "multicycle_consistency": 0,
+          "partial_min_max_delay": 0
+        },
+        "unconstrained": {
+          "Illegal Clocks": {
+            "setup": 0,
+            "hold": 0
+          },
+          "Unconstrained Clocks": {
+            "setup": 0,
+            "hold": 0
+          },
+          "Unconstrained Input Ports": {
+            "setup": 4,
+            "hold": 4
+          },
+          "Unconstrained Input Port Paths": {
+            "setup": 29,
+            "hold": 29
+          },
+          "Unconstrained Output Ports": {
+            "setup": 25,
+            "hold": 25
+          },
+          "Unconstrained Output Port Paths": {
+            "setup": 43,
+            "hold": 43
+          }
+        },
+        "reported_clocks": [
+          {
+            "name": "clk_74a",
+            "period_ns": "13.468",
+            "frequency_mhz": "74.2500742501",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "1862"
+          },
+          {
+            "name": "clk_74b",
+            "period_ns": "13.468",
+            "frequency_mhz": "74.2500742501",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "0"
+          },
+          {
+            "name": "bridge_spiclk",
+            "period_ns": "13.468",
+            "frequency_mhz": "74.2500742501",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "19"
+          },
+          {
+            "name": "ic|pll|audio_clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]",
+            "period_ns": "1.660",
+            "frequency_mhz": "602.409638554",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "1"
+          },
+          {
+            "name": "ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "81.359",
+            "frequency_mhz": "12.2912031859",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "48"
+          },
+          {
+            "name": "ic|pll|clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]",
+            "period_ns": "1.488",
+            "frequency_mhz": "672.043010753",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "3"
+          },
+          {
+            "name": "ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "23.808",
+            "frequency_mhz": "42.002688172",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "5817"
+          },
+          {
+            "name": "ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "124.996",
+            "frequency_mhz": "8.00025600819",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "901"
+          },
+          {
+            "name": "ic|pll|clocks|general[2].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "124.996",
+            "frequency_mhz": "8.00025600819",
+            "phase_degrees": "90.000",
+            "positive_edge_registers": "2"
+          }
+        ],
+        "matched_collections": {
+          "gray_source": 60,
+          "gray_first_capture": 56,
+          "status_source": 192,
+          "status_capture": 193,
+          "keys_source": 37,
+          "keys_capture": 37,
+          "audio_source": 32,
+          "audio_capture": 32,
+          "psram_capture": 34,
+          "probe_first_capture": 22,
+          "probe_second_capture": 22
+        }
+      },
+      {
+        "model": "slow_0",
+        "setup": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 0.867
+        },
+        "hold": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 0.377
+        },
+        "recovery": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 11.562
+        },
+        "removal": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 0.77
+        },
+        "max_skew": {
+          "reported_paths": 40,
+          "violated_paths": 0,
+          "worst_slack_ns": 8.21
+        },
+        "constraint_checks": {
+          "no_clock": 0,
+          "multiple_clock": 0,
+          "generated_clock": 0,
+          "no_input_delay": 4,
+          "no_output_delay": 185,
+          "partial_input_delay": 0,
+          "partial_output_delay": 0,
+          "loops": 0,
+          "latches": 0,
+          "pll_cross_check": 0,
+          "partial_multicycle": 0,
+          "multicycle_consistency": 0,
+          "partial_min_max_delay": 0
+        },
+        "unconstrained": {
+          "Illegal Clocks": {
+            "setup": 0,
+            "hold": 0
+          },
+          "Unconstrained Clocks": {
+            "setup": 0,
+            "hold": 0
+          },
+          "Unconstrained Input Ports": {
+            "setup": 4,
+            "hold": 4
+          },
+          "Unconstrained Input Port Paths": {
+            "setup": 29,
+            "hold": 29
+          },
+          "Unconstrained Output Ports": {
+            "setup": 25,
+            "hold": 25
+          },
+          "Unconstrained Output Port Paths": {
+            "setup": 43,
+            "hold": 43
+          }
+        },
+        "reported_clocks": [
+          {
+            "name": "clk_74a",
+            "period_ns": "13.468",
+            "frequency_mhz": "74.2500742501",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "1862"
+          },
+          {
+            "name": "clk_74b",
+            "period_ns": "13.468",
+            "frequency_mhz": "74.2500742501",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "0"
+          },
+          {
+            "name": "bridge_spiclk",
+            "period_ns": "13.468",
+            "frequency_mhz": "74.2500742501",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "19"
+          },
+          {
+            "name": "ic|pll|audio_clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]",
+            "period_ns": "1.660",
+            "frequency_mhz": "602.409638554",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "1"
+          },
+          {
+            "name": "ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "81.359",
+            "frequency_mhz": "12.2912031859",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "48"
+          },
+          {
+            "name": "ic|pll|clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]",
+            "period_ns": "1.488",
+            "frequency_mhz": "672.043010753",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "3"
+          },
+          {
+            "name": "ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "23.808",
+            "frequency_mhz": "42.002688172",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "5817"
+          },
+          {
+            "name": "ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "124.996",
+            "frequency_mhz": "8.00025600819",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "901"
+          },
+          {
+            "name": "ic|pll|clocks|general[2].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "124.996",
+            "frequency_mhz": "8.00025600819",
+            "phase_degrees": "90.000",
+            "positive_edge_registers": "2"
+          }
+        ],
+        "matched_collections": {
+          "gray_source": 60,
+          "gray_first_capture": 56,
+          "status_source": 192,
+          "status_capture": 193,
+          "keys_source": 37,
+          "keys_capture": 37,
+          "audio_source": 32,
+          "audio_capture": 32,
+          "psram_capture": 34,
+          "probe_first_capture": 22,
+          "probe_second_capture": 22
+        }
+      },
+      {
+        "model": "fast_85",
+        "setup": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 3.346
+        },
+        "hold": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 0.169
+        },
+        "recovery": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 12.634
+        },
+        "removal": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 0.302
+        },
+        "max_skew": {
+          "reported_paths": 40,
+          "violated_paths": 0,
+          "worst_slack_ns": 10.546
+        },
+        "constraint_checks": {
+          "no_clock": 0,
+          "multiple_clock": 0,
+          "generated_clock": 0,
+          "no_input_delay": 4,
+          "no_output_delay": 185,
+          "partial_input_delay": 0,
+          "partial_output_delay": 0,
+          "loops": 0,
+          "latches": 0,
+          "pll_cross_check": 0,
+          "partial_multicycle": 0,
+          "multicycle_consistency": 0,
+          "partial_min_max_delay": 0
+        },
+        "unconstrained": {
+          "Illegal Clocks": {
+            "setup": 0,
+            "hold": 0
+          },
+          "Unconstrained Clocks": {
+            "setup": 0,
+            "hold": 0
+          },
+          "Unconstrained Input Ports": {
+            "setup": 4,
+            "hold": 4
+          },
+          "Unconstrained Input Port Paths": {
+            "setup": 29,
+            "hold": 29
+          },
+          "Unconstrained Output Ports": {
+            "setup": 25,
+            "hold": 25
+          },
+          "Unconstrained Output Port Paths": {
+            "setup": 43,
+            "hold": 43
+          }
+        },
+        "reported_clocks": [
+          {
+            "name": "clk_74a",
+            "period_ns": "13.468",
+            "frequency_mhz": "74.2500742501",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "1862"
+          },
+          {
+            "name": "clk_74b",
+            "period_ns": "13.468",
+            "frequency_mhz": "74.2500742501",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "0"
+          },
+          {
+            "name": "bridge_spiclk",
+            "period_ns": "13.468",
+            "frequency_mhz": "74.2500742501",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "19"
+          },
+          {
+            "name": "ic|pll|audio_clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]",
+            "period_ns": "1.660",
+            "frequency_mhz": "602.409638554",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "1"
+          },
+          {
+            "name": "ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "81.359",
+            "frequency_mhz": "12.2912031859",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "48"
+          },
+          {
+            "name": "ic|pll|clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]",
+            "period_ns": "1.488",
+            "frequency_mhz": "672.043010753",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "3"
+          },
+          {
+            "name": "ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "23.808",
+            "frequency_mhz": "42.002688172",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "5817"
+          },
+          {
+            "name": "ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "124.996",
+            "frequency_mhz": "8.00025600819",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "901"
+          },
+          {
+            "name": "ic|pll|clocks|general[2].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "124.996",
+            "frequency_mhz": "8.00025600819",
+            "phase_degrees": "90.000",
+            "positive_edge_registers": "2"
+          }
+        ],
+        "matched_collections": {
+          "gray_source": 60,
+          "gray_first_capture": 56,
+          "status_source": 192,
+          "status_capture": 193,
+          "keys_source": 37,
+          "keys_capture": 37,
+          "audio_source": 32,
+          "audio_capture": 32,
+          "psram_capture": 34,
+          "probe_first_capture": 22,
+          "probe_second_capture": 22
+        }
+      },
+      {
+        "model": "fast_0",
+        "setup": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 3.598
+        },
+        "hold": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 0.098
+        },
+        "recovery": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 12.716
+        },
+        "removal": {
+          "reported_paths": 20,
+          "violated_paths": 0,
+          "worst_slack_ns": 0.273
+        },
+        "max_skew": {
+          "reported_paths": 40,
+          "violated_paths": 0,
+          "worst_slack_ns": 10.635
+        },
+        "constraint_checks": {
+          "no_clock": 0,
+          "multiple_clock": 0,
+          "generated_clock": 0,
+          "no_input_delay": 4,
+          "no_output_delay": 185,
+          "partial_input_delay": 0,
+          "partial_output_delay": 0,
+          "loops": 0,
+          "latches": 0,
+          "pll_cross_check": 0,
+          "partial_multicycle": 0,
+          "multicycle_consistency": 0,
+          "partial_min_max_delay": 0
+        },
+        "unconstrained": {
+          "Illegal Clocks": {
+            "setup": 0,
+            "hold": 0
+          },
+          "Unconstrained Clocks": {
+            "setup": 0,
+            "hold": 0
+          },
+          "Unconstrained Input Ports": {
+            "setup": 4,
+            "hold": 4
+          },
+          "Unconstrained Input Port Paths": {
+            "setup": 29,
+            "hold": 29
+          },
+          "Unconstrained Output Ports": {
+            "setup": 25,
+            "hold": 25
+          },
+          "Unconstrained Output Port Paths": {
+            "setup": 43,
+            "hold": 43
+          }
+        },
+        "reported_clocks": [
+          {
+            "name": "clk_74a",
+            "period_ns": "13.468",
+            "frequency_mhz": "74.2500742501",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "1862"
+          },
+          {
+            "name": "clk_74b",
+            "period_ns": "13.468",
+            "frequency_mhz": "74.2500742501",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "0"
+          },
+          {
+            "name": "bridge_spiclk",
+            "period_ns": "13.468",
+            "frequency_mhz": "74.2500742501",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "19"
+          },
+          {
+            "name": "ic|pll|audio_clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]",
+            "period_ns": "1.660",
+            "frequency_mhz": "602.409638554",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "1"
+          },
+          {
+            "name": "ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "81.359",
+            "frequency_mhz": "12.2912031859",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "48"
+          },
+          {
+            "name": "ic|pll|clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]",
+            "period_ns": "1.488",
+            "frequency_mhz": "672.043010753",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "3"
+          },
+          {
+            "name": "ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "23.808",
+            "frequency_mhz": "42.002688172",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "5817"
+          },
+          {
+            "name": "ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "124.996",
+            "frequency_mhz": "8.00025600819",
+            "phase_degrees": "0.000",
+            "positive_edge_registers": "901"
+          },
+          {
+            "name": "ic|pll|clocks|general[2].gpll~PLL_OUTPUT_COUNTER|divclk",
+            "period_ns": "124.996",
+            "frequency_mhz": "8.00025600819",
+            "phase_degrees": "90.000",
+            "positive_edge_registers": "2"
+          }
+        ],
+        "matched_collections": {
+          "gray_source": 60,
+          "gray_first_capture": 56,
+          "status_source": 192,
+          "status_capture": 193,
+          "keys_source": 37,
+          "keys_capture": 37,
+          "audio_source": 32,
+          "audio_capture": 32,
+          "psram_capture": 34,
+          "probe_first_capture": 22,
+          "probe_second_capture": 22
+        }
+      }
+    ],
+    "full_board_timing_qualified": false,
+    "remaining_timing_scope": "APF SPI/controller/scaler/audio external delay requirements and board skew are not qualified; check reports retain unconstrained active I/O. PSRAM delays are engineering budgets, not measured board acceptance.",
+    "clock_precision_note": "TimeQuest get_clock_info periods have three decimal places; TSV frequency_mhz is approximate. Use implemented PLL ratios and nominal board reference for more precise nominal rates; oscillator tolerance/jitter are not measured.",
+    "implemented_pll_ratios_at_nominal_74_25mhz": {
+      "ic|pll|audio_clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]": {
+        "divide_by": 512,
+        "multiply_by": 4153,
+        "nominal_mhz": 602.26611328125
+      },
+      "ic|pll|audio_clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk": {
+        "divide_by": 49,
+        "multiply_by": 1,
+        "nominal_mhz": 12.291145169005102
+      },
+      "ic|pll|clocks|general[0].gpll~FRACTIONAL_PLL|vcoph[0]": {
+        "divide_by": 256,
+        "multiply_by": 2317,
+        "nominal_mhz": 672.0205078125
+      },
+      "ic|pll|clocks|general[0].gpll~PLL_OUTPUT_COUNTER|divclk": {
+        "divide_by": 16,
+        "multiply_by": 1,
+        "nominal_mhz": 42.00128173828125
+      },
+      "ic|pll|clocks|general[1].gpll~PLL_OUTPUT_COUNTER|divclk": {
+        "divide_by": 84,
+        "multiply_by": 1,
+        "nominal_mhz": 8.000244140625
+      },
+      "ic|pll|clocks|general[2].gpll~PLL_OUTPUT_COUNTER|divclk": {
+        "divide_by": 84,
+        "multiply_by": 1,
+        "nominal_mhz": 8.000244140625
+      }
+    },
+    "raw_bitstream": {
+      "path": "build/quartus/output_files/pocketlotus.rbf",
+      "bytes": 1041148,
+      "sha256": "16f154a112b06d4ca4edd4d36da7c2f30dfc11716b11c3160b75f3f57fdda7b8"
+    },
+    "project_sha256": "e19fd80a7840dabd519cd1f869d98f6a32c2eb42139c34bbe947821543c01619",
+    "constraints_sha256": "5109fb381409a3e180e5b8edbc25640b4f4b571edc6d509ec2cfa92c77b14a03"
+  },
+  "diagnostic": {
+    "bytes": 688,
+    "sha256": "4aeefc75ebc25f583fbd6ff0aedeb4ac7e65fd0f255a8698c1bf5aab73c8d8f7",
+    "base": "0x3800000",
+    "labels": {
+      "start": 58720288,
+      "fill": 58720480,
+      "soundfill": 58720504,
+      "soundcontinue": 58720528,
+      "vidc_loop": 58720604,
+      "heartbeat": 58720640,
+      "fail": 58720684,
+      "vidc_table": 58720700,
+      "vidc_end": 58720828
+    }
+  },
+  "package": {
+    "complete_bitstream_package": true,
+    "evidence": "Diagnostic packaging only; no Pocket hardware result",
+    "files": [
+      {
+        "path": "documentation/LICENSES/GPL-3.0.txt",
+        "bytes": 35149,
+        "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+      },
+      {
+        "path": "documentation/LICENSES/LGPL-2.1.txt",
+        "bytes": 26419,
+        "sha256": "20e50fe7aae3e56378ebf0417d9de904f55a0e61e4df315333e632a4d3555d95"
+      },
+      {
+        "path": "documentation/LICENSES/README.md",
+        "bytes": 1470,
+        "sha256": "c1d30984f474e0e41136ba87c37ebf85d90c650691686c8950b52666b9400fe4"
+      },
+      {
+        "path": "documentation/source-manifest.json",
+        "bytes": 16137,
+        "sha256": "9d4fef1968b07256285ecddcdc19952970d0a1cc5dc068704037e37447dd20cd"
+      },
+      {
+        "path": "documentation/module-manifest.json",
+        "bytes": 24361,
+        "sha256": "5db7a246ae57958f4f27c15097b951ba36a628752349fc2609d9a82583ea0178"
+      },
+      {
+        "path": "documentation/docs/BUILD.md",
+        "bytes": 11656,
+        "sha256": "07201ba937cc4c2b0947dae7042cae3139ee6ac39502f2cc6b3e74fcaac8a505"
+      },
+      {
+        "path": "documentation/THIRD_PARTY_NOTICES.txt",
+        "bytes": 91566,
+        "sha256": "2556819e15290049213f8619c91f1ef119de2476bf8d05b4daa539b58e570cb5"
+      },
+      {
+        "path": "Cores/PocketLotus.Diagnostic/core.json",
+        "bytes": 659,
+        "sha256": "db563b185d0b2ffaaf088a9cc4fc4f5e3be6a7d05f8ba117eaeb0fa7c28bdb43"
+      },
+      {
+        "path": "Cores/PocketLotus.Diagnostic/data.json",
+        "bytes": 263,
+        "sha256": "ce9ca967ee17084b58bdc6d9a8c20ea84b5384e8fa0f58d26c6fbb05c164f792"
+      },
+      {
+        "path": "Cores/PocketLotus.Diagnostic/video.json",
+        "bytes": 126,
+        "sha256": "131411fee0bc7e1bac547b9cdf41c65fe8a36fbae246e4343f308d82352a2d38"
+      },
+      {
+        "path": "Cores/PocketLotus.Diagnostic/audio.json",
+        "bytes": 32,
+        "sha256": "901bd52a78484af4e73d4c67dbed75ca9f42e2e7e00b3306b91e0a51e062a870"
+      },
+      {
+        "path": "Cores/PocketLotus.Diagnostic/input.json",
+        "bytes": 128,
+        "sha256": "f0323b1d12940edbb47bf8f846f8fb8f8c898559c1ceffbf33b22fa0e6a267c9"
+      },
+      {
+        "path": "Cores/PocketLotus.Diagnostic/variants.json",
+        "bytes": 53,
+        "sha256": "445c0e6f3e20bd57bf02dbea55c3c19ef8c50aeb3343d91fdf09d3f0c0f12e21"
+      },
+      {
+        "path": "Cores/PocketLotus.Diagnostic/interact.json",
+        "bytes": 64,
+        "sha256": "dc506ef71695d9ab4c903440f499a888152de1bad57dfbb2843adc9aa74d15b8"
+      },
+      {
+        "path": "Cores/PocketLotus.Diagnostic/info.txt",
+        "bytes": 781,
+        "sha256": "0cc9e939c34a18ec99d5d808e53f305bf2de159f7cdfc2f5b7c5af7b1d5dc5e5"
+      },
+      {
+        "path": "Platforms/pocketlotusdiag.json",
+        "bytes": 110,
+        "sha256": "d3d40fc22f0e9795a7898655702673ecd453bf1fcb4f8550293c44a2696cb41b"
+      },
+      {
+        "path": "Assets/pocketlotusdiag/common/diagnostic.bin",
+        "bytes": 688,
+        "sha256": "4aeefc75ebc25f583fbd6ff0aedeb4ac7e65fd0f255a8698c1bf5aab73c8d8f7"
+      },
+      {
+        "path": "Assets/pocketlotusdiag/common/diagnostic.json",
+        "bytes": 157,
+        "sha256": "d9db193d6bcd5be3b322d9cfda25b72ac40a0d7aafb83919a3610afc06c24ad1"
+      },
+      {
+        "path": "Cores/PocketLotus.Diagnostic/bitstream.rbf_r",
+        "bytes": 1041148,
+        "sha256": "3c4051531b36d47c17430b22755b8e719792f73b45c37df2952d52c5a650f4de"
+      }
+    ],
+    "raw_rbf_sha256": "16f154a112b06d4ca4edd4d36da7c2f30dfc11716b11c3160b75f3f57fdda7b8",
+    "quartus_results_sha256": "53215137cf92ca1ab8b15a5707cd19c8fc9056933cc448c0309370319e60c187",
+    "timing_qualification": "Inspect plan/implementation-results.json: assembly success does not establish full board timing or Pocket acceptance"
+  },
+  "package_archive": {
+    "path": "PocketLotus.Diagnostic.zip",
+    "bytes": 520488,
+    "sha256": "29003c92faec7c05d2a28fbf554db2b8637b6bb3532b74f7834ea7b1275c08e6"
+  },
+  "package_verification": {
+    "passed": true,
+    "command": [
+      "python",
+      "tools/verify_package.py"
+    ],
+    "working_directory": "C:\\Projects\\PocketLotus",
+    "archive_sha256": "29003c92faec7c05d2a28fbf554db2b8637b6bb3532b74f7834ea7b1275c08e6",
+    "raw_rbf_sha256": "16f154a112b06d4ca4edd4d36da7c2f30dfc11716b11c3160b75f3f57fdda7b8",
+    "apf_metadata_validation": {
+      "passed": true,
+      "scope": "Documented diagnostic metadata profile; not Analogue OS parser execution",
+      "sources": [
+        "https://www.analogue.co/developer/docs/openfpga/core-definition-files/core-json",
+        "https://www.analogue.co/developer/docs/openfpga/core-definition-files/data-json",
+        "https://www.analogue.co/developer/docs/openfpga/core-definition-files/input-json",
+        "https://www.analogue.co/developer/docs/openfpga/core-definition-files/audio-json",
+        "https://www.analogue.co/developer/docs/openfpga/core-definition-files/video-json",
+        "https://www.analogue.co/developer/docs/openfpga/core-definition-files/variants-json",
+        "https://www.analogue.co/developer/docs/openfpga/core-definition-files/interact-json",
+        "https://www.analogue.co/developer/docs/openfpga/platform-metadata",
+        "https://www.analogue.co/developer/docs/openfpga/packaging-a-core"
+      ]
+    },
+    "checks": [
+      "documented APF diagnostic metadata profile and directory identity",
+      "About version matches metadata",
+      "43 pinned import hashes",
+      "allowlisted file hashes and lengths",
+      "completed Quartus provenance",
+      "independent exact RBF bit reversal",
+      "ZIP checksum/CRCs/membership/payloads",
+      "original diagnostic binary"
+    ],
+    "scope": "Packaging/source verification only; APF external timing and Pocket acceptance remain unqualified"
+  },
+  "preservation": {
+    "passed": true,
+    "references_clean": true,
+    "verification_sha256": "e583881444c98eb39c58fd43bcecff5c35343efc6eccc769e0352b865b2c2919"
+  },
+  "hardware": {
+    "reported_date": "2026-10-08",
+    "evidence_type": "user_report",
+    "firmware": "2.7",
+    "phase": "Immediately after Run, before any asset selection is possible",
+    "message": [
+      "Load error in 'core'",
+      "General error",
+      "Error in core setup"
+    ],
+    "failed_package_sha256": "40a21999cdd04d2ba9e1d009affdf8135dbeeb31f775cc943f18f88c143dd422",
+    "status": "standalone_diagnostic_execution_display_tone_and_a_verified",
+    "diagnostic_execution": "39 complete eight-word physical log snapshots show ARM success and strictly increasing CPU/video/sound/peripheral acknowledgements; independent clock probes live",
+    "local_findings": [
+      "0082 slot-0 writes rejected; reproduced with documented boot regression",
+      "Data slot name 23 characters exceeds documented 15",
+      "Input mapping name 22 characters exceeds documented 19",
+      "Device boot log confirms author.shortname mismatch with installed core directory",
+      "0.1.2 direct VIDC outputs violate APF sync width, VS-to-HS spacing and blanking RGB contracts; directed regression fails"
+    ],
+    "limits": "No measured physical geometry/frame rate/pin timing, Dock qualification or stereo/sample fidelity proof. A press/release verified; other inputs/Archimedes keyboard untested. No RISC OS/protected JFD/Lotus execution.",
+    "candidate_version": "0.1.5-diagnostic",
+    "candidate_hardware_acceptance": "0.1.5 sustained ARM/DMA and physical A press/release verified by logs; persistent coloured bars and continuous tone user-reported; board timing/geometry/stereo fidelity unqualified",
+    "risc_os_boot": "not_tested",
+    "protected_jfd": "not_tested",
+    "lotus_gameplay": "not_tested",
+    "candidate_archive": {
+      "path": "PocketLotus.Diagnostic.zip",
+      "bytes": 520488,
+      "sha256": "29003c92faec7c05d2a28fbf554db2b8637b6bb3532b74f7834ea7b1275c08e6"
+    },
+    "candidate_raw_rbf_sha256": "16f154a112b06d4ca4edd4d36da7c2f30dfc11716b11c3160b75f3f57fdda7b8",
+    "local_regression": {
+      "previous_rtl": "failed: APF command 0082 returned 4f4b0002",
+      "corrected_rtl": "passed: documented boot and second load",
+      "command": "python tools/simulate.py --test apf_boot",
+      "failed_log_sha256": "714cb6eacd1b378c8ede684bc54df7ab5f0abaa41444bc4052c66eb42b90b3c5",
+      "passed_log_sha256": "ba11c4ca3947499af68fa36611d354aba51d0a6f90ada1592bd919073492f43f"
+    },
+    "attempts": [
+      {
+        "version": "0.1.1-diagnostic",
+        "status": "failed",
+        "user_report": "Same setup errors; About does nothing",
+        "sd_files_verified": true,
+        "all_eleven_matched_package": true,
+        "debug_log_sha256": "f13466c87f80d54a360001c8fac489d8998ccf86661626b244cc2958fffd2f44",
+        "debug_log_text": "APF Debug Log\nPocket OS version 2_7\n\nStart\nLoad core normally\nOpening /Cores/PocketLotus.PocketLotusDiag/core.json\n",
+        "confirmed_failure": "APF opens nonexistent /Cores/PocketLotus.PocketLotusDiag/core.json; installed path is /Cores/PocketLotus.Diagnostic",
+        "fpga_execution": "not_reached_by_trace"
+      },
+      {
+        "version": "0.1.2-diagnostic",
+        "status": "loaded_user_reported",
+        "evidence_type": "user_report",
+        "observation": "Core ran, user chose diagnostic, white bar appeared at bottom and a tone was heard",
+        "diagnostic_display_acceptance": false,
+        "audio_acceptance": "tone heard; channel/sample fidelity unverified",
+        "device_log": "No new log available after power cycle; Debug Logging resets on power-off",
+        "package_archive": {
+          "path": "PocketLotus.Diagnostic.zip",
+          "bytes": 509510,
+          "sha256": "feab2312bfd520354d202e517628c3eaf4f351caec90e5142c514cf20c75294f"
+        },
+        "raw_rbf_sha256": "db50d51b8ee1e88d6dfc5fd911ab3ccfd8f48e8a8999306bdcbd7f95714dc21e"
+      },
+      {
+        "version": "0.1.3-diagnostic",
+        "status": "display_mismatch_user_reported",
+        "evidence_type": "user_report_and_device_boot_log",
+        "all_twelve_matched_package": true,
+        "changed_files": 3,
+        "package_archive": {
+          "path": "PocketLotus.Diagnostic.zip",
+          "bytes": 502596,
+          "sha256": "060b74df5aa04ca5da499ccf8fda5636d81083f1da2b41d9b5fc73b855fc9bb5"
+        },
+        "raw_rbf_sha256": "890bfcea0d8337fe5cc56fc2d61b43d56ac95c7274109585ee7d2b16c5cf937c",
+        "diagnostic_display_acceptance": false,
+        "device_log": {
+          "path": "build\\hardware-logs\\PocketLotus.Diagnostic_20261008_184955.txt",
+          "sha256": "de89558c9349b27279046ba4bb2f345c702a0e22eb0e2fd4099b10a6a308f1fd",
+          "bytes": 5261,
+          "setup": "Bitstream OK, 688-byte load complete, Ready to Run and Reset Exit complete",
+          "limit": "No internal CPU/video diagnostic events in this build"
+        },
+        "observation": "White bar and tone, then briefly thin coloured stripes which disappear; user corrected the temporal order",
+        "sd_installation": {
+          "version": "0.1.3-diagnostic",
+          "command": [
+            "python",
+            "tools/install_diagnostic.py",
+            "--root",
+            "F:\\"
+          ],
+          "working_directory": "C:\\Projects\\PocketLotus",
+          "changes": [
+            {
+              "path": "F:\\Cores\\PocketLotus.Diagnostic\\bitstream.rbf_r",
+              "previous_sha256": "119c2f7f54f15d2daecb9588c8bd2a61a42444c522518784fea0f38ab57942c3",
+              "sha256": "54d1c49e536497cb5025c53908cbd4429d4a33506ee1daa9730bccc79e717577"
+            },
+            {
+              "path": "F:\\Cores\\PocketLotus.Diagnostic\\core.json",
+              "previous_sha256": "cbfd2552ad9be48e5433a79a1ae3fd2ee217d9f11ac4f53a7ff6991e3184e878",
+              "sha256": "bffcda9c8e5b4a72fce0b164bf3bbbfe5ab57d0b9354e358b6291192d45de5d6"
+            },
+            {
+              "path": "F:\\Cores\\PocketLotus.Diagnostic\\info.txt",
+              "previous_sha256": "143fc74fd04b5e3595d61ea335696acec7834040d9d263a96df8f654978367d5",
+              "sha256": "a4e03203e331df41f7faa5a53a42015e6df5f7a43833180da0081dd6f82e4fa0"
+            }
+          ],
+          "files": [
+            {
+              "path": "F:\\Assets\\pocketlotusdiag\\common\\diagnostic.bin",
+              "sha256": "4aeefc75ebc25f583fbd6ff0aedeb4ac7e65fd0f255a8698c1bf5aab73c8d8f7",
+              "matches_package": true
+            },
+            {
+              "path": "F:\\Assets\\pocketlotusdiag\\common\\diagnostic.json",
+              "sha256": "d9db193d6bcd5be3b322d9cfda25b72ac40a0d7aafb83919a3610afc06c24ad1",
+              "matches_package": true
+            },
+            {
+              "path": "F:\\Cores\\PocketLotus.Diagnostic\\audio.json",
+              "sha256": "901bd52a78484af4e73d4c67dbed75ca9f42e2e7e00b3306b91e0a51e062a870",
+              "matches_package": true
+            },
+            {
+              "path": "F:\\Cores\\PocketLotus.Diagnostic\\bitstream.rbf_r",
+              "sha256": "54d1c49e536497cb5025c53908cbd4429d4a33506ee1daa9730bccc79e717577",
+              "matches_package": true
+            },
+            {
+              "path": "F:\\Cores\\PocketLotus.Diagnostic\\core.json",
+              "sha256": "bffcda9c8e5b4a72fce0b164bf3bbbfe5ab57d0b9354e358b6291192d45de5d6",
+              "matches_package": true
+            },
+            {
+              "path": "F:\\Cores\\PocketLotus.Diagnostic\\data.json",
+              "sha256": "ce9ca967ee17084b58bdc6d9a8c20ea84b5384e8fa0f58d26c6fbb05c164f792",
+              "matches_package": true
+            },
+            {
+              "path": "F:\\Cores\\PocketLotus.Diagnostic\\info.txt",
+              "sha256": "a4e03203e331df41f7faa5a53a42015e6df5f7a43833180da0081dd6f82e4fa0",
+              "matches_package": true
+            },
+            {
+              "path": "F:\\Cores\\PocketLotus.Diagnostic\\input.json",
+              "sha256": "f0323b1d12940edbb47bf8f846f8fb8f8c898559c1ceffbf33b22fa0e6a267c9",
+              "matches_package": true
+            },
+            {
+              "path": "F:\\Cores\\PocketLotus.Diagnostic\\interact.json",
+              "sha256": "dc506ef71695d9ab4c903440f499a888152de1bad57dfbb2843adc9aa74d15b8",
+              "matches_package": true
+            },
+            {
+              "path": "F:\\Cores\\PocketLotus.Diagnostic\\variants.json",
+              "sha256": "445c0e6f3e20bd57bf02dbea55c3c19ef8c50aeb3343d91fdf09d3f0c0f12e21",
+              "matches_package": true
+            },
+            {
+              "path": "F:\\Cores\\PocketLotus.Diagnostic\\video.json",
+              "sha256": "131411fee0bc7e1bac547b9cdf41c65fe8a36fbae246e4343f308d82352a2d38",
+              "matches_package": true
+            },
+            {
+              "path": "F:\\Platforms\\pocketlotusdiag.json",
+              "sha256": "d3d40fc22f0e9795a7898655702673ecd453bf1fcb4f8550293c44a2696cb41b",
+              "matches_package": true
+            }
+          ],
+          "all_matched": true,
+          "scope": "SD file installation/readback only; no hardware execution claim"
+        }
+      },
+      {
+        "version": "0.1.4-diagnostic",
+        "status": "runtime_status_frozen",
+        "evidence_type": "device_runtime_log",
+        "changed_files": 3,
+        "all_twelve_matched_package": true,
+        "package_archive": {
+          "path": "PocketLotus.Diagnostic.zip",
+          "bytes": 520989,
+          "sha256": "213f4994a543ce764479351c707690ac167dc23756e2138cc5a1229f14bee7dd"
+        },
+        "raw_rbf_sha256": "c14e3f81ab65af11ba50c000e6cde321ba7d761c803e78f3ae55b5fae7ee54ad",
+        "scope": "Periodic coherent CPU/DMA log snapshots; no display fix or hardware acceptance claimed",
+        "device_log": {
+          "path": "build\\hardware-logs\\PocketLotus.Diagnostic_20261008_191327.txt",
+          "bytes": 36941,
+          "sha256": "e284cb71c15937cd3397af0ec15e3c235a1a6f825142bd0a58a012923dc454a5",
+          "event_count": 396,
+          "complete_bursts": 33,
+          "unique_snapshots": 1
+        },
+        "runtime_analysis_path": "build/hardware-logs/runtime-0.1.4.json",
+        "first_snapshot": {
+          "timestamp": "2026/10/08 19:13:31",
+          "words": [
+            "600d0000",
+            "00021c3c",
+            "00023190",
+            "00000880",
+            "0000289e",
+            "03800188"
+          ]
+        },
+        "last_snapshot": {
+          "timestamp": "2026/10/08 19:13:47",
+          "words": [
+            "600d0000",
+            "00021c3c",
+            "00023190",
+            "00000880",
+            "0000289e",
+            "03800188"
+          ]
+        },
+        "diagnostic_display_acceptance": false,
+        "observation": "User completed requested run; no new explicit display description for 0.1.4",
+        "finding": "33 identical six-word snapshots across 16 seconds: ARM result 600d0000, CPU 138300, video 143760, sound 2176, peripheral 10398, last acknowledged CPU address 03800188 (heartbeat ldr r7,[r1])",
+        "limit": "Does not distinguish stopped clocks, memory/bus deadlock or stale coherent status mailbox; APF bridge/debug logger remained responsive"
+      },
+      {
+        "version": "0.1.5-diagnostic",
+        "status": "sustained_diagnostic_progress_and_display_user_reported",
+        "evidence_type": "device_runtime_log_and_user_report",
+        "changed_files": 3,
+        "all_twelve_matched_package": true,
+        "package_archive": {
+          "path": "PocketLotus.Diagnostic.zip",
+          "bytes": 520488,
+          "sha256": "29003c92faec7c05d2a28fbf554db2b8637b6bb3532b74f7834ea7b1275c08e6"
+        },
+        "raw_rbf_sha256": "16f154a112b06d4ca4edd4d36da7c2f30dfc11716b11c3160b75f3f57fdda7b8",
+        "scope": "Sustained ARM/CPU/video/sound/peripheral activity and display/tone observations on OS 2.7; no RISC OS/gameplay or complete physical timing qualification",
+        "device_log": {
+          "path": "build\\hardware-logs\\PocketLotus.Diagnostic_20261008_195020.txt",
+          "bytes": 55181,
+          "sha256": "e6a0b5156da59c7922212205835260f92e3b1efc7690aa4ff18560ef09c9855d",
+          "event_count": 624,
+          "complete_bursts": 39,
+          "unique_snapshots": 39,
+          "unique_status_snapshots": 39,
+          "unique_probe_snapshots": 39
+        },
+        "runtime_analysis_path": "build/hardware-logs/runtime-0.1.5.json",
+        "first_snapshot": {
+          "timestamp": "2026/10/08 19:50:24",
+          "words": [
+            "600d0000",
+            "000377c9",
+            "0003c6ec",
+            "00000ec4",
+            "000046d7",
+            "0380019c",
+            "8def4626",
+            "9d188dd8"
+          ],
+          "status": {
+            "result": 1611464704,
+            "cpu_ack_count": 227273,
+            "video_ack_count": 247532,
+            "sound_ack_count": 3780,
+            "peripheral_ack_count": 18135,
+            "last_cpu_address": 58720668
+          },
+          "probe_edge_observations_mod256": {
+            "system_clock": 38,
+            "pixel_clock": 70,
+            "cpu_ack": 239,
+            "video_ack": 141,
+            "sound_ack": 216,
+            "peripheral_ack": 141
+          },
+          "individually_synchronized_flags": {
+            "pll_locked": true,
+            "cpu_reset": false,
+            "pixel_reset": false,
+            "ready": true,
+            "memc_cyc": true,
+            "memc_stb": true,
+            "memc_write": false,
+            "memory_ack": true,
+            "psram_busy": false,
+            "arbiter_armed": false,
+            "arbiter_state": 3,
+            "psram_state": 0
+          }
+        },
+        "last_snapshot": {
+          "timestamp": "2026/10/08 19:50:42",
+          "words": [
+            "600d0000",
+            "0082775d",
+            "009b8f00",
+            "00025db4",
+            "000b51ef",
+            "0380019c",
+            "1eee3563",
+            "9c08a3b6"
+          ],
+          "status": {
+            "result": 1611464704,
+            "cpu_ack_count": 8550237,
+            "video_ack_count": 10194688,
+            "sound_ack_count": 155060,
+            "peripheral_ack_count": 741871,
+            "last_cpu_address": 58720668
+          },
+          "probe_edge_observations_mod256": {
+            "system_clock": 99,
+            "pixel_clock": 53,
+            "cpu_ack": 238,
+            "video_ack": 30,
+            "sound_ack": 182,
+            "peripheral_ack": 163
+          },
+          "individually_synchronized_flags": {
+            "pll_locked": true,
+            "cpu_reset": false,
+            "pixel_reset": false,
+            "ready": true,
+            "memc_cyc": true,
+            "memc_stb": true,
+            "memc_write": false,
+            "memory_ack": false,
+            "psram_busy": false,
+            "arbiter_armed": false,
+            "arbiter_state": 1,
+            "psram_state": 0
+          }
+        },
+        "counter_progress": {
+          "cpu_ack_count": {
+            "first": 227273,
+            "last": 8550237,
+            "strictly_increasing": true
+          },
+          "video_ack_count": {
+            "first": 247532,
+            "last": 10194688,
+            "strictly_increasing": true
+          },
+          "sound_ack_count": {
+            "first": 3780,
+            "last": 155060,
+            "strictly_increasing": true
+          },
+          "peripheral_ack_count": {
+            "first": 18135,
+            "last": 741871,
+            "strictly_increasing": true
+          }
+        },
+        "generated_clock_probes": "System and pixel divided-clock edge observations advance across all 39 snapshots; not calibrated physical frequency measurements",
+        "reset_flags": "Locked/ready true and CPU/pixel reset false in all 39 captures",
+        "observation": "User: yes, white horizontal bar at bottom, continuous tone sound, coloured striped bars on screen. User reiterated that this time the tone was continuous.",
+        "diagnostic_display_acceptance": "Persistent coloured bars reported for this run; physical geometry, frame rate and LCD/Dock fidelity unmeasured",
+        "audio_acceptance": "Continuous tone reported, sound DMA advances; stereo channel/sample fidelity unverified",
+        "input_acceptance": "Subsequent input trace verifies 600d0000 -> 600d0010 -> 600d0000 with continuous CPU/DMA progress"
+      },
+      {
+        "version": "0.1.5-diagnostic",
+        "status": "a_press_and_release_verified_in_runtime_log",
+        "evidence_type": "user_performed_button_hold_and_device_runtime_log",
+        "device_log": {
+          "path": "build\\hardware-logs\\PocketLotus.Diagnostic_20261008_195617.txt",
+          "bytes": 37261,
+          "sha256": "79561798ea51663a8720696a511f63323300d91303b8a19a9844284c525eff9e",
+          "event_count": 400,
+          "complete_bursts": 25,
+          "unique_snapshots": 25
+        },
+        "runtime_analysis_path": "build/hardware-logs/runtime-0.1.5-input.json",
+        "result_sequence": [
+          {
+            "bursts": 3,
+            "result": "600d0000",
+            "interpretation": "before press"
+          },
+          {
+            "bursts": 15,
+            "result": "600d0010",
+            "interpretation": "A bit 4 held"
+          },
+          {
+            "bursts": 7,
+            "result": "600d0000",
+            "interpretation": "after release"
+          }
+        ],
+        "counter_progress": {
+          "cpu_ack_count": {
+            "first": 227273,
+            "last": 5483526,
+            "strictly_increasing": true
+          },
+          "video_ack_count": {
+            "first": 247532,
+            "last": 6530772,
+            "strictly_increasing": true
+          },
+          "sound_ack_count": {
+            "first": 3780,
+            "last": 99324,
+            "strictly_increasing": true
+          },
+          "peripheral_ack_count": {
+            "first": 18135,
+            "last": 475200,
+            "strictly_increasing": true
+          }
+        },
+        "first_snapshot": {
+          "timestamp": "2026/10/08 19:56:21",
+          "words": [
+            "600d0000",
+            "000377c9",
+            "0003c6ec",
+            "00000ec4",
+            "000046d7",
+            "0380019c",
+            "8def4e2b",
+            "9d188dd8"
+          ],
+          "status": {
+            "result": 1611464704,
+            "cpu_ack_count": 227273,
+            "video_ack_count": 247532,
+            "sound_ack_count": 3780,
+            "peripheral_ack_count": 18135,
+            "last_cpu_address": 58720668
+          },
+          "probe_edge_observations_mod256": {
+            "system_clock": 43,
+            "pixel_clock": 78,
+            "cpu_ack": 239,
+            "video_ack": 141,
+            "sound_ack": 216,
+            "peripheral_ack": 141
+          },
+          "individually_synchronized_flags": {
+            "pll_locked": true,
+            "cpu_reset": false,
+            "pixel_reset": false,
+            "ready": true,
+            "memc_cyc": true,
+            "memc_stb": true,
+            "memc_write": false,
+            "memory_ack": true,
+            "psram_busy": false,
+            "arbiter_armed": false,
+            "arbiter_state": 3,
+            "psram_state": 0
+          }
+        },
+        "last_snapshot": {
+          "timestamp": "2026/10/08 19:56:33",
+          "words": [
+            "600d0000",
+            "0053ac06",
+            "0063a6d4",
+            "000183fc",
+            "00074040",
+            "02010010",
+            "4d58a17a",
+            "9c10807f"
+          ],
+          "status": {
+            "result": 1611464704,
+            "cpu_ack_count": 5483526,
+            "video_ack_count": 6530772,
+            "sound_ack_count": 99324,
+            "peripheral_ack_count": 475200,
+            "last_cpu_address": 33619984
+          },
+          "probe_edge_observations_mod256": {
+            "system_clock": 122,
+            "pixel_clock": 161,
+            "cpu_ack": 88,
+            "video_ack": 77,
+            "sound_ack": 127,
+            "peripheral_ack": 128
+          },
+          "individually_synchronized_flags": {
+            "pll_locked": true,
+            "cpu_reset": false,
+            "pixel_reset": false,
+            "ready": true,
+            "memc_cyc": true,
+            "memc_stb": true,
+            "memc_write": false,
+            "memory_ack": false,
+            "psram_busy": false,
+            "arbiter_armed": false,
+            "arbiter_state": 2,
+            "psram_state": 0
+          }
+        },
+        "scope": "Physical A press/hold/release propagated through APF PAD, coherent key mailbox and ARM heartbeat; all CPU/video/sound/peripheral counters continue. Other keys and full Archimedes keyboard protocol remain untested."
+      }
+    ],
+    "sd_installation": {
+      "version": "0.1.5-diagnostic",
+      "command": [
+        "python",
+        "tools/install_diagnostic.py",
+        "--root",
+        "F:\\"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "changes": [
+        {
+          "path": "F:\\Cores\\PocketLotus.Diagnostic\\bitstream.rbf_r",
+          "previous_sha256": "b3f323b90f00190692c09dc0f67797901e60634202c7da3bc730548fb970a7ed",
+          "sha256": "3c4051531b36d47c17430b22755b8e719792f73b45c37df2952d52c5a650f4de"
+        },
+        {
+          "path": "F:\\Cores\\PocketLotus.Diagnostic\\core.json",
+          "previous_sha256": "3eafe11f93b237a45c176ad234cc07a6b79b645366743a0e6a1a3200fede60b7",
+          "sha256": "db563b185d0b2ffaaf088a9cc4fc4f5e3be6a7d05f8ba117eaeb0fa7c28bdb43"
+        },
+        {
+          "path": "F:\\Cores\\PocketLotus.Diagnostic\\info.txt",
+          "previous_sha256": "d49c93c7ce3f1665614f651e72334774b0518992a6cf90e758df6c99a5420c00",
+          "sha256": "0cc9e939c34a18ec99d5d808e53f305bf2de159f7cdfc2f5b7c5af7b1d5dc5e5"
+        }
+      ],
+      "files": [
+        {
+          "path": "F:\\Assets\\pocketlotusdiag\\common\\diagnostic.bin",
+          "sha256": "4aeefc75ebc25f583fbd6ff0aedeb4ac7e65fd0f255a8698c1bf5aab73c8d8f7",
+          "matches_package": true
+        },
+        {
+          "path": "F:\\Assets\\pocketlotusdiag\\common\\diagnostic.json",
+          "sha256": "d9db193d6bcd5be3b322d9cfda25b72ac40a0d7aafb83919a3610afc06c24ad1",
+          "matches_package": true
+        },
+        {
+          "path": "F:\\Cores\\PocketLotus.Diagnostic\\audio.json",
+          "sha256": "901bd52a78484af4e73d4c67dbed75ca9f42e2e7e00b3306b91e0a51e062a870",
+          "matches_package": true
+        },
+        {
+          "path": "F:\\Cores\\PocketLotus.Diagnostic\\bitstream.rbf_r",
+          "sha256": "3c4051531b36d47c17430b22755b8e719792f73b45c37df2952d52c5a650f4de",
+          "matches_package": true
+        },
+        {
+          "path": "F:\\Cores\\PocketLotus.Diagnostic\\core.json",
+          "sha256": "db563b185d0b2ffaaf088a9cc4fc4f5e3be6a7d05f8ba117eaeb0fa7c28bdb43",
+          "matches_package": true
+        },
+        {
+          "path": "F:\\Cores\\PocketLotus.Diagnostic\\data.json",
+          "sha256": "ce9ca967ee17084b58bdc6d9a8c20ea84b5384e8fa0f58d26c6fbb05c164f792",
+          "matches_package": true
+        },
+        {
+          "path": "F:\\Cores\\PocketLotus.Diagnostic\\info.txt",
+          "sha256": "0cc9e939c34a18ec99d5d808e53f305bf2de159f7cdfc2f5b7c5af7b1d5dc5e5",
+          "matches_package": true
+        },
+        {
+          "path": "F:\\Cores\\PocketLotus.Diagnostic\\input.json",
+          "sha256": "f0323b1d12940edbb47bf8f846f8fb8f8c898559c1ceffbf33b22fa0e6a267c9",
+          "matches_package": true
+        },
+        {
+          "path": "F:\\Cores\\PocketLotus.Diagnostic\\interact.json",
+          "sha256": "dc506ef71695d9ab4c903440f499a888152de1bad57dfbb2843adc9aa74d15b8",
+          "matches_package": true
+        },
+        {
+          "path": "F:\\Cores\\PocketLotus.Diagnostic\\variants.json",
+          "sha256": "445c0e6f3e20bd57bf02dbea55c3c19ef8c50aeb3343d91fdf09d3f0c0f12e21",
+          "matches_package": true
+        },
+        {
+          "path": "F:\\Cores\\PocketLotus.Diagnostic\\video.json",
+          "sha256": "131411fee0bc7e1bac547b9cdf41c65fe8a36fbae246e4343f308d82352a2d38",
+          "matches_package": true
+        },
+        {
+          "path": "F:\\Platforms\\pocketlotusdiag.json",
+          "sha256": "d3d40fc22f0e9795a7898655702673ecd453bf1fcb4f8550293c44a2696cb41b",
+          "matches_package": true
+        }
+      ],
+      "all_matched": true,
+      "scope": "SD file installation/readback only; no hardware execution claim"
+    },
+    "next_hardware_gate": "External APF/PSRAM physical timing and geometry/stereo qualification remain open. Next software gate: RISC OS boot with real keyboard/CMOS/RTC/storage and separately supplied RISC OS ROM, ADFFS and IDE-ROM dependencies.",
+    "source_regression_followup": {
+      "version": "0.1.5-diagnostic",
+      "defect": "Flyback cancels an accepted video/cursor DMA burst; returning data can populate a new CPU cache line",
+      "legacy_expected_failure": "76543210 DMA data returned instead of cafe0000 CPU RAM word",
+      "fix": "Drain four DMA acknowledgements before resetting pointers; prevent new video/cursor grants during flyback",
+      "positive_scope": "Sixteen real MEMC/arbiter/PSRAM video/cursor read and ACK boundary cases, correct CPU cache miss/hit data",
+      "hardware_causality": "Frozen 0.1.4 status did not recur in the fixed 0.1.5 run: all 39 snapshots progress. Physical faulty DMA return was not directly captured; directed regression proves the mechanism separately.",
+      "memc_flyback": {
+        "path": "build/sim/memc_flyback.log",
+        "sha256": "e0c6094006cb9a576eee4b8228fd81bfd64d8dddeeb8ee33d21396bba9c81e98",
+        "result": {
+          "command": [
+            "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+            "-i",
+            "C:\\Projects\\PocketLotus\\build\\sim\\memc_flyback.vvp"
+          ],
+          "working_directory": "C:\\Projects\\PocketLotus",
+          "exit_code": 0,
+          "elapsed_seconds": 0.448647000011988,
+          "expected_exit_code": 0
+        }
+      },
+      "memc_flyback-baseline": {
+        "path": "build/sim/memc_flyback-baseline.log",
+        "sha256": "aee4229a9a6fd1a4f72f828ba98703182647fb4767fb640f68895d748e958dc3",
+        "result": {
+          "command": [
+            "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+            "-i",
+            "C:\\Projects\\PocketLotus\\build\\sim\\memc_flyback-baseline.vvp"
+          ],
+          "working_directory": "C:\\Projects\\PocketLotus",
+          "exit_code": 1,
+          "elapsed_seconds": 0.15547320002224296,
+          "expected_exit_code": 1
+        }
+      },
+      "probe": {
+        "path": "build/sim/probe.log",
+        "sha256": "739bc4dbd816ff0e152561046656626f34290c5c7bf09418cb9419a794ae1e53",
+        "result": {
+          "command": [
+            "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+            "-i",
+            "C:\\Projects\\PocketLotus\\build\\sim\\probe.vvp"
+          ],
+          "working_directory": "C:\\Projects\\PocketLotus",
+          "exit_code": 0,
+          "elapsed_seconds": 0.04602909996174276,
+          "expected_exit_code": 0
+        }
+      }
+    },
+    "input_evidence": {
+      "version": "0.1.5-diagnostic",
+      "status": "a_press_and_release_verified_in_runtime_log",
+      "evidence_type": "user_performed_button_hold_and_device_runtime_log",
+      "device_log": {
+        "path": "build\\hardware-logs\\PocketLotus.Diagnostic_20261008_195617.txt",
+        "bytes": 37261,
+        "sha256": "79561798ea51663a8720696a511f63323300d91303b8a19a9844284c525eff9e",
+        "event_count": 400,
+        "complete_bursts": 25,
+        "unique_snapshots": 25
+      },
+      "runtime_analysis_path": "build/hardware-logs/runtime-0.1.5-input.json",
+      "result_sequence": [
+        {
+          "bursts": 3,
+          "result": "600d0000",
+          "interpretation": "before press"
+        },
+        {
+          "bursts": 15,
+          "result": "600d0010",
+          "interpretation": "A bit 4 held"
+        },
+        {
+          "bursts": 7,
+          "result": "600d0000",
+          "interpretation": "after release"
+        }
+      ],
+      "counter_progress": {
+        "cpu_ack_count": {
+          "first": 227273,
+          "last": 5483526,
+          "strictly_increasing": true
+        },
+        "video_ack_count": {
+          "first": 247532,
+          "last": 6530772,
+          "strictly_increasing": true
+        },
+        "sound_ack_count": {
+          "first": 3780,
+          "last": 99324,
+          "strictly_increasing": true
+        },
+        "peripheral_ack_count": {
+          "first": 18135,
+          "last": 475200,
+          "strictly_increasing": true
+        }
+      },
+      "first_snapshot": {
+        "timestamp": "2026/10/08 19:56:21",
+        "words": [
+          "600d0000",
+          "000377c9",
+          "0003c6ec",
+          "00000ec4",
+          "000046d7",
+          "0380019c",
+          "8def4e2b",
+          "9d188dd8"
+        ],
+        "status": {
+          "result": 1611464704,
+          "cpu_ack_count": 227273,
+          "video_ack_count": 247532,
+          "sound_ack_count": 3780,
+          "peripheral_ack_count": 18135,
+          "last_cpu_address": 58720668
+        },
+        "probe_edge_observations_mod256": {
+          "system_clock": 43,
+          "pixel_clock": 78,
+          "cpu_ack": 239,
+          "video_ack": 141,
+          "sound_ack": 216,
+          "peripheral_ack": 141
+        },
+        "individually_synchronized_flags": {
+          "pll_locked": true,
+          "cpu_reset": false,
+          "pixel_reset": false,
+          "ready": true,
+          "memc_cyc": true,
+          "memc_stb": true,
+          "memc_write": false,
+          "memory_ack": true,
+          "psram_busy": false,
+          "arbiter_armed": false,
+          "arbiter_state": 3,
+          "psram_state": 0
+        }
+      },
+      "last_snapshot": {
+        "timestamp": "2026/10/08 19:56:33",
+        "words": [
+          "600d0000",
+          "0053ac06",
+          "0063a6d4",
+          "000183fc",
+          "00074040",
+          "02010010",
+          "4d58a17a",
+          "9c10807f"
+        ],
+        "status": {
+          "result": 1611464704,
+          "cpu_ack_count": 5483526,
+          "video_ack_count": 6530772,
+          "sound_ack_count": 99324,
+          "peripheral_ack_count": 475200,
+          "last_cpu_address": 33619984
+        },
+        "probe_edge_observations_mod256": {
+          "system_clock": 122,
+          "pixel_clock": 161,
+          "cpu_ack": 88,
+          "video_ack": 77,
+          "sound_ack": 127,
+          "peripheral_ack": 128
+        },
+        "individually_synchronized_flags": {
+          "pll_locked": true,
+          "cpu_reset": false,
+          "pixel_reset": false,
+          "ready": true,
+          "memc_cyc": true,
+          "memc_stb": true,
+          "memc_write": false,
+          "memory_ack": false,
+          "psram_busy": false,
+          "arbiter_armed": false,
+          "arbiter_state": 2,
+          "psram_state": 0
+        }
+      },
+      "scope": "Physical A press/hold/release propagated through APF PAD, coherent key mailbox and ARM heartbeat; all CPU/video/sound/peripheral counters continue. Other keys and full Archimedes keyboard protocol remain untested."
+    }
+  },
+  "next_gate": "Qualify external APF/PSRAM physical timing, measured display geometry/frame rate and stereo fidelity. Next software gate: RISC OS boot with keyboard/CMOS/RTC/storage and separately identified RISC OS ROM, ADFFS and IDE-ROM dependencies; protected JFD and Lotus gameplay follow.",
+  "video_protocol_negative_regression": {
+    "compile_command": [
+      "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+      "-g2012",
+      "-DLEGACY_APF_VIDEO",
+      "-s",
+      "tb_video",
+      "-o",
+      "build/sim/video-legacy.vvp",
+      "rtl/pocket_video.v",
+      "sim/tb_video.v"
+    ],
+    "command": [
+      "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+      "-i",
+      "build/sim/video-legacy.vvp"
+    ],
+    "exit_code": 1,
+    "expected_exit_code": 1,
+    "elapsed_seconds": 0.03158960002474487,
+    "scope": "Failing regression reproduces former direct assignments violating APF blanking",
+    "log_sha256": "1e8285e0ea72650e4b479843e817c3ff7848a0024fa4b50c47dc80e04ad3b648",
+    "assertion_result": [
+      "FATAL: sim/tb_video.v:26: APF blank RGB is a scaler command: ffffff"
+    ],
+    "expected_failure_observed": true
+  },
+  "memc_flyback_negative_regression": {
+    "command": [
+      "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\vvp.exe",
+      "-i",
+      "C:\\Projects\\PocketLotus\\build\\sim\\memc_flyback-baseline.vvp"
+    ],
+    "working_directory": "C:\\Projects\\PocketLotus",
+    "exit_code": 1,
+    "elapsed_seconds": 0.15547320002224296,
+    "expected_exit_code": 1,
+    "log_sha256": "aee4229a9a6fd1a4f72f828ba98703182647fb4767fb640f68895d748e958dc3",
+    "assertion_result": [
+      "FATAL: sim/tb_memc_flyback.v:64: Flyback DMA crossed into CPU cache: phase=0 CPU data=76543210 expected=cafe0000 arb=4"
+    ],
+    "expected_failure_observed": true,
+    "elaboration": {
+      "command": [
+        "C:\\Projects\\PocketLotus\\build\\deps\\oss-cad-suite\\bin\\iverilog.exe",
+        "-g2012",
+        "-DSIMULATION",
+        "-DLEGACY_MEMC_FLYBACK",
+        "-I",
+        "rtl/vendor/archie/amber",
+        "-I",
+        "build/diagnostic",
+        "-s",
+        "tb_memc_flyback",
+        "-o",
+        "C:\\Projects\\PocketLotus\\build\\sim\\memc_flyback-baseline.vvp",
+        "rtl/vendor/archie/amber/a23_barrel_shift.v",
+        "rtl/vendor/archie/amber/a23_wishbone.v",
+        "rtl/vendor/archie/amber/a23_register_bank.v",
+        "rtl/vendor/archie/amber/a23_multiply.v",
+        "rtl/vendor/archie/amber/a23_fetch.v",
+        "rtl/vendor/archie/amber/a23_execute.v",
+        "rtl/vendor/archie/amber/a23_decode.v",
+        "rtl/vendor/archie/amber/a23_coprocessor.v",
+        "rtl/vendor/archie/amber/a23_cache.v",
+        "rtl/vendor/archie/amber/a23_alu.v",
+        "rtl/vendor/archie/amber/sram_byte_en.v",
+        "rtl/vendor/archie/amber/sram_line_en.v",
+        "rtl/vendor/archie/amber/a23_core.v",
+        "build/ported/memc.v",
+        "rtl/vendor/archie/memc_translator.v",
+        "rtl/vendor/archie/ioc.v",
+        "rtl/vendor/archie/ioc_irq.v",
+        "rtl/vendor/archie/latches.v",
+        "build/ported/vidc.v",
+        "rtl/vendor/archie/vidc/vidc_timing.v",
+        "build/ported/vidc_fifo.v",
+        "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+        "build/ported/vidc_audio.v",
+        "rtl/pocket_chipset.v",
+        "rtl/memory_arbiter.v",
+        "rtl/psram_word.v",
+        "rtl/async_fifo.v",
+        "rtl/reset_sync.v",
+        "rtl/pocket_video.v",
+        "rtl/pocket_debug.v",
+        "rtl/pocket_probe.v",
+        "rtl/pocket_host.v",
+        "rtl/pocket_reset.v",
+        "rtl/pocket_audio.v",
+        "sim/primitive_models.v",
+        "sim/psram_model.v",
+        "sim/tb_memc_flyback.v"
+      ],
+      "working_directory": "C:\\Projects\\PocketLotus",
+      "exit_code": 0,
+      "elapsed_seconds": 0.22120859997812659,
+      "expected_exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "test_source_sha256": "6c9821d77890dbdb0c4182925eeed96ddd5d4e56f9922c3d5228d03e1d56f265",
+    "scope": "Directed slow-memory boundary defect; not a confirmed physical root cause"
+  },
+  "source_files": [
+    {
+      "path": "apf/audio.json",
+      "sha256": "901bd52a78484af4e73d4c67dbed75ca9f42e2e7e00b3306b91e0a51e062a870"
+    },
+    {
+      "path": "apf/core.json",
+      "sha256": "db563b185d0b2ffaaf088a9cc4fc4f5e3be6a7d05f8ba117eaeb0fa7c28bdb43"
+    },
+    {
+      "path": "apf/data.json",
+      "sha256": "ce9ca967ee17084b58bdc6d9a8c20ea84b5384e8fa0f58d26c6fbb05c164f792"
+    },
+    {
+      "path": "apf/info.txt",
+      "sha256": "0cc9e939c34a18ec99d5d808e53f305bf2de159f7cdfc2f5b7c5af7b1d5dc5e5"
+    },
+    {
+      "path": "apf/input.json",
+      "sha256": "f0323b1d12940edbb47bf8f846f8fb8f8c898559c1ceffbf33b22fa0e6a267c9"
+    },
+    {
+      "path": "apf/interact.json",
+      "sha256": "dc506ef71695d9ab4c903440f499a888152de1bad57dfbb2843adc9aa74d15b8"
+    },
+    {
+      "path": "apf/platform.json",
+      "sha256": "d3d40fc22f0e9795a7898655702673ecd453bf1fcb4f8550293c44a2696cb41b"
+    },
+    {
+      "path": "apf/variants.json",
+      "sha256": "445c0e6f3e20bd57bf02dbea55c3c19ef8c50aeb3343d91fdf09d3f0c0f12e21"
+    },
+    {
+      "path": "apf/video.json",
+      "sha256": "131411fee0bc7e1bac547b9cdf41c65fe8a36fbae246e4343f308d82352a2d38"
+    },
+    {
+      "path": "firmware/diagnostic.S",
+      "sha256": "0d9ff0d7c7e74435fded1f19671e40899ccf51811b2a00e356ea6e0edc862ab9"
+    },
+    {
+      "path": "quartus/pocketlotus.sdc",
+      "sha256": "5109fb381409a3e180e5b8edbc25640b4f4b571edc6d509ec2cfa92c77b14a03"
+    },
+    {
+      "path": "rtl/async_fifo.v",
+      "sha256": "5466659a2c2b05e368293639db9a25deab9a4b0f751e0140fe8ee0e4cd319dfa"
+    },
+    {
+      "path": "rtl/core_top.v",
+      "sha256": "7014c69ad678de260d1dab9265aec023c78afea610f3d0cfb0ce85b140fefbbe"
+    },
+    {
+      "path": "rtl/memory_arbiter.v",
+      "sha256": "79992a1f212bc0adca57ce171de97557b5e0e81de74bcb0a25b386f9f8018bbb"
+    },
+    {
+      "path": "rtl/pocket_audio.v",
+      "sha256": "86de5206c5941ba33db98faab2c976cc645d14d1a7b727925b24561fabbfa3f1"
+    },
+    {
+      "path": "rtl/pocket_chipset.v",
+      "sha256": "43936ceb9e22d4792d360ad0eca9d847be0902f17acaa6454653b7f07069ca0d"
+    },
+    {
+      "path": "rtl/pocket_debug.v",
+      "sha256": "36c59b1fbc3e8460a794cbb3fe451a0124df8f8489da74d867c6503ddc9b8c47"
+    },
+    {
+      "path": "rtl/pocket_host.v",
+      "sha256": "bc2efecb8d3a6278bb0a4e35e7507f9c53643d5d45f7b69ff7df699a4f73624b"
+    },
+    {
+      "path": "rtl/pocket_pll.v",
+      "sha256": "131e9c10dc039b2c653b8495d615e3d3ca0e0540a54a2c0eab607d0ef1559a32"
+    },
+    {
+      "path": "rtl/pocket_probe.v",
+      "sha256": "4c4681bdffdd9a3e158adde658e68954e8e6baaa7c870f552b12e4e63c08877e"
+    },
+    {
+      "path": "rtl/pocket_reset.v",
+      "sha256": "39b61c8159b891c89e569c45bd771f69f18533973077813c43b68875425517e6"
+    },
+    {
+      "path": "rtl/pocket_video.v",
+      "sha256": "edde9697a31f58a18963a99b5e2e762d7adf34a29574b3e2e84927ce08ddc226"
+    },
+    {
+      "path": "rtl/psram_word.v",
+      "sha256": "a9943c6a7f424f4784fb264265cc6cbabf6e69029ea7cb9f19eee08aa62e05ff"
+    },
+    {
+      "path": "rtl/reset_sync.v",
+      "sha256": "c3774c90d1511f3be31b3bac32b450833055ef934385ef9736b1ece361d93295"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_alu.v",
+      "sha256": "ec973cd98b57915b049e18df1ecf15a8fc066c6da77819a81bf2949ef239b33c"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_barrel_shift.v",
+      "sha256": "2c2c10730152317940782237e142e2f57ae4cf0b633bd0ad26cd7ff57b7f4924"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_barrel_shift_fpga.v",
+      "sha256": "59cb973ca9fb50146bf8a5ce52c3ceb2fc8953a63c91088ab8c70748304f32fc"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_cache.v",
+      "sha256": "9e48a24cd8091029ba9af3f636006074b9e04b572aa82d19597ebda3c72a020d"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_config_defines.v",
+      "sha256": "190133e58a1d2fe48f334b06504da980f6ea6535d8972c3522cc9ad4fb445a22"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_coprocessor.v",
+      "sha256": "9e1c9574e2eb9fb0074591ba1f0d719ffab5b812acd757aa940c1851549372cb"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_core.v",
+      "sha256": "fcbe845866840cf2e1fd3e3105f44192c595a1ec09e44b20d7f893cf195787f3"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_decode.v",
+      "sha256": "09eab3b56d866ada5af84c3f0dd8472a8047518067b385beaedeca8968ed431b"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_decompile.v",
+      "sha256": "e8b1de5220c6887fa93d29eaad99903dc8f89b86a4e7fa605aef71d87dd4532d"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_execute.v",
+      "sha256": "079bdb02122f3e554d6de3970e8257e02d1f7554fc5f25d804575954fc10d9cc"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_fetch.v",
+      "sha256": "d032a326f030859da671073d771f24afaff394fb004ca6faaeb06339d898a3c8"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_functions.v",
+      "sha256": "6c8f8fd7395e12ef93495e52c993b87d84c73af7861bab5c570e31906a8ddc63"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_localparams.v",
+      "sha256": "eb17fd2013c218327684c727d7912d9bf57bc0f04c12912db8674fe85db525fe"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_multiply.v",
+      "sha256": "baeeb2ce89ff66ffce225e6a587855fc8ee0da2986726fbe3de3e5507431a613"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_ram_register_bank.v",
+      "sha256": "9651e78146df253c1292b6a0c4aab753daac3cf6f1ed609d5e59d696c9835a1c"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_register_bank.v",
+      "sha256": "a4a8112a77bb395e83b783e00785227447a30ccdfd888d2abaa15f174bc469c5"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/a23_wishbone.v",
+      "sha256": "2659c6be228d3bb2aaedf173b8ed91d51a6fff095b42c510690cfb21c9eb8520"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/debug_functions.v",
+      "sha256": "300781585480978d449e70364a7ebeac51ffa2d305a14d4044d19c4425573c04"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/memory_configuration.v",
+      "sha256": "6c1c0d8f5ccdeb01c9625c4f25b70161f6f37898fc530255a44c981f950e715d"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/sram_byte_en.v",
+      "sha256": "55ac3e3340209516c8cd420393ab134206726680f2e7f2beb33d1c66ae01cd02"
+    },
+    {
+      "path": "rtl/vendor/archie/amber/sram_line_en.v",
+      "sha256": "30a8fb3183b8f06aa5ef9ec23f9738ad57ffc9295926fe05392e808886a6815f"
+    },
+    {
+      "path": "rtl/vendor/archie/ioc.v",
+      "sha256": "55e37eeb514bc151aa90ea78d32f42beb6f271b8131d67a7ddc041e38ff0b1d7"
+    },
+    {
+      "path": "rtl/vendor/archie/ioc_irq.v",
+      "sha256": "f01f2473e83527f5c2e7bca362aa0d27a125249b92fefa7fa637d78c3af40a94"
+    },
+    {
+      "path": "rtl/vendor/archie/latches.v",
+      "sha256": "8d34ed0488e2d014f1ff6d3408a1db7114416b97650014afcb0139450a44382b"
+    },
+    {
+      "path": "rtl/vendor/archie/memc.v",
+      "sha256": "acdac3ea98ec77b66d25060086d543bb89820f505a07b238ebd5663a92734fed"
+    },
+    {
+      "path": "rtl/vendor/archie/memc_translator.v",
+      "sha256": "f26f5c549b5057b0013f4cfa2252b8ba388c8265c752a963b9bf620eed92559b"
+    },
+    {
+      "path": "rtl/vendor/archie/vidc/vidc.v",
+      "sha256": "a78e17d800246f9071290c819861ae20598685c48d1fa064cb28a43092ec57e8"
+    },
+    {
+      "path": "rtl/vendor/archie/vidc/vidc_audio.v",
+      "sha256": "ff5a472f97ee25f34a1aafeca3bfbcb4bde36fe226252737e6f6a64c7a4faf70"
+    },
+    {
+      "path": "rtl/vendor/archie/vidc/vidc_dmachannel.v",
+      "sha256": "4d2bfc0949358b4d346f7b71550f38f64af945272be366b6f8b309d0db3119cc"
+    },
+    {
+      "path": "rtl/vendor/archie/vidc/vidc_fifo.v",
+      "sha256": "6e7552312483e0a1593e2b8a26c77ac1ae70db56a267a075a6590d7fad68ce6d"
+    },
+    {
+      "path": "rtl/vendor/archie/vidc/vidc_timing.v",
+      "sha256": "f6d97537e863b9a292b716cede1527be17c6e2c3f9e515126c8ddcccbff0fade"
+    },
+    {
+      "path": "rtl/vendor/pocket/ap_core.qsf",
+      "sha256": "dd53a2203ad33de300aea167ebaf905147e7cd75661c976eae29c7496bbe9492"
+    },
+    {
+      "path": "rtl/vendor/pocket/apf/apf.qip",
+      "sha256": "94af53185dde4d51ef30e75bb1ec8df672126742af36399bd62f4efb3a84b26a"
+    },
+    {
+      "path": "rtl/vendor/pocket/apf/apf_top.v",
+      "sha256": "6c24aa45a3dab52d8b86944cdd90330aa74cfdcd62e2d43e39d33d4791d173c7"
+    },
+    {
+      "path": "rtl/vendor/pocket/apf/build_id.mif",
+      "sha256": "5ccdb6f84dac515748a1d538a1d66956a595f667d81a4905bb6104674443467a"
+    },
+    {
+      "path": "rtl/vendor/pocket/apf/common.v",
+      "sha256": "c1615e2c6c12b111537f6ca11e826e5061eb91f405e349bdc649a17b48e24d4e"
+    },
+    {
+      "path": "rtl/vendor/pocket/apf/io_bridge_peripheral.v",
+      "sha256": "2323c3fa114abf21ac6ca96375860d3530f9fc6b7b5ef3c0eb1cb68add7f840c"
+    },
+    {
+      "path": "rtl/vendor/pocket/apf/io_pad_controller.v",
+      "sha256": "2087e191ead148fa54f9cbfba136683ae2b6f84830f3fad3a204b81cd3a633a5"
+    },
+    {
+      "path": "rtl/vendor/pocket/apf/mf_datatable.qip",
+      "sha256": "8d4fac9c708f86c426e5241055d8000063e16dbe9b5c414f320a8b24c44a0632"
+    },
+    {
+      "path": "rtl/vendor/pocket/apf/mf_datatable.v",
+      "sha256": "e2cc2e33ccc22b9a8be3c426141848e0ea7800abb45ce55530eebe17dd23ffd7"
+    },
+    {
+      "path": "rtl/vendor/pocket/apf/mf_ddio_bidir_12.qip",
+      "sha256": "f0ed4e73a07d734115bbde6501b43fe5878a7409f9b3b68bb4c7e0424b31b42e"
+    },
+    {
+      "path": "rtl/vendor/pocket/apf/mf_ddio_bidir_12.v",
+      "sha256": "31c8b62114d7bc916104a6199d919d9e2235a164aba518360b339867a08426aa"
+    },
+    {
+      "path": "rtl/vendor/pocket/core/core_bridge_cmd.v",
+      "sha256": "e6e0185218b3a63799db0f80085b0f4570c003c5f2197e8c9b8a1b1350f733fe"
+    },
+    {
+      "path": "rtl/vidc_fifo_body.vh",
+      "sha256": "01bff74a3ae64722481528adc5f7b5dc73fb4163a44b6a6fb7d579b4cda780fa"
+    },
+    {
+      "path": "sim/primitive_models.v",
+      "sha256": "00e30095e100d19cd267203788c2d0aedb75955532f9c71d5b2cdb94a90ec5f8"
+    },
+    {
+      "path": "sim/psram_model.v",
+      "sha256": "0f363f9b7e936d3a8d3959a8542040c9fee591ba4606ac1972fae2db7991dadf"
+    },
+    {
+      "path": "sim/tb_apf_boot.v",
+      "sha256": "b83089f1bc7c9b6c57c2f0d11c443fcd5258490d179077ea8c68795a521e6a74"
+    },
+    {
+      "path": "sim/tb_audio.v",
+      "sha256": "9ade4cc4537bd1071b877e8b15a7cf88934b5783a84f779c979738eb4c99c397"
+    },
+    {
+      "path": "sim/tb_debug.v",
+      "sha256": "646e92c74f59a9bc5df4ff0151c2eb1eddd8619e849d49dd983412c95fab6bae"
+    },
+    {
+      "path": "sim/tb_diagnostic.v",
+      "sha256": "bf3fcf9cfd42a43e0c43f1020656f420187adfc5e2e8168bf3c45da767447095"
+    },
+    {
+      "path": "sim/tb_host_reset.v",
+      "sha256": "8e81fcef1941f83e12952d2a9c004830d79c34ec6cd8efdbd354b720ca5d654e"
+    },
+    {
+      "path": "sim/tb_memc_flyback.v",
+      "sha256": "6c9821d77890dbdb0c4182925eeed96ddd5d4e56f9922c3d5228d03e1d56f265"
+    },
+    {
+      "path": "sim/tb_probe.v",
+      "sha256": "67e4645abd35d7df4b79c8fbac91745c85c060db6106e47873d7b4816ead61bb"
+    },
+    {
+      "path": "sim/tb_psram.v",
+      "sha256": "9441a48de6ba645744f522c692e656616e93e68300fb5fdb5f5644cddda453b1"
+    },
+    {
+      "path": "sim/tb_serial_video.v",
+      "sha256": "dd28d37865411ec74a35709408c2a03dcd4a2e1e65297eb01cf5c42162667d6d"
+    },
+    {
+      "path": "sim/tb_vidc_fifo.v",
+      "sha256": "6eba390d1b40d4247a98562aeb5c35fa521d48ce02316f7888e568ce52337ebc"
+    },
+    {
+      "path": "sim/tb_vidc_writes.v",
+      "sha256": "672e396b2d5e998f46dbe34a49154fbd94eb01404909b942c49d625dd29f31c6"
+    },
+    {
+      "path": "sim/tb_video.v",
+      "sha256": "a3854f9652ad69041ff9e47dbb5e71db189f5c09abe1ec84f06cd43b16c36f73"
+    },
+    {
+      "path": "tools/bootstrap_sim.py",
+      "sha256": "c40b09fbe3de06632a9b657c0f3f1196f41aab18bbbdf84ff72a885928a7274a"
+    },
+    {
+      "path": "tools/build_diagnostic.py",
+      "sha256": "261b509ee25610d4b8aa5531244171e45ee874986770c83f1995d5f65bdf5c54"
+    },
+    {
+      "path": "tools/build_quartus.py",
+      "sha256": "3d0cd403531be92c2c1cd3197364b538052f51149325a2c8adfc141b34ba8e12"
+    },
+    {
+      "path": "tools/create_pocket_project.py",
+      "sha256": "32d2415531c2a358e539bd7ea09427fe8b9288eb132426b735c4e3f482fb8367"
+    },
+    {
+      "path": "tools/hdl_sources.py",
+      "sha256": "7748fe5f9db1c24283f292e6f124e5ee0272253d9496e1a8abe9dc122c7b8fcd"
+    },
+    {
+      "path": "tools/import_sources.py",
+      "sha256": "e6ca945652b898c6c43099505ab4b23f786a6832b2fb34e9b68b401b1e0bfbb3"
+    },
+    {
+      "path": "tools/inspect_runtime_log.py",
+      "sha256": "8cca2e71d4903ceacb8e9834f5295bb8d81b2eb5c34af0fc0188fde36ee29bba"
+    },
+    {
+      "path": "tools/install_diagnostic.py",
+      "sha256": "71feaa724eeabb6222b6fd78a963d626f09919d2641e6f188d6fc6743d012a8a"
+    },
+    {
+      "path": "tools/module_manifest.py",
+      "sha256": "f22039a1569946d575998a5a58b55715b0c0a4d177567ea2c95531f18adf81a3"
+    },
+    {
+      "path": "tools/package_diagnostic.py",
+      "sha256": "2f5482cb8892edeed33eeb1065c051b914e3cef84f38143b187037d515aa7acf"
+    },
+    {
+      "path": "tools/prepare_chipset.py",
+      "sha256": "0efaf65eb3559713873cf14bc286d76709111537e86e9dcb3f2a6d7f5b202b49"
+    },
+    {
+      "path": "tools/quartus_timing_audit.tcl",
+      "sha256": "1d00b8df6872c8e4a3677b30c47e93c25ebe8b1a9a0dcac21ea246956c8b8324"
+    },
+    {
+      "path": "tools/record_results.py",
+      "sha256": "c38ff087139c9abee07992abe53d7dc6e15c761326390f7e222ed8730cfb289d"
+    },
+    {
+      "path": "tools/simulate.py",
+      "sha256": "b541004654083f06e77e7202f4b329ae952345a3a97a5ca539bbf5896bbe16ed"
+    },
+    {
+      "path": "tools/synthesize.py",
+      "sha256": "2e6df5981a34fa848e655200cc6e436a80e6fbd53461be8e6b624900716ed767"
+    },
+    {
+      "path": "tools/validate_apf.py",
+      "sha256": "5f72c662e5353579d5da1fc9601b5aa57c16c81b79a151bf70f28ef723cc2ab7"
+    },
+    {
+      "path": "tools/verify_analysis.py",
+      "sha256": "d3c5dc2940fb091549bab2656516e561c2b194953534428195893ea7eb86f915"
+    },
+    {
+      "path": "tools/verify_package.py",
+      "sha256": "788bd92a33bc23720c75a8342248de6e079e1e2168b25a09e2d203a8e820563b"
+    }
+  ]
+}
