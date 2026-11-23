@@ -295,10 +295,11 @@ def main():
     sources = [ROOT / "port" / "core" / f for f in ("arm26.c", "machine.c", "riscos.c", "sound.c", "view.c", "save.c")]
     run([cc, "-O2", "-o", host] + sources + [ROOT / "port" / "host" / "main.c", "-lm"])
     frames = BUILD / "frames"
-    frames.mkdir(exist_ok=True)
+    shutil.rmtree(frames, ignore_errors=True)
+    frames.mkdir()
     for f in ("game_image.bin", "musmod2.bin"):
         (BUILD / f).unlink(missing_ok=True)
-    run([host, "--frames", "400", "--out", frames, "--dump-mus", BUILD / "musmod2.bin"])
+    run([host, "--frames", "400", "--every", "100", "--out", frames, "--dump-mus", BUILD / "musmod2.bin"])
     if not (BUILD / "musmod2.bin").exists():
         raise Failure("the music module did not load in the PC runner")
     check_hash(BUILD / "game_image.bin", "game_image", "program image")
