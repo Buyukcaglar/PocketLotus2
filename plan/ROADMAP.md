@@ -106,6 +106,8 @@ Where to announce:
 
 Exit: the core is listed or linked on the core list and announced in the Pocket, openfpgaOS and Acorn communities.
 
+State on 24 November 2026: the preparation steps are done (topics, title and race screenshots in the README, v1.0 release, wording). Drafts for every post are in [ANNOUNCEMENTS.md](ANNOUNCEMENTS.md); nothing has been posted yet. The single release asset is the game-free zip, which an updater would install as if it were a working core, so the core list question comes first.
+
 ## Risks
 
 | Risk | Handling |

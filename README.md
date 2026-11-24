@@ -2,6 +2,8 @@
 
 ![PocketLotus2: the core's Analogue Pocket platform art](docs/images/pocketlotus2_platform.png)
 
+<img src="docs/images/pocketlotus2_title.png" width="400" alt="Title screen"> <img src="docs/images/pocketlotus2_race.png" width="400" alt="A race on the first course">
+
 PocketLotus2 brings the Acorn Archimedes version of **Lotus Turbo Challenge 2** (Krisalis Software, 1992) to the Analogue Pocket. It is a **static recompilation**: the original ARM program is translated to C and rebuilt for the RISC-V processor of [openfpgaOS](https://github.com/openfpgaOS/openfpgaSDK), with a small runtime standing in for the parts of RISC OS and the Archimedes hardware the game uses. It is packaged as a Pocket core that starts the game directly.
 
 **No game content is included.** You build the core from your own copy of the original disks with one command; see [Building](#building) and [Game content](#game-content).
@@ -19,7 +21,7 @@ PocketLotus2 brings the Acorn Archimedes version of **Lotus Turbo Challenge 2** 
 
 ## Status
 
-Version 1.0. It runs on the Analogue Pocket; name entry, saving and the race picture are confirmed on the device. Not yet tested: link-cable play between two real Pockets (it is tested between two desktop instances), and the courses on the second disk.
+Version 1.0. It runs on the Analogue Pocket; name entry, saving and the race picture are confirmed on the device. Not yet tested: link-cable play between two real Pockets (it is tested between two desktop instances), the courses on the second disk, and two controllers on a Dock.
 
 | Area | State |
 | --- | --- |
@@ -87,7 +89,7 @@ The individual steps, the PC runner, the verification runs and the test tools ar
 
 ## Game content
 
-Lotus Turbo Challenge 2 is a commercial game, and its rights belong to their owners. This repository contains only original code, tools and documentation. Neither the repository nor any release contains the game program, its assets or anything derived from them. That covers the decrypted program, the generated C, the built `lotus2.elf` and the asset pack `lotus2.dat`. The one exception is the core's platform art shown at the top of this page and included in the release, a greyscale image of the game's title logo, shown to identify the game in the Pocket's menu. All of these are produced on your machine from your own disks, under `build/`, which Git ignores. Do not share a built core.
+Lotus Turbo Challenge 2 is a commercial game, and its rights belong to their owners. This repository contains only original code, tools and documentation. Neither the repository nor any release contains the game program, its assets or anything derived from them. That covers the decrypted program, the generated C, the built `lotus2.elf` and the asset pack `lotus2.dat`. The exceptions are the images at the top of this page: the core's platform art, a greyscale image of the game's title logo that identifies the game in the Pocket's menu and is included in the release, and two screenshots of the game running. All of these are produced on your machine from your own disks, under `build/`, which Git ignores. Do not share a built core.
 
 This project is not affiliated with or endorsed by the rights holders of Lotus Turbo Challenge 2, by Analogue or by the openfpgaOS project.
 
