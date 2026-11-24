@@ -17,6 +17,8 @@ Where: new issue (blank, not the New Core form) on https://github.com/openfpga-l
 
 Title: How should a build-it-yourself core be listed?
 
+Posted 24 November 2026 as [openfpga-library/analogue-pocket#2055](https://github.com/openfpga-library/analogue-pocket/issues/2055). Wait for the answer before using the New Core form.
+
 > I have released PocketLotus2, the Acorn Archimedes version of Lotus Turbo Challenge 2 statically recompiled for openfpgaOS on the Pocket: https://github.com/Buyukcaglar/PocketLotus2
 >
 > The core cannot be offered as a download, because a built core contains translated game code and data. Users build it from their own disks with one command (https://github.com/Buyukcaglar/PocketLotus2#building, game content policy: https://github.com/Buyukcaglar/PocketLotus2#game-content).
@@ -30,6 +32,8 @@ Title: How should a build-it-yourself core be listed?
 Where: new issue on https://github.com/openfpgaOS/openfpgaSDK (Discussions are not enabled)
 
 Title: PocketLotus2: Lotus Turbo Challenge 2 (Archimedes) as a static recompilation on openfpgaOS
+
+Posted 24 November 2026 as [openfpgaOS/openfpgaSDK#9](https://github.com/openfpgaOS/openfpgaSDK/issues/9).
 
 > Thank you for openfpgaOS and the SDK. I wanted to let you know about a port built on it: https://github.com/Buyukcaglar/PocketLotus2
 >
