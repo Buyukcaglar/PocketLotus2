@@ -55,6 +55,8 @@ Where: the Pocket or openFPGA development channel.
 
 Title: PocketLotus2: Lotus Turbo Challenge 2 (Archimedes) on the Pocket via openfpgaOS, with two-Pocket link play
 
+Posted 24 November 2026 on r/AnaloguePocket.
+
 > I have ported the Acorn Archimedes version of Lotus Turbo Challenge 2 to the Pocket. It is a static recompilation: the original ARM program is translated to C and runs on openfpgaOS, matching the original frame for frame.
 >
 > - The complete first-disk game at the original 50 Hz, with music and sound
